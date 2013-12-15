@@ -545,5 +545,87 @@ return array(
                 )
             )
         ),
+
+        /**
+         * --------------------------------------------------------------------------------
+         * SUBSCRIPTION RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#subscriptions
+         * --------------------------------------------------------------------------------
+         */
+        'CancelSubscription' => array(
+            'httpMethod'       => 'DELETE',
+            'uri'              => '/v1/customers/{customer_id}/subscription',
+            'summary'          => 'Delete an existing customer\'s card',
+            'parameters'       => array(
+                'customer_id' => array(
+                    'description' => 'Unique identifier of the customer to delete the card',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'at_period_end' => array(
+                    'description' => 'A flag that if set to true will delay the cancellation of the subscription until the end of the current period.',
+                    'location'    => 'query',
+                    'type'        => 'boolean',
+                    'required'    => false
+                )
+            )
+        ),
+
+        'UpdateSubscription' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/customers/{customer_id}/subscription',
+            'summary'          => 'Update a customer\'s subscription',
+            'parameters'       => array(
+                'customer_id' => array(
+                    'description' => 'Unique identifier of the customer',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'plan' => array(
+                    'description' => 'Unique plan identifier',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'quantity' => array(
+                    'description' => 'Quantity you\'d like to apply to the subscription you\'re creating',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'card' => array(
+                    'description' => 'Unique card identifier (can either be an ID or a hash)',
+                    'location'    => 'query',
+                    'required'    => false
+                ),
+                'coupon' => array(
+                    'description' => 'Optional coupon identifier that applies a discount at the same time as creating the subscription',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'prorate' => array(
+                    'description' => 'Flag telling us whether to prorate switching plans during a billing cycle',
+                    'location'    => 'query',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ),
+                'trial_end' => array(
+                    'description' => 'UTC integer timestamp representing the end of the trial period the customer will get before being charged for the first time',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'application_fee_percent' => array(
+                    'description' => 'A positive decimal (with at most two decimal places) between 1 and 100 that represents the percentage of the subscription invoice amount due each billing period that will be transferred to the application owner’s Stripe account',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                )
+            )
+        ),
     )
 );
