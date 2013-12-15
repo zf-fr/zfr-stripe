@@ -26,6 +26,14 @@ use Guzzle\Service\Description\ServiceDescription;
  * @author  Michaël Gallego <mic.gallego@gmail.com>
  * @licence MIT
  *
+ * CHARGE RELATED METHODS:
+ *
+ * @method array captureCharge(array $args = array()) {@command Stripe CaptureCharge}
+ * @method array createCharge(array $args = array()) {@command Stripe CreateCharge}
+ * @method array getCharge(array $args = array()) {@command Stripe GetCharge}
+ * @method array getCharges(array $args = array()) {@command Stripe GetCharges}
+ * @method array refundCharge(array $args = array()) {@command Stripe RefundCharge}
+ * @method array updateCharge(array $args = array()) {@command Stripe UpdateCharge}
  */
 class StripeClient extends Client
 {
