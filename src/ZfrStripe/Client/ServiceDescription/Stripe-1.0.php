@@ -18,6 +18,10 @@
 
 $errors = array(
     array(
+        'class' => 'ZfrStripe\Exception\ValidationErrorException',
+        'code'  => 400
+    ),
+    array(
         'class' => 'ZfrStripe\Exception\UnauthorizedException',
         'code'  => 401
     ),
@@ -28,10 +32,6 @@ $errors = array(
     array(
         'class' => 'ZfrStripe\Exception\NotFoundException',
         'code'  => 404
-    ),
-    array(
-        'class' => 'ZfrStripe\Exception\ValidationErrorException',
-        'code'  => 400
     ),
     array(
         'class' => 'ZfrStripe\Exception\ServerErrorException'

@@ -19,6 +19,7 @@
 namespace ZfrStripe\Client;
 
 use Guzzle\Common\Event;
+use Guzzle\Plugin\ErrorResponse\ErrorResponsePlugin;
 use Guzzle\Service\Client;
 use Guzzle\Service\Description\ServiceDescription;
 use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
@@ -171,6 +172,7 @@ class StripeClient extends Client
         // Add an event to set the Authorization param
         $dispatcher = $this->getEventDispatcher();
 
+        $dispatcher->addSubscriber(new ErrorResponsePlugin());
         $dispatcher->addListener('command.after_prepare', array($this, 'afterPrepare'));
         $dispatcher->addListener('command.before_send', array($this, 'authorizeRequest'));
     }
