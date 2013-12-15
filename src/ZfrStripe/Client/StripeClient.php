@@ -34,6 +34,22 @@ use Guzzle\Service\Description\ServiceDescription;
  * @method array getCharges(array $args = array()) {@command Stripe GetCharges}
  * @method array refundCharge(array $args = array()) {@command Stripe RefundCharge}
  * @method array updateCharge(array $args = array()) {@command Stripe UpdateCharge}
+ *
+ * CUSTOMER RELATED METHODS:
+ *
+ * @method array createCustomer(array $args = array()) {@command Stripe CreateCustomer}
+ * @method array deleteCustomer(array $args = array()) {@command Stripe DeleteCustomer}
+ * @method array getCustomer(array $args = array()) {@command Stripe GetCustomer}
+ * @method array getCustomers(array $args = array()) {@command Stripe GetCustomers}
+ * @method array updateCustomer(array $args = array()) {@command Stripe UpdateCustomer}
+ *
+ * CARD RELATED METHODS:
+ *
+ * @method array createCard(array $args = array()) {@command Stripe CreateCard}
+ * @method array deleteCard(array $args = array()) {@command Stripe DeleteCard}
+ * @method array getCard(array $args = array()) {@command Stripe GetCard}
+ * @method array getCards(array $args = array()) {@command Stripe GetCards}
+ * @method array updateCard(array $args = array()) {@command Stripe UpdateCard}
  */
 class StripeClient extends Client
 {

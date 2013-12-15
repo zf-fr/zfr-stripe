@@ -186,7 +186,7 @@ return array(
         'UpdateCharge' => array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/charges/{id}',
-            'summary'          => 'Get an existing charge',
+            'summary'          => 'Update an existing charge',
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the charge to update',
@@ -207,6 +207,343 @@ return array(
                     'required'    => false
                 ),
             )
-        )
+        ),
+
+        /**
+         * --------------------------------------------------------------------------------
+         * CUSTOMER RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#customers
+         * --------------------------------------------------------------------------------
+         */
+        'CreateCustomer' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/customers',
+            'summary'          => 'Create a new customer (either card or customer is needed)',
+            'parameters'       => array(
+                'account_balance' => array(
+                    'description' => 'An integer amount in cents that is the starting account balance for your customer',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'card' => array(
+                    'description' => 'Unique card identifier (can either be an ID or a hash)',
+                    'location'    => 'query',
+                    'required'    => false
+                ),
+                'coupon' => array(
+                    'description' => 'Optional coupon identifier that applies a discount on all recurring charges',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'plan' => array(
+                    'description' => 'Optional plan for the customer',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'quantity' => array(
+                    'description' => 'Quantity you\'d like to apply to the subscription you\'re creating',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'trial_end' => array(
+                    'description' => 'UTC integer timestamp representing the end of the trial period the customer will get before being charged for the first time',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'description' => array(
+                    'description' => 'Optional description for the customer',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'email' => array(
+                    'description' => 'Optional customer\'s email address',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'metadata' => array(
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        'DeleteCustomer' => array(
+            'httpMethod'       => 'DELETE',
+            'uri'              => '/v1/customers/{id}',
+            'summary'          => 'Delete an existing customer',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the customer',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'GetCustomer' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/customers/{id}',
+            'summary'          => 'Get an existing customer',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the customer',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'GetCustomers' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/customers',
+            'summary'          => 'Get existing customers',
+            'parameters'       => array(
+                'count' => array(
+                    'description' => 'Limit on how much customers are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ),
+                'offset' => array(
+                    'description' => 'Offset into the list of returned items',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'created' => array(
+                    'description' => 'A filter based on the "created" field. Can be an exact UTC timestamp, or a hash',
+                    'location'    => 'query',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        'UpdateCustomer' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/customers/{id}',
+            'summary'          => 'Update an existing customer',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the customer to update',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'account_balance' => array(
+                    'description' => 'An integer amount in cents that is the starting account balance for your customer',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'card' => array(
+                    'description' => 'Unique card identifier (can either be an ID or a hash)',
+                    'location'    => 'query',
+                    'required'    => false
+                ),
+                'default_card' => array(
+                    'description' => 'Default card identifier',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'coupon' => array(
+                    'description' => 'Optional coupon identifier that applies a discount on all recurring charges',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'description' => array(
+                    'description' => 'Optional description for the customer',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'email' => array(
+                    'description' => 'Optional customer\'s email address',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'metadata' => array(
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        /**
+         * --------------------------------------------------------------------------------
+         * CARD RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#cards
+         * --------------------------------------------------------------------------------
+         */
+        'CreateCard' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/customers/{customer_id}/cards',
+            'summary'          => 'Create a new card for a customer',
+            'parameters'       => array(
+                'customer_id' => array(
+                    'description' => 'Unique identifier of the customer',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'card' => array(
+                    'description' => 'Unique card identifier (can either be an ID or a hash)',
+                    'location'    => 'query',
+                    'required'    => false
+                )
+            )
+        ),
+
+        'DeleteCard' => array(
+            'httpMethod'       => 'DELETE',
+            'uri'              => '/v1/customers/{customer_id}/cards/{id}',
+            'summary'          => 'Delete an existing customer\'s card',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the card to delete',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'customer_id' => array(
+                    'description' => 'Unique identifier of the customer to delete the card',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'GetCard' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/customers/{customer_id}/cards/{id}',
+            'summary'          => 'Get an existing customer\'s card',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the card to get',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'customer_id' => array(
+                    'description' => 'Unique identifier of the customer to get the card from',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'GetCards' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/customers/{customer_id}/cards',
+            'summary'          => 'Get existing customers\'s cards',
+            'parameters'       => array(
+                'customer_id' => array(
+                    'description' => 'Unique identifier of the customer to get the cards from',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'count' => array(
+                    'description' => 'Limit on how much cards are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ),
+                'offset' => array(
+                    'description' => 'Offset into the list of returned items',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        'UpdateCard' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/customers/{customer_id}/cards/{id}',
+            'summary'          => 'Update an existing customer',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the card to update',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'customer_id' => array(
+                    'description' => 'Unique identifier of the customer to get the card from',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'address_city' => array(
+                    'location' => 'query',
+                    'type'     => 'string',
+                    'required' => false
+                ),
+                'address_country' => array(
+                    'location' => 'query',
+                    'type'     => 'string',
+                    'required' => false
+                ),
+                'address_line1' => array(
+                    'location' => 'query',
+                    'type'     => 'string',
+                    'required' => false
+                ),
+                'address_line2' => array(
+                    'location' => 'query',
+                    'type'     => 'string',
+                    'required' => false
+                ),
+                'address_state' => array(
+                    'location' => 'query',
+                    'type'     => 'string',
+                    'required' => false
+                ),
+                'address_zip' => array(
+                    'location' => 'query',
+                    'type'     => 'string',
+                    'required' => false
+                ),
+                'exp_month' => array(
+                    'location' => 'query',
+                    'type'     => 'string',
+                    'required' => false
+                ),
+                'exp_year' => array(
+                    'location' => 'query',
+                    'type'     => 'string',
+                    'required' => false
+                ),
+                'name' => array(
+                    'location' => 'query',
+                    'type'     => 'string',
+                    'required' => false
+                )
+            )
+        ),
     )
 );
