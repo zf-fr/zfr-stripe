@@ -22,6 +22,6 @@ namespace ZfrStripe\Exception;
  * @author  Michaël Gallego <mic.gallego@gmail.com>
  * @licence MIT
  */
-class TransactionErrorException extends AbstractException
+class CardErrorException extends AbstractException
 {
 }

@@ -26,7 +26,7 @@ $errors = array(
         'code'  => 401
     ),
     array(
-        'class' => 'ZfrStripe\Exception\TransactionErrorException',
+        'class' => 'ZfrStripe\Exception\CardErrorException',
         'code'  => 402
     ),
     array(
