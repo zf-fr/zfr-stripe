@@ -53,7 +53,7 @@ $errors = array(
 
 return array(
     'name'        => 'Stripe',
-    'apiVersion'  => '1.0',
+    'apiVersion'  => '2013-12-03',
     'baseUrl'     => 'https://api.stripe.com',
     'description' => 'Paymill is a payment system',
     'operations'  => array(
@@ -124,6 +124,7 @@ return array(
                 'card' => array(
                     'description' => 'Unique card identifier (can either be an ID or a hash)',
                     'location'    => 'query',
+                    'type'        => array('string', 'array'),
                     'required'    => false
                 ),
                 'capture' => array(
@@ -203,6 +204,7 @@ return array(
                 'created' => array(
                     'description' => 'A filter based on the "created" field. Can be an exact UTC timestamp, or a hash',
                     'location'    => 'query',
+                    'type'        => array('string', 'array'),
                     'required'    => false
                 ),
                 'customer' => array(
@@ -308,6 +310,7 @@ return array(
                 'card' => array(
                     'description' => 'Unique card identifier (can either be an ID or a hash)',
                     'location'    => 'query',
+                    'type'        => array('string', 'array'),
                     'required'    => false
                 ),
                 'coupon' => array(
@@ -426,6 +429,7 @@ return array(
                 'created' => array(
                     'description' => 'A filter based on the "created" field. Can be an exact UTC timestamp, or a hash',
                     'location'    => 'query',
+                    'type'        => array('string', 'array'),
                     'required'    => false
                 ),
                 'expand' => array(
@@ -458,6 +462,7 @@ return array(
                 'card' => array(
                     'description' => 'Unique card identifier (can either be an ID or a hash)',
                     'location'    => 'query',
+                    'type'        => array('string', 'array'),
                     'required'    => false
                 ),
                 'default_card' => array(
@@ -521,6 +526,7 @@ return array(
                 'card' => array(
                     'description' => 'Unique card identifier (can either be an ID or a hash)',
                     'location'    => 'query',
+                    'type'        => array('string', 'array'),
                     'required'    => false
                 ),
                 'expand' => array(
@@ -754,6 +760,7 @@ return array(
                 'card' => array(
                     'description' => 'Unique card identifier (can either be an ID or a hash)',
                     'location'    => 'query',
+                    'type'        => array('string', 'array'),
                     'required'    => false
                 ),
                 'coupon' => array(
@@ -1253,6 +1260,7 @@ return array(
                 'date' => array(
                     'description' => 'A filter based on the "date" field. Can be an exact UTC timestamp, or a hash',
                     'location'    => 'query',
+                    'type'        => array('string', 'array'),
                     'required'    => false
                 ),
                 'customer' => array(
@@ -2003,6 +2011,7 @@ return array(
                 'created' => array(
                     'description' => 'A filter based on the "created" field. Can be an exact UTC timestamp, or a hash',
                     'location'    => 'query',
+                    'type'        => array('string', 'array'),
                     'required'    => false
                 ),
                 'charge' => array(
@@ -2063,11 +2072,13 @@ return array(
                 'card' => array(
                     'description' => 'Unique card identifier (can either be an ID or a hash)',
                     'location'    => 'query',
+                    'type'        => array('string', 'array'),
                     'required'    => false
                 ),
                 'customer' => array(
                     'description' => 'A customer (owned by the application\'s account) to create a token for',
                     'location'    => 'query',
+                    'type'        => 'string',
                     'required'    => false
                 ),
                 'expand' => array(
@@ -2172,6 +2183,7 @@ return array(
                 'created' => array(
                     'description' => 'A filter based on the "created" field. Can be an exact UTC timestamp, or a hash',
                     'location'    => 'query',
+                    'type'        => array('string', 'array'),
                     'required'    => false
                 ),
                 'type' => array(
