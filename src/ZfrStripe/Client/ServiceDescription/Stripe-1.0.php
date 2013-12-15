@@ -16,6 +16,28 @@
  * and is licensed under the MIT license.
  */
 
+$errors = array(
+    array(
+        'class' => 'ZfrStripe\Exception\UnauthorizedException',
+        'code'  => 401
+    ),
+    array(
+        'class' => 'ZfrStripe\Exception\TransactionErrorException',
+        'code'  => 402
+    ),
+    array(
+        'class' => 'ZfrStripe\Exception\NotFoundException',
+        'code'  => 404
+    ),
+    array(
+        'class' => 'ZfrStripe\Exception\ValidationErrorException',
+        'code'  => 400
+    ),
+    array(
+        'class' => 'ZfrStripe\Exception\ServerErrorException'
+    )
+);
+
 return array(
     'name'        => 'Stripe',
     'apiVersion'  => '1.0',
@@ -33,6 +55,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/charges/{id}/capture',
             'summary'          => 'Capture an existing charge',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the charge',
@@ -65,6 +88,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/charges',
             'summary'          => 'Create a new charge (either card or customer is needed)',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'amount' => array(
                     'description' => 'Amount (in cents)',
@@ -126,6 +150,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/charges/{id}',
             'summary'          => 'Get an existing charge',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the charge',
@@ -146,6 +171,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/charges',
             'summary'          => 'Get existing charges',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'count' => array(
                     'description' => 'Limit on how much charges are retrieved',
@@ -185,6 +211,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/charges/{id}/refund',
             'summary'          => 'Refund an existing charge',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the charge',
@@ -217,6 +244,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/charges/{id}',
             'summary'          => 'Update an existing charge',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the charge to update',
@@ -256,6 +284,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/customers',
             'summary'          => 'Create a new customer (either card or customer is needed)',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'account_balance' => array(
                     'description' => 'An integer amount in cents that is the starting account balance for your customer',
@@ -323,6 +352,7 @@ return array(
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/customers/{id}',
             'summary'          => 'Delete an existing customer',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the customer',
@@ -343,6 +373,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/customers/{id}',
             'summary'          => 'Get an existing customer',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the customer',
@@ -363,6 +394,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/customers',
             'summary'          => 'Get existing customers',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'count' => array(
                     'description' => 'Limit on how much customers are retrieved',
@@ -396,6 +428,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/customers/{id}',
             'summary'          => 'Update an existing customer',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the customer to update',
@@ -464,6 +497,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/customers/{customer}/cards',
             'summary'          => 'Create a new card for a customer',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'customer' => array(
                     'description' => 'Unique identifier of the customer',
@@ -489,6 +523,7 @@ return array(
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/customers/{customer}/cards/{id}',
             'summary'          => 'Delete an existing customer\'s card',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the card to delete',
@@ -515,6 +550,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/customers/{customer}/cards/{id}',
             'summary'          => 'Get an existing customer\'s card',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the card to get',
@@ -541,6 +577,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/customers/{customer}/cards',
             'summary'          => 'Get existing customers\'s cards',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'customer' => array(
                     'description' => 'Unique identifier of the customer to get the cards from',
@@ -575,6 +612,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/customers/{customer}/cards/{id}',
             'summary'          => 'Update an existing customer',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the card to update',
@@ -653,6 +691,7 @@ return array(
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/customers/{customer}/subscription',
             'summary'          => 'Delete an existing customer\'s card',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'customer' => array(
                     'description' => 'Unique identifier of the customer to delete the card',
@@ -679,6 +718,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/customers/{customer}/subscription',
             'summary'          => 'Update a customer\'s subscription',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'customer' => array(
                     'description' => 'Unique identifier of the customer',
@@ -747,6 +787,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/plans',
             'summary'          => 'Create a new plan',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique string to identify the plan',
@@ -810,6 +851,7 @@ return array(
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/plans/{id}',
             'summary'          => 'Delete an existing plan',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the plan',
@@ -830,6 +872,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/plans/{id}',
             'summary'          => 'Get an existing plan',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the plan',
@@ -850,6 +893,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/plans',
             'summary'          => 'Get existing plans',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'count' => array(
                     'description' => 'Limit on how much plans are retrieved',
@@ -878,6 +922,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/plans/{id}',
             'summary'          => 'Update an existing plan',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the plan to update',
@@ -917,6 +962,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/coupons',
             'summary'          => 'Create a new coupon',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique string to identify the coupon (you can specify none and it will be auto-generated)',
@@ -980,6 +1026,7 @@ return array(
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/coupons/{id}',
             'summary'          => 'Delete an existing coupon',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the coupon',
@@ -1000,6 +1047,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/coupons/{id}',
             'summary'          => 'Get an existing coupon',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the plan',
@@ -1020,6 +1068,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/coupons/{id}',
             'summary'          => 'Get existing plans',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'count' => array(
                     'description' => 'Limit on how much coupons are retrieved',
@@ -1055,6 +1104,7 @@ return array(
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/customers/{customer}/discount',
             'summary'          => 'Delete a discount for a given customer',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'customer' => array(
                     'description' => 'Unique identifier of the customer to delete the discount from',
@@ -1082,6 +1132,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/invoices',
             'summary'          => 'Create a new invoice',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'customer' => array(
                     'description' => 'Unique string to identify the plan',
@@ -1108,6 +1159,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoices/{id}',
             'summary'          => 'Get an existing invoice',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the invoice',
@@ -1128,6 +1180,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoices/{id}/lines',
             'summary'          => 'Get an existing invoice line items',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the invoice',
@@ -1168,6 +1221,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoices',
             'summary'          => 'Get existing invoices',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'count' => array(
                     'description' => 'Limit on how much invoices are retrieved',
@@ -1207,6 +1261,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoices/upcoming',
             'summary'          => 'Get upcoming invoices',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'customer' => array(
                     'description' => 'Only return upcoming invoices for a specific customer',
@@ -1227,6 +1282,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/invoices/{id}/pay',
             'summary'          => 'Pay an existing invoice',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the invoice to pay',
@@ -1247,6 +1303,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/invoices/{id}',
             'summary'          => 'Update an existing invoice',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the invoice to update',
@@ -1286,6 +1343,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/invoiceitems',
             'summary'          => 'Create a new invoice item',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'customer' => array(
                     'description' => 'ID of the customer who will be billed when this invoice item is billed',
@@ -1336,6 +1394,7 @@ return array(
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/invoiceitems/{id}',
             'summary'          => 'Delete an existing invoice item',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the invoice item',
@@ -1356,6 +1415,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoiceitems/{id}',
             'summary'          => 'Get an existing invoice item',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the invoice item',
@@ -1376,6 +1436,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoiceitems',
             'summary'          => 'Get existing invoice items',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'count' => array(
                     'description' => 'Limit on how much invoice items are retrieved',
@@ -1415,6 +1476,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/invoiceitems/{id}',
             'summary'          => 'Update an existing invoice item',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the invoice item to update',
@@ -1454,6 +1516,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/charges/{charge}/dispute/close',
             'summary'          => 'Close a dispute',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'charge' => array(
                     'description' => 'ID of the charge to close the dispute',
@@ -1474,6 +1537,7 @@ return array(
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/charges/{charge}/dispute',
             'summary'          => 'Update a dispute',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'charge' => array(
                     'description' => 'ID of the charge to update the dispute',
@@ -1507,6 +1571,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/transfers/{id}/cancel',
             'summary'          => 'Cancel an existing transfer',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the transfer',
@@ -1527,6 +1592,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/transfers',
             'summary'          => 'Create a new transfer',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'amount' => array(
                     'description' => 'Amount (in cents)',
@@ -1577,6 +1643,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/transfers/{id}',
             'summary'          => 'Get an existing transfer',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the transfer',
@@ -1597,6 +1664,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/transfers',
             'summary'          => 'Get existing transfers',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'count' => array(
                     'description' => 'Limit on how much invoice items are retrieved',
@@ -1643,6 +1711,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/transfers/{id}',
             'summary'          => 'Update an existing transfer',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the transfer to update',
@@ -1682,6 +1751,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/recipients',
             'summary'          => 'Create a new recipient',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'name' => array(
                     'description' => 'The recipient\'s full, legal name',
@@ -1739,6 +1809,7 @@ return array(
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/recipients/{id}',
             'summary'          => 'Delete an existing recipient',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the recipient',
@@ -1759,6 +1830,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/recipients/{id}',
             'summary'          => 'Get an existing recipient',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the recipient',
@@ -1779,6 +1851,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/recipients',
             'summary'          => 'Get existing recipients',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'count' => array(
                     'description' => 'Limit on how much invoice items are retrieved',
@@ -1813,6 +1886,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/recipients/{id}',
             'summary'          => 'Update an existing recipient',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the recipient to update',
@@ -1876,6 +1950,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/application_fees/{id}',
             'summary'          => 'Get details about an application fee that your account has collected',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the application fee',
@@ -1896,6 +1971,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/application_fees',
             'summary'          => 'Get details about all applicaiton fees that your account has collected',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'count' => array(
                     'description' => 'Limit on how much application fees are retrieved',
@@ -1935,6 +2011,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/application_fees/{id}/refund',
             'summary'          => 'Refund an application fee that has previously been collected but not yet refunded',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of application fee to be refunded',
@@ -1968,6 +2045,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/tokens',
             'summary'          => 'Create a new card token (note you must either specify card OR customer but not both)',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'card' => array(
                     'description' => 'Unique card identifier (can either be an ID or a hash)',
@@ -1992,6 +2070,7 @@ return array(
             'httpMethod'       => 'POST',
             'uri'              => '/v1/tokens',
             'summary'          => 'Create a bank account token',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'bank_account' => array(
                     'description' => 'A bank account to attach to the recipient',
@@ -2012,6 +2091,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/tokens/{id}',
             'summary'          => 'Get details about an existing token',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the token',
@@ -2039,6 +2119,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/events/{id}',
             'summary'          => 'Get details about an event',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
                     'description' => 'Unique identifier of the event',
@@ -2059,6 +2140,7 @@ return array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/events',
             'summary'          => 'Get details about all events (up to 30 days)',
+            'errorResponses'   => $errors,
             'parameters'       => array(
                 'count' => array(
                     'description' => 'Limit on how much application fees are retrieved',
@@ -2104,7 +2186,8 @@ return array(
         'GetAccount' => array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/account',
-            'summary'          => 'Get details about the account'
+            'summary'          => 'Get details about the account',
+            'errorResponses'   => $errors,
         ),
     )
 );
