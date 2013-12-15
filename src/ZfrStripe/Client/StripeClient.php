@@ -21,6 +21,7 @@ namespace ZfrStripe\Client;
 use Guzzle\Common\Event;
 use Guzzle\Service\Client;
 use Guzzle\Service\Description\ServiceDescription;
+use ZfrStripe\Http\QueryAggregator\CustomQueryAggregator;
 
 /**
  * @author  Michaël Gallego <mic.gallego@gmail.com>
@@ -170,6 +171,7 @@ class StripeClient extends Client
         // Add an event to set the Authorization param
         $dispatcher = $this->getEventDispatcher();
 
+        $dispatcher->addListener('command.after_prepare', array($this, 'afterPrepare'));
         $dispatcher->addListener('command.before_send', array($this, 'authorizeRequest'));
     }
 
@@ -189,6 +191,22 @@ class StripeClient extends Client
     public function getApiVersion()
     {
         return $this->serviceDescription->getApiVersion();
+    }
+
+    /**
+     * Modify the query aggregator
+     *
+     * @internal
+     * @param  Event $event
+     * @return void
+     */
+    public function afterPrepare(Event $event)
+    {
+        /* @var \Guzzle\Service\Command\CommandInterface $command */
+        $command = $event['command'];
+        $request = $command->getRequest();
+
+        $request->getQuery()->setAggregator(new CustomQueryAggregator());
     }
 
     /**
