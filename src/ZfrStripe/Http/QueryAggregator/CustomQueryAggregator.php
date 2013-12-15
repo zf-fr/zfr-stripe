@@ -25,7 +25,7 @@ use Guzzle\Http\QueryString;
  * @author  Michaël Gallego <mic.gallego@gmail.com>
  * @licence MIT
  */
-class CustomerQueryAggregator implements QueryAggregatorInterface
+class CustomQueryAggregator implements QueryAggregatorInterface
 {
     /**
      * {@inheritDoc}

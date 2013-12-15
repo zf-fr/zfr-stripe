@@ -310,6 +310,12 @@ return array(
                     'type'        => 'array',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -324,6 +330,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -338,6 +350,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -365,6 +383,12 @@ return array(
                     'location'    => 'query',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -420,6 +444,12 @@ return array(
                     'type'        => 'array',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -445,6 +475,12 @@ return array(
                     'description' => 'Unique card identifier (can either be an ID or a hash)',
                     'location'    => 'query',
                     'required'    => false
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
                 )
             )
         ),
@@ -466,6 +502,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -486,6 +528,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -514,6 +562,12 @@ return array(
                     'type'        => 'integer',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -578,6 +632,12 @@ return array(
                     'location' => 'query',
                     'type'     => 'string',
                     'required' => false
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
                 )
             )
         ),
@@ -604,6 +664,12 @@ return array(
                     'description' => 'A flag that if set to true will delay the cancellation of the subscription until the end of the current period.',
                     'location'    => 'query',
                     'type'        => 'boolean',
+                    'required'    => false
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
                     'required'    => false
                 )
             )
@@ -659,6 +725,12 @@ return array(
                     'description' => 'A positive decimal (with at most two decimal places) between 1 and 100 that represents the percentage of the subscription invoice amount due each billing period that will be transferred to the application owner’s Stripe account',
                     'location'    => 'query',
                     'type'        => 'string',
+                    'required'    => false
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
                     'required'    => false
                 )
             )
@@ -725,6 +797,12 @@ return array(
                     'type'        => 'array',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -739,6 +817,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -753,6 +837,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -775,6 +865,12 @@ return array(
                     'type'        => 'integer',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -801,6 +897,12 @@ return array(
                     'type'        => 'array',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -865,6 +967,12 @@ return array(
                     'type'        => 'integer',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -879,6 +987,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -893,6 +1007,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -915,6 +1035,12 @@ return array(
                     'type'        => 'integer',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -936,6 +1062,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -962,6 +1094,12 @@ return array(
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
                 )
             )
         ),
@@ -977,6 +1115,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1011,6 +1155,12 @@ return array(
                     'type'        => 'string',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1044,6 +1194,12 @@ return array(
                     'type'        => 'string',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1058,6 +1214,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1072,6 +1234,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1096,6 +1264,12 @@ return array(
                     'description' => 'Boolean representing whether an invoice is closed or not',
                     'location'    => 'query',
                     'type'        => 'boolean',
+                    'required'    => false
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
                     'required'    => false
                 )
             )
@@ -1149,6 +1323,12 @@ return array(
                     'type'        => 'array',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1163,6 +1343,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1177,6 +1363,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1210,6 +1402,12 @@ return array(
                     'type'        => 'string',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1236,6 +1434,12 @@ return array(
                     'type'        => 'array',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1257,6 +1461,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1277,6 +1487,12 @@ return array(
                     'type'        => 'string',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1298,6 +1514,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1342,6 +1564,12 @@ return array(
                     'type'        => 'array',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1356,6 +1584,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1396,6 +1630,12 @@ return array(
                     'required'    => false,
                     'enum'        => array('pending', 'paid', 'failed')
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1422,6 +1662,12 @@ return array(
                     'type'        => 'array',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1480,6 +1726,12 @@ return array(
                     'type'        => 'array',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1494,6 +1746,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1508,6 +1766,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1536,6 +1800,12 @@ return array(
                     'type'        => 'boolean',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1586,6 +1856,12 @@ return array(
                     'type'        => 'array',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1607,6 +1883,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1640,6 +1922,12 @@ return array(
                     'type'        => 'string',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1660,6 +1948,12 @@ return array(
                     'type'        => 'integer',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1684,6 +1978,12 @@ return array(
                     'description' => 'A customer (owned by the application\'s account) to create a token for',
                     'location'    => 'query',
                     'required'    => false
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
                 )
             )
         ),
@@ -1695,6 +1995,12 @@ return array(
             'parameters'       => array(
                 'bank_account' => array(
                     'description' => 'A bank account to attach to the recipient',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
@@ -1713,6 +2019,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1734,6 +2046,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -1767,6 +2085,12 @@ return array(
                     'type'        => 'string',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
