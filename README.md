@@ -10,7 +10,7 @@ wrapper. Don't hesitate to help on this ;-).
 
 ## Dependencies
 
-* [Guzzle](http://www.guzzlephp.org): >= 3.5
+* [Guzzle](http://www.guzzlephp.org): >= 3.6
 
 ## Installation
 
@@ -29,7 +29,12 @@ settings):
 $client = new StripeClient('my-api-key');
 ```
 
-The currently supported version of the API is version 1.0.
+The currently supported version of the API is version 2013-12-03. You can also explicitly specify the version
+of the client using the second parameter:
+
+```php
+$client = new StripeClient('my-api-key', '2013-12-03');
+```
 
 ### How to use it?
 
@@ -44,7 +49,7 @@ $details = $client->createCharge(array(
 ```
 
 The parameters have a direct one-to-one mapping with the official documentation (for any reference, you can also
-check the `ZfrStripe\Client\ServiceDescription\Stripe-1.0.php` file). To know what the responses look like, please
+check the `ZfrStripe\Client\ServiceDescription\Stripe-2013-12-03.php` file). To know what the responses look like, please
 refer to the [official API reference](https://stripe.com/docs/api).
 
 ### Exceptions
@@ -60,7 +65,7 @@ ZfrStripe tries its best to throw useful exceptions. Two kinds of exceptions can
 Here are all the exceptions:
 
 * `ZfrPaymill\Exception\UnauthorizedException`: your API key is likely to be wrong...
-* `ZfrPaymill\Exception\TransactionErrorException`: occurs for 402 errors. According to Stripe, this error happen when
+* `ZfrPaymill\Exception\CardErrorException`: occurs for 402 errors. According to Stripe, this error happen when
 parameters were valid but the request failed (for instance if a card CVC is invalid).
 * `ZfrPaymill\Exception\NotFoundException`: is thrown whenever client receives a 404 exception.
 * `ZfrPaymill\Exception\ValidationErrorException`: some errors on your sent data.
@@ -79,7 +84,7 @@ try {
             'exp_year'  => '2016'
         )
     ));
-} catch (TransactionErrorException $exception) {
+} catch (CardErrorException $exception) {
     // Seems we couldn't create the card, maybe because it's invalid
     $why = $exception->getMessage();
 
