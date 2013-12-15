@@ -396,10 +396,10 @@ return array(
          */
         'CreateCard' => array(
             'httpMethod'       => 'POST',
-            'uri'              => '/v1/customers/{customer_id}/cards',
+            'uri'              => '/v1/customers/{customer}/cards',
             'summary'          => 'Create a new card for a customer',
             'parameters'       => array(
-                'customer_id' => array(
+                'customer' => array(
                     'description' => 'Unique identifier of the customer',
                     'location'    => 'uri',
                     'type'        => 'string',
@@ -415,7 +415,7 @@ return array(
 
         'DeleteCard' => array(
             'httpMethod'       => 'DELETE',
-            'uri'              => '/v1/customers/{customer_id}/cards/{id}',
+            'uri'              => '/v1/customers/{customer}/cards/{id}',
             'summary'          => 'Delete an existing customer\'s card',
             'parameters'       => array(
                 'id' => array(
@@ -424,7 +424,7 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
-                'customer_id' => array(
+                'customer' => array(
                     'description' => 'Unique identifier of the customer to delete the card',
                     'location'    => 'uri',
                     'type'        => 'string',
@@ -435,7 +435,7 @@ return array(
 
         'GetCard' => array(
             'httpMethod'       => 'GET',
-            'uri'              => '/v1/customers/{customer_id}/cards/{id}',
+            'uri'              => '/v1/customers/{customer}/cards/{id}',
             'summary'          => 'Get an existing customer\'s card',
             'parameters'       => array(
                 'id' => array(
@@ -444,7 +444,7 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
-                'customer_id' => array(
+                'customer' => array(
                     'description' => 'Unique identifier of the customer to get the card from',
                     'location'    => 'uri',
                     'type'        => 'string',
@@ -455,10 +455,10 @@ return array(
 
         'GetCards' => array(
             'httpMethod'       => 'GET',
-            'uri'              => '/v1/customers/{customer_id}/cards',
+            'uri'              => '/v1/customers/{customer}/cards',
             'summary'          => 'Get existing customers\'s cards',
             'parameters'       => array(
-                'customer_id' => array(
+                'customer' => array(
                     'description' => 'Unique identifier of the customer to get the cards from',
                     'location'    => 'uri',
                     'type'        => 'string',
@@ -483,7 +483,7 @@ return array(
 
         'UpdateCard' => array(
             'httpMethod'       => 'POST',
-            'uri'              => '/v1/customers/{customer_id}/cards/{id}',
+            'uri'              => '/v1/customers/{customer}/cards/{id}',
             'summary'          => 'Update an existing customer',
             'parameters'       => array(
                 'id' => array(
@@ -492,7 +492,7 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
-                'customer_id' => array(
+                'customer' => array(
                     'description' => 'Unique identifier of the customer to get the card from',
                     'location'    => 'uri',
                     'type'        => 'string',
@@ -555,10 +555,10 @@ return array(
          */
         'CancelSubscription' => array(
             'httpMethod'       => 'DELETE',
-            'uri'              => '/v1/customers/{customer_id}/subscription',
+            'uri'              => '/v1/customers/{customer}/subscription',
             'summary'          => 'Delete an existing customer\'s card',
             'parameters'       => array(
-                'customer_id' => array(
+                'customer' => array(
                     'description' => 'Unique identifier of the customer to delete the card',
                     'location'    => 'uri',
                     'type'        => 'string',
@@ -575,10 +575,10 @@ return array(
 
         'UpdateSubscription' => array(
             'httpMethod'       => 'POST',
-            'uri'              => '/v1/customers/{customer_id}/subscription',
+            'uri'              => '/v1/customers/{customer}/subscription',
             'summary'          => 'Update a customer\'s subscription',
             'parameters'       => array(
-                'customer_id' => array(
+                'customer' => array(
                     'description' => 'Unique identifier of the customer',
                     'location'    => 'uri',
                     'type'        => 'string',
@@ -891,10 +891,10 @@ return array(
          */
         'DeleteDiscount' => array(
             'httpMethod'       => 'DELETE',
-            'uri'              => '/v1/customers/{customer_id}/discount',
+            'uri'              => '/v1/customers/{customer}/discount',
             'summary'          => 'Delete a discount for a given customer',
             'parameters'       => array(
-                'customer_id' => array(
+                'customer' => array(
                     'description' => 'Unique identifier of the customer to delete the discount from',
                     'location'    => 'uri',
                     'type'        => 'string',
@@ -1062,6 +1062,185 @@ return array(
                     'type'        => 'boolean',
                     'required'    => false
                 )
+            )
+        ),
+
+        /**
+         * --------------------------------------------------------------------------------
+         * INVOICE ITEM RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#invoiceitems
+         * --------------------------------------------------------------------------------
+         */
+        'CreateInvoiceItem' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/invoiceitems',
+            'summary'          => 'Create a new invoice item',
+            'parameters'       => array(
+                'customer' => array(
+                    'description' => 'ID of the customer who will be billed when this invoice item is billed',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'amount' => array(
+                    'description' => 'Amount (in cents)',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => true
+                ),
+                'currency' => array(
+                    'description' => '3-letter ISO code for currency',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'invoice' => array(
+                    'description' => 'Identifier of an existing invoice to add this invoice item to',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'description' => array(
+                    'description' => 'Optional description to add',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'metadata' => array(
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        'DeleteInvoiceItem' => array(
+            'httpMethod'       => 'DELETE',
+            'uri'              => '/v1/invoiceitems/{id}',
+            'summary'          => 'Delete an existing invoice item',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the invoice item',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'GetInvoiceItem' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/invoiceitems/{id}',
+            'summary'          => 'Get an existing invoice item',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the invoice item',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'GetInvoiceItems' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/invoiceitems',
+            'summary'          => 'Get existing invoice items',
+            'parameters'       => array(
+                'count' => array(
+                    'description' => 'Limit on how much invoice items are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ),
+                'offset' => array(
+                    'description' => 'Offset into the list of returned items',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'date' => array(
+                    'description' => 'A filter based on the "date" field. Can be an exact UTC timestamp, or a hash',
+                    'location'    => 'query',
+                    'required'    => false
+                ),
+                'customer' => array(
+                    'description' => 'Only return invoices for a specific customer',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        'UpdateInvoiceItem' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/invoiceitems/{id}',
+            'summary'          => 'Update an existing invoice item',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the invoice item to update',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'description' => array(
+                    'description' => 'Optional description',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'metadata' => array(
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        /**
+         * --------------------------------------------------------------------------------
+         * DISPUTE RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#disputes
+         * --------------------------------------------------------------------------------
+         */
+        'CloseDispute' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/charges/{charge}/dispute/close',
+            'summary'          => 'Close a dispute',
+            'parameters'       => array(
+                'charge' => array(
+                    'description' => 'ID of the charge to close the dispute',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'UpdateDispute' => array(
+            'httpMethod'       => 'DELETE',
+            'uri'              => '/v1/charges/{charge}/dispute',
+            'summary'          => 'Update a dispute',
+            'parameters'       => array(
+                'charge' => array(
+                    'description' => 'ID of the charge to update the dispute',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'evidence' => array(
+                    'description' => 'Evidence text',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
             )
         ),
     )

@@ -84,6 +84,19 @@ use Guzzle\Service\Description\ServiceDescription;
  * @method array getUpcomingInvoice(array $args = array()) {@command Stripe GetUpcomingInvoice}
  * @method array payInvoice(array $args = array()) {@command Stripe PayInvoice}
  * @method array updateInvoice(array $args = array()) {@command Stripe UpdateInvoice}
+ *
+ * INVOICE ITEM RELATED METHODS:
+ *
+ * @method array createInvoiceItem(array $args = array()) {@command Stripe CreateInvoiceItem}
+ * @method array deleteInvoiceItem(array $args = array()) {@command Stripe DeleteInvoiceItem}
+ * @method array getInvoiceItem(array $args = array()) {@command Stripe GetInvoiceItem}
+ * @method array getInvoiceItems(array $args = array()) {@command Stripe GetInvoiceItems}
+ * @method array updateInvoiceItem(array $args = array()) {@command Stripe UpdateInvoiceItem}
+ *
+ * DISPUTE RELATED METHODS:
+ *
+ * @method array closeDispute(array $args = array()) {@command Stripe CloseDispute}
+ * @method array updateDispute(array $args = array()) {@command Stripe UpdateDispute}
  */
 class StripeClient extends Client
 {
