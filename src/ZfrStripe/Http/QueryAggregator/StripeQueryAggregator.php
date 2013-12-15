@@ -22,16 +22,36 @@ use Guzzle\Http\QueryAggregator\QueryAggregatorInterface;
 use Guzzle\Http\QueryString;
 
 /**
+ * Stripe is super picky on the format for query params. For instance, for the "expand" query parameter,
+ * it does not support when values are indexed (eg. ?expand[0]=foo&expand[1]=bar). Therefore, we have
+ * to concatenate them differently
+ *
  * @author  Michaël Gallego <mic.gallego@gmail.com>
  * @licence MIT
  */
-class CustomQueryAggregator implements QueryAggregatorInterface
+class StripeQueryAggregator implements QueryAggregatorInterface
 {
     /**
      * {@inheritDoc}
      */
     public function aggregate($key, $value, QueryString $query)
     {
-        // TODO: Implement aggregate() method.
+        $ret = array();
+
+        foreach ($value as $k => $v) {
+            if (is_int($k)) {
+                return array($query->encodeValue("{$key}[]") => $value);
+            }
+
+            $k = "{$key}[{$k}]";
+
+            if (is_array($v)) {
+                $ret = array_merge($ret, self::aggregate($k, $v, $query));
+            } else {
+                $ret[$query->encodeValue($k)] = $query->encodeValue($v);
+            }
+        }
+
+        return $ret;
     }
 }

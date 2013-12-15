@@ -21,7 +21,7 @@ namespace ZfrStripe\Client;
 use Guzzle\Common\Event;
 use Guzzle\Service\Client;
 use Guzzle\Service\Description\ServiceDescription;
-use ZfrStripe\Http\QueryAggregator\CustomQueryAggregator;
+use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
 
 /**
  * @author  Michaël Gallego <mic.gallego@gmail.com>
@@ -206,7 +206,7 @@ class StripeClient extends Client
         $command = $event['command'];
         $request = $command->getRequest();
 
-        $request->getQuery()->setAggregator(new CustomQueryAggregator());
+        $request->getQuery()->setAggregator(new StripeQueryAggregator());
     }
 
     /**
