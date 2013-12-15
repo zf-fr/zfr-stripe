@@ -24,6 +24,6 @@ use ZfrStripe\Exception\AbstractException;
  * @author  Michaël Gallego <mic.gallego@gmail.com>
  * @licence MIT
  */
-class RuntimeException extends AbstractException
+class ServerErrorException extends AbstractException
 {
 }

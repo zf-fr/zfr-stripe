@@ -34,7 +34,20 @@ $errors = array(
         'code'  => 404
     ),
     array(
-        'class' => 'ZfrStripe\Exception\ServerErrorException'
+        'class' => 'ZfrStripe\Exception\ServerErrorException',
+        'code'  => 500
+    ),
+    array(
+        'class' => 'ZfrStripe\Exception\ServerErrorException',
+        'code'  => 502
+    ),
+    array(
+        'class' => 'ZfrStripe\Exception\ServerErrorException',
+        'code'  => 503
+    ),
+    array(
+        'class' => 'ZfrStripe\Exception\ServerErrorException',
+        'code'  => 504
     )
 );
 
