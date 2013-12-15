@@ -1629,6 +1629,60 @@ return array(
 
         /**
          * --------------------------------------------------------------------------------
+         * EVENT RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#events
+         * --------------------------------------------------------------------------------
+         */
+        'GetEvent' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/events/{id}',
+            'summary'          => 'Get details about an event',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the event',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'GetEvents' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/events',
+            'summary'          => 'Get details about all events (up to 30 days)',
+            'parameters'       => array(
+                'count' => array(
+                    'description' => 'Limit on how much application fees are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ),
+                'offset' => array(
+                    'description' => 'Offset into the list of returned items',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'created' => array(
+                    'description' => 'A filter based on the "created" field. Can be an exact UTC timestamp, or a hash',
+                    'location'    => 'query',
+                    'required'    => false
+                ),
+                'type' => array(
+                    'description' => 'Allow to filter events by type',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        /**
+         * --------------------------------------------------------------------------------
          * ACCOUNT RELATED METHODS
          *
          * DOC: https://stripe.com/docs/api#account
