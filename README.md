@@ -69,14 +69,18 @@ parameters were valid but the request failed (for instance if a card CVC is inva
 Usage:
 
 ```php
+use ZfrStripe\Exception\TransactionErrorException;
+
 try {
-    $client->createTransaction(array(
-        'amount'   => 4000,
-        'currency' => 'EUR',
-        'token'    => '1234'
+    $client->createCard(array(
+        'card' => array(
+            'number'    => '4242424242424242',
+            'exp_month' => '01',
+            'exp_year'  => '2016'
+        )
     ));
-} catch (\ZfrStripe\Exception\TransactionErrorException $exception) {
-    // Seems the transaction failed, let's see why:
+} catch (TransactionErrorException $exception) {
+    // Seems we couldn't create the card, maybe because it's invalid
     $why = $exception->getMessage();
 
     // Let's also get the response to have more info:
