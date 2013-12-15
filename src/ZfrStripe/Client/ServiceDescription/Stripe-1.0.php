@@ -881,5 +881,188 @@ return array(
                 ),
             )
         ),
+
+        /**
+         * --------------------------------------------------------------------------------
+         * DISCOUNT RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#discounts
+         * --------------------------------------------------------------------------------
+         */
+        'DeleteDiscount' => array(
+            'httpMethod'       => 'DELETE',
+            'uri'              => '/v1/customers/{customer_id}/discount',
+            'summary'          => 'Delete a discount for a given customer',
+            'parameters'       => array(
+                'customer_id' => array(
+                    'description' => 'Unique identifier of the customer to delete the discount from',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        /**
+         * --------------------------------------------------------------------------------
+         * INVOICE RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#invoices
+         * --------------------------------------------------------------------------------
+         */
+        'CreateInvoice' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/invoices',
+            'summary'          => 'Create a new invoice',
+            'parameters'       => array(
+                'customer' => array(
+                    'description' => 'Unique string to identify the plan',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'application_fee' => array(
+                    'description' => 'A fee in cents that will be applied to the invoice and transferred to the application owner\'s Stripe account',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                )
+            )
+        ),
+
+        'GetInvoice' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/invoices/{id}',
+            'summary'          => 'Get an existing invoice',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the invoice',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'GetInvoiceLineItems' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/invoices/{id}/lines',
+            'summary'          => 'Get an existing invoice line items',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the invoice',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'count' => array(
+                    'description' => 'Limit on how much invoice line items are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ),
+                'offset' => array(
+                    'description' => 'Offset into the list of returned items',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'customer' => array(
+                    'description' => 'Only return invoice line items for a specific customer',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        'GetInvoices' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/invoices',
+            'summary'          => 'Get existing invoices',
+            'parameters'       => array(
+                'count' => array(
+                    'description' => 'Limit on how much invoices are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ),
+                'offset' => array(
+                    'description' => 'Offset into the list of returned items',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'date' => array(
+                    'description' => 'A filter based on the "date" field. Can be an exact UTC timestamp, or a hash',
+                    'location'    => 'query',
+                    'required'    => false
+                ),
+                'customer' => array(
+                    'description' => 'Only return invoices for a specific customer',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        'GetUpcomingInvoice' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/invoices/upcoming',
+            'summary'          => 'Get upcoming invoices',
+            'parameters'       => array(
+                'customer' => array(
+                    'description' => 'Only return upcoming invoices for a specific customer',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'PayInvoice' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/invoices/{id}/pay',
+            'summary'          => 'Pay an existing invoice',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the invoice to pay',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'UpdateInvoice' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/invoices/{id}',
+            'summary'          => 'Update an existing invoice',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the invoice to update',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'application_fee' => array(
+                    'description' => 'A fee in cents that will be applied to the invoice and transferred to the application owner\'s Stripe account',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'closed' => array(
+                    'description' => 'Boolean representing whether an invoice is closed or not',
+                    'location'    => 'query',
+                    'type'        => 'boolean',
+                    'required'    => false
+                )
+            )
+        ),
     )
 );

@@ -63,6 +63,27 @@ use Guzzle\Service\Description\ServiceDescription;
  * @method array getPlan(array $args = array()) {@command Stripe GetPlan}
  * @method array getPlans(array $args = array()) {@command Stripe GetPlans}
  * @method array updatePlan(array $args = array()) {@command Stripe UpdatePlan}
+ *
+ * COUPON RELATED METHODS:
+ *
+ * @method array createCoupon(array $args = array()) {@command Stripe CreateCoupon}
+ * @method array deleteCoupon(array $args = array()) {@command Stripe DeleteCoupon}
+ * @method array getCoupon(array $args = array()) {@command Stripe GetCoupon}
+ * @method array getCoupons(array $args = array()) {@command Stripe GetCoupons}
+ *
+ * DISCOUNT RELATED METHODS:
+ *
+ * @method array deleteDiscount(array $args = array()) {@command Stripe DeleteDiscount}
+ *
+ * INVOICE RELATED METHODS:
+ *
+ * @method array createInvoice(array $args = array()) {@command Stripe CreateInvoice}
+ * @method array getInvoice(array $args = array()) {@command Stripe GetInvoice}
+ * @method array getInvoiceLineItems(array $args = array()) {@command Stripe GetInvoiceLineItems}
+ * @method array getInvoices(array $args = array()) {@command Stripe GetInvoices}
+ * @method array getUpcomingInvoice(array $args = array()) {@command Stripe GetUpcomingInvoice}
+ * @method array payInvoice(array $args = array()) {@command Stripe PayInvoice}
+ * @method array updateInvoice(array $args = array()) {@command Stripe UpdateInvoice}
  */
 class StripeClient extends Client
 {
