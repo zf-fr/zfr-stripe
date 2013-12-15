@@ -51,6 +51,12 @@ return array(
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
                 )
             )
         ),
@@ -107,6 +113,12 @@ return array(
                     'type'        => 'integer',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -121,6 +133,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -154,6 +172,12 @@ return array(
                     'type'        => 'string',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
@@ -178,6 +202,12 @@ return array(
                     'description' => 'Indicate whether the application fee should be refunded when refunding this charge',
                     'location'    => 'query',
                     'type'        => 'boolean',
+                    'required'    => false
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
                     'required'    => false
                 )
             )
@@ -206,6 +236,12 @@ return array(
                     'type'        => 'array',
                     'required'    => false
                 ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
             )
         ),
 
