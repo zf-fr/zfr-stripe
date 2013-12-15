@@ -1629,6 +1629,59 @@ return array(
 
         /**
          * --------------------------------------------------------------------------------
+         * TOKEN RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#tokens
+         * --------------------------------------------------------------------------------
+         */
+        'CreateCardToken' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/tokens',
+            'summary'          => 'Create a new card token (note you must either specify card OR customer but not both)',
+            'parameters'       => array(
+                'card' => array(
+                    'description' => 'Unique card identifier (can either be an ID or a hash)',
+                    'location'    => 'query',
+                    'required'    => false
+                ),
+                'customer' => array(
+                    'description' => 'A customer (owned by the application\'s account) to create a token for',
+                    'location'    => 'query',
+                    'required'    => false
+                )
+            )
+        ),
+
+        'CreateBankAccountToken' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/tokens',
+            'summary'          => 'Create a bank account token',
+            'parameters'       => array(
+                'bank_account' => array(
+                    'description' => 'A bank account to attach to the recipient',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
+            )
+        ),
+
+        'GetToken' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/tokens/{id}',
+            'summary'          => 'Get details about an existing token',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the token',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        /**
+         * --------------------------------------------------------------------------------
          * EVENT RELATED METHODS
          *
          * DOC: https://stripe.com/docs/api#events

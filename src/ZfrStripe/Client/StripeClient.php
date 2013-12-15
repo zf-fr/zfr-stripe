@@ -120,6 +120,12 @@ use Guzzle\Service\Description\ServiceDescription;
  * @method array getApplicationFees(array $args = array()) {@command Stripe GetApplicationFees}
  * @method array refundApplicationFee(array $args = array()) {@command Stripe RefundApplicationFee}
  *
+ * TOKEN RELATED METHODS:
+ *
+ * @method array createCardToken(array $args = array()) {@command Stripe CreateCardToken}
+ * @method array createBankAccountToken(array $args = array()) {@command Stripe CreateBankAccountToken}
+ * @method array getToken(array $args = array()) {@command Stripe GetToken}
+ *
  * EVENT RELATED METHODS:
  *
  * @method array getEvent(array $args = array()) {@command Stripe GetEvent}
