@@ -97,6 +97,32 @@ use Guzzle\Service\Description\ServiceDescription;
  *
  * @method array closeDispute(array $args = array()) {@command Stripe CloseDispute}
  * @method array updateDispute(array $args = array()) {@command Stripe UpdateDispute}
+ *
+ * TRANSFER RELATED METHODS:
+ *
+ * @method array cancelTransfer(array $args = array()) {@command Stripe CancelTransfer}
+ * @method array createTransfer(array $args = array()) {@command Stripe CreateTransfer}
+ * @method array getTransfer(array $args = array()) {@command Stripe GetTransfer}
+ * @method array getTransfers(array $args = array()) {@command Stripe GetTransfers}
+ * @method array updateTransfer(array $args = array()) {@command Stripe UpdateTransfer}
+ *
+ * RECIPIENT RELATED METHODS:
+ *
+ * @method array createRecipient(array $args = array()) {@command Stripe CreateRecipient}
+ * @method array deleteRecipient(array $args = array()) {@command Stripe DeleteRecipient}
+ * @method array getRecipient(array $args = array()) {@command Stripe GetRecipient}
+ * @method array getRecipients(array $args = array()) {@command Stripe GetRecipients}
+ * @method array updateRecipient(array $args = array()) {@command Stripe UpdateRecipient}
+ *
+ * APPLICATION FEE RELATED METHODS:
+ *
+ * @method array getApplicationFee(array $args = array()) {@command Stripe GetApplicationFee}
+ * @method array getApplicationFees(array $args = array()) {@command Stripe GetApplicationFees}
+ * @method array refundApplicationFee(array $args = array()) {@command Stripe RefundApplicationFee}
+ *
+ * ACCOUNT RELATED METHODS:
+ *
+ * @method array getAccount(array $args = array()) {@command Stripe GetAccount}
  */
 class StripeClient extends Client
 {

@@ -1243,5 +1243,401 @@ return array(
                 ),
             )
         ),
+
+        /**
+         * --------------------------------------------------------------------------------
+         * TRANSFER RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#transfers
+         * --------------------------------------------------------------------------------
+         */
+        'CancelTransfer' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/transfers/{id}/cancel',
+            'summary'          => 'Cancel an existing transfer',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the transfer',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'CreateTransfer' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/transfers',
+            'summary'          => 'Create a new transfer',
+            'parameters'       => array(
+                'amount' => array(
+                    'description' => 'Amount (in cents)',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => true
+                ),
+                'currency' => array(
+                    'description' => '3-letter ISO code for currency',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'recipient' => array(
+                    'description' => 'ID of an existing, verified recipient',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'description' => array(
+                    'description' => 'Optional description to add',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'statement_descriptor' => array(
+                    'description' => 'An arbitrary string which will be displayed on the recipient\'s bank statement',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'metadata' => array(
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        'GetTransfer' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/transfers/{id}',
+            'summary'          => 'Get an existing transfer',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the transfer',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'GetTransfers' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/transfers',
+            'summary'          => 'Get existing transfers',
+            'parameters'       => array(
+                'count' => array(
+                    'description' => 'Limit on how much invoice items are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ),
+                'offset' => array(
+                    'description' => 'Offset into the list of returned items',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'date' => array(
+                    'description' => 'A filter based on the "date" field. Can be an exact UTC timestamp, or a hash',
+                    'location'    => 'query',
+                    'required'    => false
+                ),
+                'recipient' => array(
+                    'description' => 'Only return transfers for a specific recipient',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'status' => array(
+                    'description' => 'Optionally filter by status',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false,
+                    'enum'        => array('pending', 'paid', 'failed')
+                ),
+            )
+        ),
+
+        'UpdateTransfer' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/transfers/{id}',
+            'summary'          => 'Update an existing transfer',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the transfer to update',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'description' => array(
+                    'description' => 'Optional description',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'metadata' => array(
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        /**
+         * --------------------------------------------------------------------------------
+         * RECIPIENT RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#recipients
+         * --------------------------------------------------------------------------------
+         */
+        'CreateRecipient' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/recipients',
+            'summary'          => 'Create a new recipient',
+            'parameters'       => array(
+                'name' => array(
+                    'description' => 'The recipient\'s full, legal name',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'type' => array(
+                    'description' => 'Type of the recipient (can be "individual" or "corporation")',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true,
+                    'enum'        => array('individual', 'corporation')
+                ),
+                'tax_id' => array(
+                    'description' => 'The recipient\'s tax ID, as a string',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'bank_account' => array(
+                    'description' => 'A bank account to attach to the recipient',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+                'email' => array(
+                    'description' => 'The recipient\'s email address',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'description' => array(
+                    'description' => 'Optional description to add',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'metadata' => array(
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        'DeleteRecipient' => array(
+            'httpMethod'       => 'DELETE',
+            'uri'              => '/v1/recipients/{id}',
+            'summary'          => 'Delete an existing recipient',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the recipient',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'GetRecipient' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/recipients/{id}',
+            'summary'          => 'Get an existing recipient',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the recipient',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'GetRecipients' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/recipients',
+            'summary'          => 'Get existing recipients',
+            'parameters'       => array(
+                'count' => array(
+                    'description' => 'Limit on how much invoice items are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ),
+                'offset' => array(
+                    'description' => 'Offset into the list of returned items',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'verified' => array(
+                    'description' => 'Boolean to only return recipients that are verified or unverified',
+                    'location'    => 'query',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        'UpdateRecipient' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/recipients/{id}',
+            'summary'          => 'Update an existing recipient',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the recipient to update',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'name' => array(
+                    'description' => 'The recipient\'s full, legal name',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'tax_id' => array(
+                    'description' => 'The recipient\'s tax ID, as a string',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'bank_account' => array(
+                    'description' => 'A bank account to attach to the recipient',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+                'email' => array(
+                    'description' => 'The recipient\'s email address',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'description' => array(
+                    'description' => 'Optional description to add',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'metadata' => array(
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        /**
+         * --------------------------------------------------------------------------------
+         * APPLICATION FEE RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#application_fees
+         * --------------------------------------------------------------------------------
+         */
+        'GetApplicationFee' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/application_fees/{id}',
+            'summary'          => 'Get details about an application fee that your account has collected',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the application fee',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'GetApplicationFees' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/application_fees',
+            'summary'          => 'Get details about all applicaiton fees that your account has collected',
+            'parameters'       => array(
+                'count' => array(
+                    'description' => 'Limit on how much application fees are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ),
+                'offset' => array(
+                    'description' => 'Offset into the list of returned items',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'created' => array(
+                    'description' => 'A filter based on the "created" field. Can be an exact UTC timestamp, or a hash',
+                    'location'    => 'query',
+                    'required'    => false
+                ),
+                'charge' => array(
+                    'description' => 'Only return application fees for a given charge',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        'RefundApplicationFee' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/application_fees/{id}/refund',
+            'summary'          => 'Refund an application fee that has previously been collected but not yet refunded',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of application fee to be refunded',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'amount' => array(
+                    'description' => 'A positive integer in cents representing how much of this fee to refund',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        /**
+         * --------------------------------------------------------------------------------
+         * ACCOUNT RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#account
+         * --------------------------------------------------------------------------------
+         */
+        'GetAccount' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/account',
+            'summary'          => 'Get details about the account'
+        ),
     )
 );
