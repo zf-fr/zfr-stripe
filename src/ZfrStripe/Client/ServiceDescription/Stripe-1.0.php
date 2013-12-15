@@ -253,7 +253,7 @@ return array(
                 'trial_end' => array(
                     'description' => 'UTC integer timestamp representing the end of the trial period the customer will get before being charged for the first time',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => 'integer',
                     'required'    => false
                 ),
                 'description' => array(
@@ -616,7 +616,7 @@ return array(
                 'trial_end' => array(
                     'description' => 'UTC integer timestamp representing the end of the trial period the customer will get before being charged for the first time',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => 'integer',
                     'required'    => false
                 ),
                 'application_fee_percent' => array(
@@ -763,6 +763,120 @@ return array(
                     'description' => 'Optional metadata',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        /**
+         * --------------------------------------------------------------------------------
+         * COUPON RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#coupons
+         * --------------------------------------------------------------------------------
+         */
+        'CreateCoupon' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/coupons',
+            'summary'          => 'Create a new coupon',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique string to identify the coupon (you can specify none and it will be auto-generated)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'duration' => array(
+                    'description' => 'Specifies how long the discount will be in effect (can be "forever", "once" or "repeating")',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true,
+                    'enum'        => array('forever', 'once', 'repeating')
+                ),
+                'amount_off' => array(
+                    'description' => 'A positive integer representing the amount to subtract from an invoice total (required if "percent_off" is not passed)',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'currency' => array(
+                    'description' => 'Currency of the amount_off parameter (required if "amount_off" is passed)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'duration_in_months' => array(
+                    'description' => 'If "duration" is repeating, a positive integer that specifies the number of months the discount will be in effect',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'max_redemptions' => array(
+                    'description' => 'A positive integer specifying the number of times the coupon can be redeemed before it\'s no longer valid',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'percent_off' => array(
+                    'description' => 'A positive integer between 1 and 100 that represents the discount the coupon will apply (required if amount_off is not passed)',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'redeem_by' => array(
+                    'description' => 'UTC timestamp specifying the last time at which the coupon can be redeemed',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        'DeleteCoupon' => array(
+            'httpMethod'       => 'DELETE',
+            'uri'              => '/v1/coupons/{id}',
+            'summary'          => 'Delete an existing coupon',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the coupon',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'GetCoupon' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/coupons/{id}',
+            'summary'          => 'Get an existing coupon',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the plan',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'GetCoupons' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/coupons/{id}',
+            'summary'          => 'Get existing plans',
+            'parameters'       => array(
+                'count' => array(
+                    'description' => 'Limit on how much coupons are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ),
+                'offset' => array(
+                    'description' => 'Offset into the list of returned items',
+                    'location'    => 'query',
+                    'type'        => 'integer',
                     'required'    => false
                 ),
             )
