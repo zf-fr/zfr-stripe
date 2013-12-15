@@ -50,6 +50,19 @@ use Guzzle\Service\Description\ServiceDescription;
  * @method array getCard(array $args = array()) {@command Stripe GetCard}
  * @method array getCards(array $args = array()) {@command Stripe GetCards}
  * @method array updateCard(array $args = array()) {@command Stripe UpdateCard}
+ *
+ * SUBSCRIPTION RELATED METHODS:
+ *
+ * @method array cancelSubscription(array $args = array()) {@command Stripe CancelSubscription}
+ * @method array updateSubscription(array $args = array()) {@command Stripe UpdateSubscription}
+ *
+ * PLAN RELATED METHODS:
+ *
+ * @method array createPlan(array $args = array()) {@command Stripe CreatePlan}
+ * @method array deletePlan(array $args = array()) {@command Stripe DeletePlan}
+ * @method array getPlan(array $args = array()) {@command Stripe GetPlan}
+ * @method array getPlans(array $args = array()) {@command Stripe GetPlans}
+ * @method array updatePlan(array $args = array()) {@command Stripe UpdatePlan}
  */
 class StripeClient extends Client
 {

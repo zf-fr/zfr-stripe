@@ -627,5 +627,145 @@ return array(
                 )
             )
         ),
+
+        /**
+         * --------------------------------------------------------------------------------
+         * PLAN RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#plans
+         * --------------------------------------------------------------------------------
+         */
+        'CreatePlan' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/plans',
+            'summary'          => 'Create a new plan',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique string to identify the plan',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'name' => array(
+                    'description' => 'Unique name of the plan',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'amount' => array(
+                    'description' => 'Amount (in cents)',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => true
+                ),
+                'currency' => array(
+                    'description' => '3-letter ISO code for currency',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'interval' => array(
+                    'description' => 'Specify the billing frequency',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true,
+                    'enum'        => array('week', 'month', 'year')
+                ),
+                'interval_count' => array(
+                    'description' => 'Number of interval between each subscription billing',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'trial_period_days' => array(
+                    'description' => 'Specifies a trial period in (an integer number of) days',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'metadata' => array(
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        'DeletePlan' => array(
+            'httpMethod'       => 'DELETE',
+            'uri'              => '/v1/plans/{id}',
+            'summary'          => 'Delete an existing plan',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the plan',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'GetPlan' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/plans/{id}',
+            'summary'          => 'Get an existing plan',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the plan',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+            )
+        ),
+
+        'GetPlans' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/plans',
+            'summary'          => 'Get existing plans',
+            'parameters'       => array(
+                'count' => array(
+                    'description' => 'Limit on how much plans are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ),
+                'offset' => array(
+                    'description' => 'Offset into the list of returned items',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+            )
+        ),
+
+        'UpdatePlan' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/plans/{id}',
+            'summary'          => 'Update an existing plan',
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the plan to update',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'name' => array(
+                    'description' => 'Unique name of the plan',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'metadata' => array(
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+            )
+        ),
     )
 );
