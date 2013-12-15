@@ -94,3 +94,116 @@ try {
     // Catch any other exception...
 }
 ```
+
+### Complete reference
+
+Here is a complete list of all methods:
+
+CHARGE RELATED METHODS:
+
+* array captureCharge(array $args = array())
+* array createCharge(array $args = array())
+* array getCharge(array $args = array())
+* array getCharges(array $args = array())
+* array refundCharge(array $args = array())
+* array updateCharge(array $args = array())
+
+CUSTOMER RELATED METHODS:
+
+* array createCustomer(array $args = array())
+* array deleteCustomer(array $args = array())
+* array getCustomer(array $args = array())
+* array getCustomers(array $args = array())
+* array updateCustomer(array $args = array())
+
+CARD RELATED METHODS:
+
+* array createCard(array $args = array())
+* array deleteCard(array $args = array())
+* array getCard(array $args = array())
+* array getCards(array $args = array())
+* array updateCard(array $args = array())
+
+SUBSCRIPTION RELATED METHODS:
+
+* array cancelSubscription(array $args = array())
+* array updateSubscription(array $args = array())
+
+PLAN RELATED METHODS:
+
+* array createPlan(array $args = array())
+* array deletePlan(array $args = array())
+* array getPlan(array $args = array())
+* array getPlans(array $args = array())
+* array updatePlan(array $args = array())
+
+COUPON RELATED METHODS:
+
+* array createCoupon(array $args = array())
+* array deleteCoupon(array $args = array())
+* array getCoupon(array $args = array())
+* array getCoupons(array $args = array())
+
+DISCOUNT RELATED METHODS:
+
+* array deleteDiscount(array $args = array())
+
+INVOICE RELATED METHODS:
+
+* array createInvoice(array $args = array())
+* array getInvoice(array $args = array())
+* array getInvoiceLineItems(array $args = array())
+* array getInvoices(array $args = array())
+* array getUpcomingInvoice(array $args = array())
+* array payInvoice(array $args = array())
+* array updateInvoice(array $args = array())
+
+INVOICE ITEM RELATED METHODS:
+
+* array createInvoiceItem(array $args = array())
+* array deleteInvoiceItem(array $args = array())
+* array getInvoiceItem(array $args = array())
+* array getInvoiceItems(array $args = array())
+* array updateInvoiceItem(array $args = array())
+
+DISPUTE RELATED METHODS:
+
+* array closeDispute(array $args = array())
+* array updateDispute(array $args = array())
+
+TRANSFER RELATED METHODS:
+
+* array cancelTransfer(array $args = array())
+* array createTransfer(array $args = array())
+* array getTransfer(array $args = array())
+* array getTransfers(array $args = array())
+* array updateTransfer(array $args = array())
+
+RECIPIENT RELATED METHODS:
+
+* array createRecipient(array $args = array())
+* array deleteRecipient(array $args = array())
+* array getRecipient(array $args = array())
+* array getRecipients(array $args = array())
+* array updateRecipient(array $args = array())
+
+APPLICATION FEE RELATED METHODS:
+
+* array getApplicationFee(array $args = array())
+* array getApplicationFees(array $args = array())
+* array refundApplicationFee(array $args = array())
+
+TOKEN RELATED METHODS:
+
+* array createCardToken(array $args = array())
+* array createBankAccountToken(array $args = array())
+* array getToken(array $args = array())
+
+EVENT RELATED METHODS:
+
+* array getEvent(array $args = array())
+* array getEvents(array $args = array())
+
+ACCOUNT RELATED METHODS:
+
+* array getAccount(array $args = array())
