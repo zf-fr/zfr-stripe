@@ -52,6 +52,17 @@ The parameters have a direct one-to-one mapping with the official documentation 
 check the `ZfrStripe\Client\ServiceDescription\Stripe-2013-12-03.php` file). To know what the responses look like, please
 refer to the [official API reference](https://stripe.com/docs/api).
 
+#### Expand
+
+All Stripe API requests have support to expand some nested objects inside responses. Therefore, ZfrStripe supports this
+through the `expand` parameter, which must be an array:
+
+```php
+$details = $client->getCharges(array(
+    'expand' => array('customer')
+));
+```
+
 ### Exceptions
 
 ZfrStripe tries its best to throw useful exceptions. Two kinds of exceptions can occur:
@@ -64,12 +75,12 @@ ZfrStripe tries its best to throw useful exceptions. Two kinds of exceptions can
 
 Here are all the exceptions:
 
-* `ZfrPaymill\Exception\UnauthorizedException`: your API key is likely to be wrong...
-* `ZfrPaymill\Exception\CardErrorException`: occurs for 402 errors. According to Stripe, this error happen when
+* `ZfrStripe\Exception\UnauthorizedException`: your API key is likely to be wrong...
+* `ZfrStripe\Exception\CardErrorException`: occurs for 402 errors. According to Stripe, this error happen when
 parameters were valid but the request failed (for instance if a card CVC is invalid).
-* `ZfrPaymill\Exception\NotFoundException`: is thrown whenever client receives a 404 exception.
-* `ZfrPaymill\Exception\ValidationErrorException`: some errors on your sent data.
-* `ZfrPaymill\Exception\ServerErrorException`: any errors where Stripe is likely to be doing something wrong...
+* `ZfrStripe\Exception\NotFoundException`: is thrown whenever client receives a 404 exception.
+* `ZfrStripe\Exception\ValidationErrorException`: some errors on your sent data.
+* `ZfrStripe\Exception\ServerErrorException`: any errors where Stripe is likely to be doing something wrong...
 
 Usage:
 
