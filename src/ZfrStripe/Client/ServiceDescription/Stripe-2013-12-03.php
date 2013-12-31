@@ -55,7 +55,7 @@ return array(
     'name'        => 'Stripe',
     'apiVersion'  => '2013-12-03',
     'baseUrl'     => 'https://api.stripe.com',
-    'description' => 'Paymill is a payment system',
+    'description' => 'Stripe is a payment system',
     'operations'  => array(
         /**
          * --------------------------------------------------------------------------------
