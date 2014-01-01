@@ -178,6 +178,27 @@ class StripeClient extends Client
     }
 
     /**
+     * Override the API key
+     *
+     * @param  string $apiKey
+     * @return void
+     */
+    public function setApiKey($apiKey)
+    {
+        $this->apiKey = $apiKey;
+    }
+
+    /**
+     * Get the current API key
+     *
+     * @return string
+     */
+    public function getApiKey()
+    {
+        return $this->apiKey;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function __call($method, $args = array())
