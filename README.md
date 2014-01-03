@@ -66,6 +66,34 @@ $details = $client->getCharges(array(
 ));
 ```
 
+#### Iterators
+
+You may want to retrieve a list of customers, events or charges. Instead of manually doing all the request yourself,
+you can use iterators. ZfrStripe provides iterators for all iterable resources:
+
+```php
+$iterator = $client->getCustomersIterator();
+
+foreach ($iterator as $user) {
+    // Do something
+}
+```
+
+By default, ZfrStripe retrieves 100 elements per API call (which is the maximum allowed by Stripe API). You may want
+to lower this limit by using the `setPageSize` method. You can also set a upper bound of how many results you want
+to retrieve by using the `setLimit` method.
+
+Finally, you can still use API parameters when using an iterator. For instance, this will retrieve all the events
+that have the event `customer.subscription.updated`:
+
+```php
+$iterator = $client->getEventsIterator(array('type' => 'customer.subscription.updated'));
+
+foreach ($iterator as $event) {
+    // Do something
+}
+```
+
 ### Exceptions
 
 ZfrStripe tries its best to throw useful exceptions. Two kinds of exceptions can occur:

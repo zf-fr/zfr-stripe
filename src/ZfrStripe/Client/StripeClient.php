@@ -22,6 +22,8 @@ use Guzzle\Common\Event;
 use Guzzle\Plugin\ErrorResponse\ErrorResponsePlugin;
 use Guzzle\Service\Client;
 use Guzzle\Service\Description\ServiceDescription;
+use Guzzle\Service\Resource\ResourceIterator;
+use ZfrStripe\Client\Iterator\StripeCommandsIterator;
 use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
 
 /**
@@ -136,6 +138,20 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  * ACCOUNT RELATED METHODS:
  *
  * @method array getAccount(array $args = array()) {@command Stripe GetAccount}
+ *
+ * ITERATOR METHODS:
+ *
+ * @method ResourceIterator getCustomersIterator()
+ * @method ResourceIterator getChargesIterator()
+ * @method ResourceIterator getCardsIterator()
+ * @method ResourceIterator getPlansIterator()
+ * @method ResourceIterator getCouponsIterator()
+ * @method ResourceIterator getInvoicesIterator()
+ * @method ResourceIterator getInvoiceItemsIterator()
+ * @method ResourceIterator getTransfersIterator()
+ * @method ResourceIterator getRecipientsIterator()
+ * @method ResourceIterator getApplicationFeesIterator()
+ * @method ResourceIterator getEventsIterator()
  */
 class StripeClient extends Client
 {
@@ -203,6 +219,15 @@ class StripeClient extends Client
      */
     public function __call($method, $args = array())
     {
+        if (substr($method, -8) === 'Iterator') {
+            // Allow magic method calls for iterators (e.g. $client-><CommandName>Iterator($params))
+            $commandOptions  = isset($args[0]) ? $args[0] : array();
+            $iteratorOptions = isset($args[1]) ? $args[1] : array();
+            $command         = $this->getCommand(substr($method, 0, -8), $commandOptions);
+
+            return new StripeCommandsIterator($command, $iteratorOptions);
+        }
+
         return parent::__call(ucfirst($method), $args);
     }
 
