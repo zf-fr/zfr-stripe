@@ -32,7 +32,7 @@ $client = new StripeClient('my-api-key');
 > You can change the API key for the client using the `setApiKey` method. This is useful if you are using Stripe
 Connect and make both your own API calls and API calls on behalf of your users.
 
-The currently latest supported version of the API is 2014-01-31. You can also explicitly specify the version
+The currently latest supported version of the API is 2014-01-31. You can (and should) also explicitly specify the version
 of the client using the second parameter:
 
 ```php
@@ -58,7 +58,7 @@ You can know about the available descriptors in the `ZfrStripe\Client\ServiceDes
 
 ### How to use it?
 
-Using the client is easy. For instance, here is how you'd create a new offer:
+Using the client is easy. For instance, here is how you'd create a new charge:
 
 ```php
 $details = $client->createCharge(array(
@@ -85,7 +85,7 @@ $details = $client->getCharges(array(
 
 #### Iterators
 
-You may want to retrieve a list of customers, events or charges. Instead of manually doing all the request yourself,
+You may want to retrieve a list of customers, events or charges. Instead of manually doing all the requests yourself,
 you can use iterators. ZfrStripe provides iterators for all iterable resources:
 
 ```php
@@ -101,10 +101,13 @@ to lower this limit by using the `setPageSize` method. You can also set a upper 
 to retrieve by using the `setLimit` method.
 
 Finally, you can still use API parameters when using an iterator. For instance, this will retrieve all the events
-that have the event `customer.subscription.updated`:
+that have the event `customer.subscription.updated`, doing a new API call each 50 elements (this means that only
+up to 50 elements are stored in memory), setting a limit of maximum 500 elements to retrieve:
 
 ```php
 $iterator = $client->getEventsIterator(array('type' => 'customer.subscription.updated'));
+$iterator->setPageSize(50);
+$iterator->setLimit(500);
 
 foreach ($iterator as $event) {
     // Do something

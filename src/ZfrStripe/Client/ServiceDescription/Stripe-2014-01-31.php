@@ -701,7 +701,7 @@ return array(
 
         /**
          * --------------------------------------------------------------------------------
-         * SUBSCRIPTIONS RELATED METHODS
+         * SUBSCRIPTION RELATED METHODS
          *
          * DOC: https://stripe.com/docs/api#subscriptions
          * --------------------------------------------------------------------------------
