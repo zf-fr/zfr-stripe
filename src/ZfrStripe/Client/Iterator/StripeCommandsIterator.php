@@ -49,7 +49,7 @@ class StripeCommandsIterator extends ResourceIterator
         $this->command->set('offset', $this->iteratedCount);
 
         $result = $this->command->execute();
-        $data    = $result['data'];
+        $data   = $result['data'];
 
         $this->nextToken = empty($data) ? false : true;
 

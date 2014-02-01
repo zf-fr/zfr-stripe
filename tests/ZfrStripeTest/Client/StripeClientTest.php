@@ -40,7 +40,7 @@ class StripeClientTest extends PHPUnit_Framework_TestCase
 
     public function testCanRetrieveApiVersion()
     {
-        $this->assertEquals('2013-12-03', $this->client->getApiVersion());
+        $this->assertEquals('2014-01-31', $this->client->getApiVersion());
     }
 
     public function testUserAgentIsIncluded()

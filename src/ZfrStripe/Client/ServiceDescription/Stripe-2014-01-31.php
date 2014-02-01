@@ -53,7 +53,7 @@ $errors = array(
 
 return array(
     'name'        => 'Stripe',
-    'apiVersion'  => '2013-12-03',
+    'apiVersion'  => '2014-01-31',
     'baseUrl'     => 'https://api.stripe.com',
     'description' => 'Stripe is a payment system',
     'operations'  => array(
@@ -701,17 +701,23 @@ return array(
 
         /**
          * --------------------------------------------------------------------------------
-         * SUBSCRIPTION RELATED METHODS
+         * SUBSCRIPTIONS RELATED METHODS
          *
          * DOC: https://stripe.com/docs/api#subscriptions
          * --------------------------------------------------------------------------------
          */
         'CancelSubscription' => array(
             'httpMethod'       => 'DELETE',
-            'uri'              => '/v1/customers/{customer}/subscription',
+            'uri'              => '/v1/customers/{customer}/subscriptions/{id}',
             'summary'          => 'Delete an existing customer\'s subscription',
             'errorResponses'   => $errors,
             'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the subscription to cancel',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
                 'customer' => array(
                     'description' => 'Unique identifier of the customer to delete the card',
                     'location'    => 'uri',
@@ -733,12 +739,137 @@ return array(
             )
         ),
 
+        'CreateSubscription' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/customers/{customer}/subscriptions',
+            'summary'          => 'Create a customer\'s new subscription',
+            'errorResponses'   => $errors,
+            'parameters'       => array(
+                'customer' => array(
+                    'description' => 'Unique identifier of the customer',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'plan' => array(
+                    'description' => 'Unique plan identifier',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'quantity' => array(
+                    'description' => 'Quantity you\'d like to apply to the subscription you\'re creating',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'card' => array(
+                    'description' => 'Unique card identifier (can either be an ID or a hash)',
+                    'location'    => 'query',
+                    'type'        => array('string', 'array'),
+                    'required'    => false
+                ),
+                'coupon' => array(
+                    'description' => 'Optional coupon identifier that applies a discount at the same time as creating the subscription',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'trial_end' => array(
+                    'description' => 'UTC integer timestamp representing the end of the trial period the customer will get before being charged for the first time',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'application_fee_percent' => array(
+                    'description' => 'A positive decimal (with at most two decimal places) between 1 and 100 that represents the percentage of the subscription invoice amount due each billing period that will be transferred to the application owner’s Stripe account',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
+            )
+        ),
+
+        'GetSubscription' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/customers/{customer}/subscriptions/{id}',
+            'summary'          => 'Get an existing customer\'s active subscription',
+            'errorResponses'   => $errors,
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the active subscription to get',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'customer' => array(
+                    'description' => 'Unique identifier of the customer to get the subscription from',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
+            )
+        ),
+
+        'GetSubscriptions' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/customers/{customer}/subscriptions',
+            'summary'          => 'Get existing customers\'s active subscriptions',
+            'errorResponses'   => $errors,
+            'parameters'       => array(
+                'customer' => array(
+                    'description' => 'Unique identifier of the customer to get the subscriptions from',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'count' => array(
+                    'description' => 'Limit on how many subscriptions are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ),
+                'offset' => array(
+                    'description' => 'Offset into the list of returned items',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'required'    => false
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
+            )
+        ),
+
         'UpdateSubscription' => array(
             'httpMethod'       => 'POST',
-            'uri'              => '/v1/customers/{customer}/subscription',
+            'uri'              => '/v1/customers/{customer}/subscriptions/{id}',
             'summary'          => 'Update a customer\'s subscription',
             'errorResponses'   => $errors,
             'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the subscription to update',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
                 'customer' => array(
                     'description' => 'Unique identifier of the customer',
                     'location'    => 'uri',
@@ -1120,14 +1251,41 @@ return array(
          * DOC: https://stripe.com/docs/api#discounts
          * --------------------------------------------------------------------------------
          */
-        'DeleteDiscount' => array(
+        'DeleteCustomerDiscount' => array(
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/customers/{customer}/discount',
-            'summary'          => 'Delete a discount for a given customer',
+            'summary'          => 'Delete a customer wide discount',
             'errorResponses'   => $errors,
             'parameters'       => array(
                 'customer' => array(
                     'description' => 'Unique identifier of the customer to delete the discount from',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
+            )
+        ),
+
+        'DeleteSubscriptionDiscount' => array(
+            'httpMethod'       => 'DELETE',
+            'uri'              => '/v1/customers/{customer}/subscriptions/{subscription}/discount',
+            'summary'          => 'Delete a discount applied on a subscription',
+            'errorResponses'   => $errors,
+            'parameters'       => array(
+                'customer' => array(
+                    'description' => 'Unique identifier of the customer to delete the discount from',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'subscription' => array(
+                    'description' => 'Unique identifier of the subscription to delete the discount from',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
@@ -1159,6 +1317,12 @@ return array(
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => true
+                ),
+                'subscription' => array(
+                    'description' => 'Identifier of the subscription to invoice',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
                 ),
                 'application_fee' => array(
                     'description' => 'A fee in cents that will be applied to the invoice and transferred to the application owner\'s Stripe account',
@@ -1224,6 +1388,12 @@ return array(
                 ),
                 'customer' => array(
                     'description' => 'Only return invoice line items for a specific customer',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'subscription' => array(
+                    'description' => 'In the case of upcoming invoices, the subscription is optional. Otherwise it is ignored',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
@@ -1386,6 +1556,12 @@ return array(
                 ),
                 'invoice' => array(
                     'description' => 'Identifier of an existing invoice to add this invoice item to',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'subscription' => array(
+                    'description' => 'Identifier of a subscription to add this invoice item to',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false

@@ -1,3 +1,7 @@
+# 1.3.0
+
+* [BC] Update latest API descriptor to 2014-01-31
+
 # 1.2.0
 
 * Add iterators

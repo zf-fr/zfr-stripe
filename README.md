@@ -32,12 +32,29 @@ $client = new StripeClient('my-api-key');
 > You can change the API key for the client using the `setApiKey` method. This is useful if you are using Stripe
 Connect and make both your own API calls and API calls on behalf of your users.
 
-The currently supported version of the API is version 2013-12-03. You can also explicitly specify the version
+The currently latest supported version of the API is 2014-01-31. You can also explicitly specify the version
 of the client using the second parameter:
 
 ```php
-$client = new StripeClient('my-api-key', '2013-12-03');
+$client = new StripeClient('my-api-key', '2014-01-31');
 ```
+
+### Versioning
+
+Stripe versions its API using a dated version ("2013-12-03", "2014-01-31"...). Their [versioning policy](https://stripe.com/docs/upgrades)
+is to release a new dated version each time something changes in their API (for instance, if a response returns
+new attributes, if a property is marked as deprecated)...
+
+However, for a PHP wrapper, it does not make really much sense to follow this versioning schema. Instead, I release a new
+version descriptor each time new attributes are added to **the requests** or if they expose new endpoints. For instance, on
+2014-01-31, Stripe released a way to attach multiple subscriptions to a customer. This resulted in additional
+methods, additional attributes for the requests and the removal of old methods.
+
+By default, each new minor version (1.1.0 to 1.2.0 for instance) *may* update the service descriptor to the latest
+available. This means that to keep BC you should either tighten your dependency (1.3.* instead of 1.* for instance)
+OR always specify the exact service descriptor you want, as shown above.
+
+You can know about the available descriptors in the `ZfrStripe\Client\ServiceDescription` folder.
 
 ### How to use it?
 
@@ -52,7 +69,7 @@ $details = $client->createCharge(array(
 ```
 
 The parameters have a direct one-to-one mapping with the official documentation (for any reference, you can also
-check the `ZfrStripe\Client\ServiceDescription\Stripe-2013-12-03.php` file). To know what the responses look like, please
+check the `ZfrStripe\Client\ServiceDescription\Stripe-2014-01-31.php` file). To know what the responses look like, please
 refer to the [official API reference](https://stripe.com/docs/api).
 
 #### Expand
@@ -169,6 +186,9 @@ CARD RELATED METHODS:
 SUBSCRIPTION RELATED METHODS:
 
 * array cancelSubscription(array $args = array())
+* array createSubscription(array $args = array())
+* array getSubscription(array $args = array())
+* array getSubscriptions(array $args = array())
 * array updateSubscription(array $args = array())
 
 PLAN RELATED METHODS:
@@ -188,7 +208,8 @@ COUPON RELATED METHODS:
 
 DISCOUNT RELATED METHODS:
 
-* array deleteDiscount(array $args = array())
+* array deleteCustomerDiscount(array $args = array())
+* array deleteSubscriptionDiscount(array $args = array())
 
 INVOICE RELATED METHODS:
 

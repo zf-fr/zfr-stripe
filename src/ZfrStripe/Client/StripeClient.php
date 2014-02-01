@@ -58,6 +58,9 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  * SUBSCRIPTION RELATED METHODS:
  *
  * @method array cancelSubscription(array $args = array()) {@command Stripe CancelSubscription}
+ * @method array createSubscription(array $args = array()) {@command Stripe CreateSubscription}
+ * @method array getSubscription(array $args = array()) {@command Stripe GetSubscription}
+ * @method array getSubscriptions(array $args = array()) {@command Stripe GetSubscriptions}
  * @method array updateSubscription(array $args = array()) {@command Stripe UpdateSubscription}
  *
  * PLAN RELATED METHODS:
@@ -77,7 +80,8 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  *
  * DISCOUNT RELATED METHODS:
  *
- * @method array deleteDiscount(array $args = array()) {@command Stripe DeleteDiscount}
+ * @method array deleteCustomerDiscount(array $args = array()) {@command Stripe DeleteCustomerDiscount}
+ * @method array deleteSubscriptionDiscount(array $args = array()) {@command Stripe DeleteSubscriptionDiscount}
  *
  * INVOICE RELATED METHODS:
  *
@@ -144,6 +148,7 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  * @method ResourceIterator getCustomersIterator()
  * @method ResourceIterator getChargesIterator()
  * @method ResourceIterator getCardsIterator()
+ * @method ResourceIterator getSubscriptionsIterator()
  * @method ResourceIterator getPlansIterator()
  * @method ResourceIterator getCouponsIterator()
  * @method ResourceIterator getInvoicesIterator()
@@ -158,7 +163,7 @@ class StripeClient extends Client
     /**
      * Stripe API version
      */
-    const LATEST_API_VERSION = '2013-12-03';
+    const LATEST_API_VERSION = '2014-01-31';
 
     /**
      * @var string
