@@ -180,14 +180,14 @@ class StripeClient extends Client
     {
         parent::__construct();
 
-        $this->apiKey = $apiKey;
+        $this->apiKey = (string) $apiKey;
 
         $this->setDescription(ServiceDescription::factory(sprintf(
             __DIR__ . '/ServiceDescription/Stripe-%s.php',
-            $version
+            (string) $version
         )));
 
-        // Prefix the User-Agent by SDK version, and set the base URL
+        // Prefix the User-Agent by SDK version
         $this->setUserAgent('zfr-stripe-php', true);
 
         // Add an event to set the Authorization param
@@ -206,7 +206,7 @@ class StripeClient extends Client
      */
     public function setApiKey($apiKey)
     {
-        $this->apiKey = $apiKey;
+        $this->apiKey = (string) $apiKey;
     }
 
     /**
@@ -237,7 +237,7 @@ class StripeClient extends Client
     }
 
     /**
-     * Get current MailChimp API version
+     * Get current Stripe API version
      *
      * @return string
      */
