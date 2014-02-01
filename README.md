@@ -46,8 +46,8 @@ is to release a new dated version each time something changes in their API (for 
 new attributes, if a property is marked as deprecated)...
 
 However, for a PHP wrapper, it does not make really much sense to follow this versioning schema. Instead, I release a new
-version descriptor each time new attributes are added to **the requests** or if they expose new endpoints. For instance, on
-2014-01-31, Stripe released a way to attach multiple subscriptions to a customer. This resulted in additional
+version descriptor each time new attributes are added/removed to **the requests** or if they expose new endpoints. For
+instance, on 2014-01-31, Stripe released a way to attach multiple subscriptions to a customer. This resulted in additional
 methods, additional attributes for the requests and the removal of old methods.
 
 By default, each new minor version (1.1.0 to 1.2.0 for instance) *may* update the service descriptor to the latest
