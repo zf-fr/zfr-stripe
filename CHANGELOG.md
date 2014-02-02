@@ -1,6 +1,7 @@
 # 1.3.0
 
 * [BC] Update latest API descriptor to 2014-01-31
+* Fix a bug when using iterators that always skipped the first element
 
 # 1.2.0
 
