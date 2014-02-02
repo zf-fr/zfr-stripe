@@ -46,7 +46,7 @@ class StripeCommandsIterator extends ResourceIterator
     protected function sendRequest()
     {
         $this->command->set('count', $this->pageSize);
-        $this->command->set('offset', $this->iteratedCount);
+        $this->command->set('offset', $this->iteratedCount - 1);
 
         $result = $this->command->execute();
         $data   = $result['data'];
