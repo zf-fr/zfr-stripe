@@ -1,3 +1,7 @@
+# 1.3.1
+
+* Fix a bug when setting a description for invoice items [#1]
+
 # 1.3.0
 
 * [BC] Update latest API descriptor to 2014-01-31
