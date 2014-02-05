@@ -1569,7 +1569,7 @@ return array(
                 'description' => array(
                     'description' => 'Optional description to add',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => 'string',
                     'required'    => false
                 ),
                 'metadata' => array(
