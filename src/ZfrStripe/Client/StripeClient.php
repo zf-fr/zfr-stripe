@@ -278,8 +278,13 @@ class StripeClient extends Client
     {
         /* @var \Guzzle\Service\Command\CommandInterface $command */
         $command = $event['command'];
-        $request = $command->getRequest();
 
-        $request->setAuth($this->apiKey);
+        // If it's a Stripe Connect request, we just pass the API key as the client_secret
+        if (in_array($command->getName(), array('TurnCodeIntoAccessToken', 'TurnRefreshTokenIntoAccessToken'))) {
+            $command['client_secret'] = $this->apiKey;
+        } else {
+            $request = $command->getRequest();
+            $request->setAuth($this->apiKey);
+        }
     }
 }

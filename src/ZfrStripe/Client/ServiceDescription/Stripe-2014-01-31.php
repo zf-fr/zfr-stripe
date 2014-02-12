@@ -2403,6 +2403,12 @@ return array(
             'uri'        => 'https://connect.stripe.com/oauth/token',
             'summary'    => 'Transform an authorization code (got from Stripe Connect) into an access token',
             'parameters' => array(
+                'client_secret' => array(
+                    'description' => 'Client secret',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
                 'grant_type' => array(
                     'description' => 'Grant type you are asking',
                     'location'    => 'query',
@@ -2430,6 +2436,12 @@ return array(
             'uri'        => 'https://connect.stripe.com/oauth/token',
             'summary'    => 'Transform an authorization code (got from Stripe Connect) into an access token',
             'parameters' => array(
+                'client_secret' => array(
+                    'description' => 'Client secret',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
                 'grant_type' => array(
                     'description' => 'Grant type you are asking',
                     'location'    => 'query',
