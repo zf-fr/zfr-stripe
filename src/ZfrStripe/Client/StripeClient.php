@@ -143,6 +143,11 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  *
  * @method array getAccount(array $args = array()) {@command Stripe GetAccount}
  *
+ * STRIPE CONNECT RELATED METHODS
+ *
+ * @method array turnCodeIntoAccessToken(array $args = array()) {@command Stripe TurnCodeIntoAccessToken}
+ * @method array turnRefreshTokenIntoAccessToken(array $args = array()) {@command Stripe TurnRefreshTokenIntoAccessToken}
+ *
  * ITERATOR METHODS:
  *
  * @method ResourceIterator getCustomersIterator()

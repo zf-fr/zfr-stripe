@@ -273,3 +273,8 @@ EVENT RELATED METHODS:
 ACCOUNT RELATED METHODS:
 
 * array getAccount(array $args = array())
+
+STRIPE CONNECT RELATED METHODS:
+
+* array turnCodeIntoAccessToken(array $args = array())
+* array turnRefreshTokenIntoAccessToken(array $args = array())
