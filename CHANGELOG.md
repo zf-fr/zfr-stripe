@@ -1,8 +1,3 @@
-# 1.4.0
-
-* Add methods `turnCodeIntoAccessToken` and `turnRefreshTokenIntoAccessToken`. Those methods allow you to
-easily turn code and/or refresh token when using Stripe Connect.
-
 # 1.3.1
 
 * Fix a bug when setting a description for invoice items [#1]

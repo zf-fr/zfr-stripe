@@ -143,11 +143,6 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  *
  * @method array getAccount(array $args = array()) {@command Stripe GetAccount}
  *
- * STRIPE CONNECT RELATED METHODS
- *
- * @method array turnCodeIntoAccessToken(array $args = array()) {@command Stripe TurnCodeIntoAccessToken}
- * @method array turnRefreshTokenIntoAccessToken(array $args = array()) {@command Stripe TurnRefreshTokenIntoAccessToken}
- *
  * ITERATOR METHODS:
  *
  * @method ResourceIterator getCustomersIterator()
@@ -279,12 +274,7 @@ class StripeClient extends Client
         /* @var \Guzzle\Service\Command\CommandInterface $command */
         $command = $event['command'];
 
-        // If it's a Stripe Connect request, we just pass the API key as the client_secret
-        if (in_array($command->getName(), array('TurnCodeIntoAccessToken', 'TurnRefreshTokenIntoAccessToken'))) {
-            $command['client_secret'] = $this->apiKey;
-        } else {
-            $request = $command->getRequest();
-            $request->setAuth($this->apiKey);
-        }
+        $request = $command->getRequest();
+        $request->setAuth($this->apiKey);
     }
 }
