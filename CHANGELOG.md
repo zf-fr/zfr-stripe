@@ -1,6 +1,6 @@
 # 1.4.0
 
-* [BC] Update latest API descriptor to 2014-01-31. This adds a new "statement_description" for both creating charge and
+* [BC] Update latest API descriptor to 2014-03-13. This adds a new "statement_description" for both creating charge and
 transfer, and remove "statement_descriptor" from transfer.
 
 # 1.3.1
