@@ -163,7 +163,7 @@ class StripeClient extends Client
     /**
      * Stripe API version
      */
-    const LATEST_API_VERSION = '2014-01-31';
+    const LATEST_API_VERSION = '2014-03-13';
 
     /**
      * @var string
