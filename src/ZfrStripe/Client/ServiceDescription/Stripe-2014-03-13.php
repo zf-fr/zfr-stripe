@@ -53,7 +53,7 @@ $errors = array(
 
 return array(
     'name'        => 'Stripe',
-    'apiVersion'  => '2014-01-31',
+    'apiVersion'  => '2014-03-13',
     'baseUrl'     => 'https://api.stripe.com',
     'description' => 'Stripe is a payment system',
     'operations'  => array(

@@ -57,12 +57,8 @@ class StripeCommandsCursorIterator extends ResourceIterator
         $data     = $result['data'];
         $lastItem = end($data);
 
-        $this->nextToken = $lastItem ? $lastItem['data']['id'] : false;
-
         // This avoid to do any additional request
-        if (!$result['has_more']) {
-            $this->invalid = true;
-        }
+        $this->nextToken = $result['has_more'] ? $lastItem['id'] : false;
 
         return $data;
     }

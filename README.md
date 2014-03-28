@@ -111,6 +111,22 @@ foreach ($iterator as $event) {
 }
 ```
 
+> Note: starting from 2014-03-28 version, Stripe has changed how it handles pagination, and now uses a cursor-based
+pagination. This is much more flexible, as it allows you to keep track of your pagination, even if new items were
+added while you paginate data. Furthermore, it has a new property that allows us to avoid doing an additional request
+at the end to check if there are more data to fetch:
+
+```php
+$iterator = $client->getInvoicesIterator(['starting_after' => 'in_abcdef');
+
+foreach ($iterator as $invoices) {
+    // Do something
+}
+```
+
+ZfrStripe takes care of fetching the last item in the batch, extracting the id, and continuing doing requests
+until no more data is available!
+
 ### Exceptions
 
 ZfrStripe tries its best to throw useful exceptions. Two kinds of exceptions can occur:
