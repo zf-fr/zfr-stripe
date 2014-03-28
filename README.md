@@ -32,11 +32,11 @@ $client = new StripeClient('my-api-key');
 > You can change the API key for the client using the `setApiKey` method. This is useful if you are using Stripe
 Connect and make both your own API calls and API calls on behalf of your users.
 
-The currently latest supported version of the API is 2014-03-13. You can (and should) also explicitly specify the version
+The currently latest supported version of the API is 2014-03-28. You can (and should) also explicitly specify the version
 of the client using the second parameter:
 
 ```php
-$client = new StripeClient('my-api-key', '2014-03-13');
+$client = new StripeClient('my-api-key', '2014-03-28');
 ```
 
 ### Versioning
