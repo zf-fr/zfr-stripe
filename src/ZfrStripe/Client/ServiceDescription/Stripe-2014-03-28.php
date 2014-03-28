@@ -53,7 +53,7 @@ $errors = array(
 
 return array(
     'name'        => 'Stripe',
-    'apiVersion'  => '2014-03-13',
+    'apiVersion'  => '2014-03-28',
     'baseUrl'     => 'https://api.stripe.com',
     'description' => 'Stripe is a payment system',
     'operations'  => array(
@@ -193,7 +193,7 @@ return array(
             'summary'          => 'Get existing charges',
             'errorResponses'   => $errors,
             'parameters'       => array(
-                'count' => array(
+                'limit' => array(
                     'description' => 'Limit on how many charges are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
@@ -201,10 +201,10 @@ return array(
                     'max'         => 100,
                     'required'    => false
                 ),
-                'offset' => array(
-                    'description' => 'Offset into the list of returned items',
+                'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => 'string',
                     'required'    => false
                 ),
                 'created' => array(
@@ -221,6 +221,12 @@ return array(
                 ),
                 'expand' => array(
                     'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+                'include' => array(
+                    'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
@@ -418,7 +424,7 @@ return array(
             'summary'          => 'Get existing customers',
             'errorResponses'   => $errors,
             'parameters'       => array(
-                'count' => array(
+                'limit' => array(
                     'description' => 'Limit on how many customers are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
@@ -426,10 +432,10 @@ return array(
                     'max'         => 100,
                     'required'    => false
                 ),
-                'offset' => array(
-                    'description' => 'Offset into the list of returned items',
+                'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => 'string',
                     'required'    => false
                 ),
                 'created' => array(
@@ -440,6 +446,12 @@ return array(
                 ),
                 'expand' => array(
                     'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+                'include' => array(
+                    'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
@@ -610,7 +622,7 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
-                'count' => array(
+                'limit' => array(
                     'description' => 'Limit on how many cards are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
@@ -618,14 +630,20 @@ return array(
                     'max'         => 100,
                     'required'    => false
                 ),
-                'offset' => array(
-                    'description' => 'Offset into the list of returned items',
+                'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => 'string',
                     'required'    => false
                 ),
                 'expand' => array(
                     'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+                'include' => array(
+                    'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
@@ -841,7 +859,7 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
-                'count' => array(
+                'limit' => array(
                     'description' => 'Limit on how many subscriptions are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
@@ -849,14 +867,20 @@ return array(
                     'max'         => 100,
                     'required'    => false
                 ),
-                'offset' => array(
-                    'description' => 'Offset into the list of returned items',
+                'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => 'string',
                     'required'    => false
                 ),
                 'expand' => array(
                     'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+                'include' => array(
+                    'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
@@ -1052,7 +1076,7 @@ return array(
             'summary'          => 'Get existing plans',
             'errorResponses'   => $errors,
             'parameters'       => array(
-                'count' => array(
+                'limit' => array(
                     'description' => 'Limit on how many plans are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
@@ -1060,14 +1084,20 @@ return array(
                     'max'         => 100,
                     'required'    => false
                 ),
-                'offset' => array(
-                    'description' => 'Offset into the list of returned items',
+                'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => 'string',
                     'required'    => false
                 ),
                 'expand' => array(
                     'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+                'include' => array(
+                    'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
@@ -1227,7 +1257,7 @@ return array(
             'summary'          => 'Get existing plans',
             'errorResponses'   => $errors,
             'parameters'       => array(
-                'count' => array(
+                'limit' => array(
                     'description' => 'Limit on how many coupons are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
@@ -1235,14 +1265,20 @@ return array(
                     'max'         => 100,
                     'required'    => false
                 ),
-                'offset' => array(
-                    'description' => 'Offset into the list of returned items',
+                'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => 'string',
                     'required'    => false
                 ),
                 'expand' => array(
                     'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+                'include' => array(
+                    'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
@@ -1419,7 +1455,7 @@ return array(
             'summary'          => 'Get existing invoices',
             'errorResponses'   => $errors,
             'parameters'       => array(
-                'count' => array(
+                'limit' => array(
                     'description' => 'Limit on how many invoices are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
@@ -1427,10 +1463,10 @@ return array(
                     'max'         => 100,
                     'required'    => false
                 ),
-                'offset' => array(
-                    'description' => 'Offset into the list of returned items',
+                'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => 'string',
                     'required'    => false
                 ),
                 'date' => array(
@@ -1447,6 +1483,12 @@ return array(
                 ),
                 'expand' => array(
                     'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+                'include' => array(
+                    'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
@@ -1641,7 +1683,7 @@ return array(
             'summary'          => 'Get existing invoice items',
             'errorResponses'   => $errors,
             'parameters'       => array(
-                'count' => array(
+                'limit' => array(
                     'description' => 'Limit on how many invoice items are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
@@ -1649,10 +1691,10 @@ return array(
                     'max'         => 100,
                     'required'    => false
                 ),
-                'offset' => array(
-                    'description' => 'Offset into the list of returned items',
+                'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => 'string',
                     'required'    => false
                 ),
                 'date' => array(
@@ -1668,6 +1710,12 @@ return array(
                 ),
                 'expand' => array(
                     'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+                'include' => array(
+                    'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
@@ -1869,18 +1917,18 @@ return array(
             'summary'          => 'Get existing transfers',
             'errorResponses'   => $errors,
             'parameters'       => array(
-                'count' => array(
-                    'description' => 'Limit on how many invoice items are retrieved',
+                'limit' => array(
+                    'description' => 'Limit on how many transfers are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 100,
                     'required'    => false
                 ),
-                'offset' => array(
-                    'description' => 'Offset into the list of returned items',
+                'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => 'string',
                     'required'    => false
                 ),
                 'date' => array(
@@ -1903,6 +1951,12 @@ return array(
                 ),
                 'expand' => array(
                     'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+                'include' => array(
+                    'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
@@ -2056,18 +2110,18 @@ return array(
             'summary'          => 'Get existing recipients',
             'errorResponses'   => $errors,
             'parameters'       => array(
-                'count' => array(
-                    'description' => 'Limit on how many invoice items are retrieved',
+                'limit' => array(
+                    'description' => 'Limit on how many recipients are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 100,
                     'required'    => false
                 ),
-                'offset' => array(
-                    'description' => 'Offset into the list of returned items',
+                'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => 'string',
                     'required'    => false
                 ),
                 'verified' => array(
@@ -2173,10 +2227,10 @@ return array(
         'GetApplicationFees' => array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/application_fees',
-            'summary'          => 'Get details about all applicaiton fees that your account has collected',
+            'summary'          => 'Get details about all application fees that your account has collected',
             'errorResponses'   => $errors,
             'parameters'       => array(
-                'count' => array(
+                'limit' => array(
                     'description' => 'Limit on how many application fees are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
@@ -2184,10 +2238,10 @@ return array(
                     'max'         => 100,
                     'required'    => false
                 ),
-                'offset' => array(
-                    'description' => 'Offset into the list of returned items',
+                'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => 'string',
                     'required'    => false
                 ),
                 'created' => array(
@@ -2204,6 +2258,12 @@ return array(
                 ),
                 'expand' => array(
                     'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+                'include' => array(
+                    'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
@@ -2348,18 +2408,18 @@ return array(
             'summary'          => 'Get details about all events (up to 30 days)',
             'errorResponses'   => $errors,
             'parameters'       => array(
-                'count' => array(
-                    'description' => 'Limit on how many application fees are retrieved',
+                'limit' => array(
+                    'description' => 'Limit on how many events are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 100,
                     'required'    => false
                 ),
-                'offset' => array(
-                    'description' => 'Offset into the list of returned items',
+                'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => 'string',
                     'required'    => false
                 ),
                 'created' => array(
@@ -2376,6 +2436,12 @@ return array(
                 ),
                 'expand' => array(
                     'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+                'include' => array(
+                    'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false

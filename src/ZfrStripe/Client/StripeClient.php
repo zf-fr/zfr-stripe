@@ -23,6 +23,7 @@ use Guzzle\Plugin\ErrorResponse\ErrorResponsePlugin;
 use Guzzle\Service\Client;
 use Guzzle\Service\Description\ServiceDescription;
 use Guzzle\Service\Resource\ResourceIterator;
+use ZfrStripe\Client\Iterator\StripeCommandsCursorIterator;
 use ZfrStripe\Client\Iterator\StripeCommandsIterator;
 use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
 
@@ -163,7 +164,7 @@ class StripeClient extends Client
     /**
      * Stripe API version
      */
-    const LATEST_API_VERSION = '2014-03-13';
+    const LATEST_API_VERSION = '2014-03-28';
 
     /**
      * @var string
@@ -230,7 +231,12 @@ class StripeClient extends Client
             $iteratorOptions = isset($args[1]) ? $args[1] : array();
             $command         = $this->getCommand(substr($method, 0, -8), $commandOptions);
 
-            return new StripeCommandsIterator($command, $iteratorOptions);
+            // Based on the API version, we use (or not) the new cursor based pagination
+            if ($this->getApiVersion() >= '2014-03-28') {
+                return new StripeCommandsCursorIterator($command, $iteratorOptions);
+            } else {
+                return new StripeCommandsIterator($command, $iteratorOptions);
+            }
         }
 
         return parent::__call(ucfirst($method), $args);

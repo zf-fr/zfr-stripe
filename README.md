@@ -32,11 +32,11 @@ $client = new StripeClient('my-api-key');
 > You can change the API key for the client using the `setApiKey` method. This is useful if you are using Stripe
 Connect and make both your own API calls and API calls on behalf of your users.
 
-The currently latest supported version of the API is 2014-03-13. You can (and should) also explicitly specify the version
+The currently latest supported version of the API is 2014-03-28. You can (and should) also explicitly specify the version
 of the client using the second parameter:
 
 ```php
-$client = new StripeClient('my-api-key', '2014-03-13');
+$client = new StripeClient('my-api-key', '2014-03-28');
 ```
 
 ### Versioning
@@ -110,6 +110,22 @@ foreach ($iterator as $event) {
     // Do something
 }
 ```
+
+> Note: starting from 2014-03-28 version, Stripe has changed how it handles pagination, and now uses a cursor-based
+pagination. This is much more flexible, as it allows you to keep track of your pagination, even if new items were
+added while you paginate data. Furthermore, it has a new property that allows us to avoid doing an additional request
+at the end to check if there are more data to fetch:
+
+```php
+$iterator = $client->getInvoicesIterator(['starting_after' => 'in_abcdef');
+
+foreach ($iterator as $invoices) {
+    // Do something
+}
+```
+
+ZfrStripe takes care of fetching the last item in the batch, extracting the id, and continuing doing requests
+until no more data is available!
 
 ### Exceptions
 
