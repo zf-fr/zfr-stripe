@@ -1,3 +1,8 @@
+# 1.5.1
+
+* Properly encode boolean values to "true" or "false" string, as required by Stripe API. The change has been applied
+to all the previous service description.
+
 # 1.5.0
 
 * [BC] Update latest API descriptor to 2014-03-28. This adds support for the new cursor-based pagination. This version

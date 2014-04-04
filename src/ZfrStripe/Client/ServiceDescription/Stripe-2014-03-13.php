@@ -131,6 +131,7 @@ return array(
                     'description' => 'Whether or not to immediately capture the charge',
                     'location'    => 'query',
                     'type'        => 'boolean',
+                    'filters'     => array('ZfrStripe\Client\Filter\BooleanFilter::encodeValue'),
                     'required'    => false
                 ),
                 'description' => array(
@@ -250,6 +251,7 @@ return array(
                     'description' => 'Indicate whether the application fee should be refunded when refunding this charge',
                     'location'    => 'query',
                     'type'        => 'boolean',
+                    'filters'     => array('ZfrStripe\Client\Filter\BooleanFilter::encodeValue'),
                     'required'    => false
                 ),
                 'expand' => array(
@@ -734,6 +736,7 @@ return array(
                     'description' => 'A flag that if set to true will delay the cancellation of the subscription until the end of the current period.',
                     'location'    => 'query',
                     'type'        => 'boolean',
+                    'filters'     => array('ZfrStripe\Client\Filter\BooleanFilter::encodeValue'),
                     'required'    => false
                 ),
                 'expand' => array(
@@ -910,6 +913,7 @@ return array(
                     'description' => 'Flag telling us whether to prorate switching plans during a billing cycle',
                     'location'    => 'query',
                     'type'        => 'boolean',
+                    'filters'     => array('ZfrStripe\Client\Filter\BooleanFilter::encodeValue'),
                     'required'    => false
                 ),
                 'trial_end' => array(
@@ -1518,6 +1522,7 @@ return array(
                     'description' => 'Boolean representing whether an invoice is closed or not',
                     'location'    => 'query',
                     'type'        => 'boolean',
+                    'filters'     => array('ZfrStripe\Client\Filter\BooleanFilter::encodeValue'),
                     'required'    => false
                 ),
                 'expand' => array(
@@ -2074,6 +2079,7 @@ return array(
                     'description' => 'Boolean to only return recipients that are verified or unverified',
                     'location'    => 'query',
                     'type'        => 'boolean',
+                    'filters'     => array('ZfrStripe\Client\Filter\BooleanFilter::encodeValue'),
                     'required'    => false
                 ),
                 'expand' => array(

@@ -16,39 +16,22 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrStripeTest\Client;
-
-use PHPUnit_Framework_TestCase;
-use ZfrStripe\Client\StripeClient;
+namespace ZfrStripe\Client\Filter;
 
 /**
+ * Stripe API does not accept boolean values as 0 or 1, but as a string "false" or "true"
+ *
  * @author  Michaël Gallego <mic.gallego@gmail.com>
  * @licence MIT
  */
-class StripeClientTest extends PHPUnit_Framework_TestCase
+class BooleanFilter
 {
     /**
-     * @var StripeClient
+     * @param  bool $boolean
+     * @return string
      */
-    protected $client;
-
-    public function setUp()
+    public static function encodeValue($boolean)
     {
-        $this->client = new StripeClient('abc');
-        $this->assertEquals('abc', $this->client->getApiKey());
-    }
-
-    public function testCanRetrieveApiVersion()
-    {
-        $this->assertInternalType('string', $this->client->getApiVersion());
-    }
-
-    public function testUserAgentIsIncluded()
-    {
-        // Make sure the user agent contains "zfr-stripe-php"
-        $command = $this->client->getCommand('GetAccount');
-        $request = $command->prepare();
-        $this->client->dispatch('command.before_send', array('command' => $command));
-        $this->assertRegExp('/^zfr-stripe-php/', (string)$request->getHeader('User-Agent', true));
+        return $boolean ? 'true' : 'false';
     }
 }

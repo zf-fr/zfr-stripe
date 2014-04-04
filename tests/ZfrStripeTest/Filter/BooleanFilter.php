@@ -16,39 +16,24 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrStripeTest\Client;
+namespace ZfrStripeTest\Filter;
 
 use PHPUnit_Framework_TestCase;
+use ZfrStripe\Client\Filter\BooleanFilter;
 use ZfrStripe\Client\StripeClient;
 
 /**
  * @author  Michaël Gallego <mic.gallego@gmail.com>
  * @licence MIT
  */
-class StripeClientTest extends PHPUnit_Framework_TestCase
+class BooleanFilterTest extends PHPUnit_Framework_TestCase
 {
-    /**
-     * @var StripeClient
-     */
-    protected $client;
-
-    public function setUp()
+    public function testConvertBoolean()
     {
-        $this->client = new StripeClient('abc');
-        $this->assertEquals('abc', $this->client->getApiKey());
-    }
+        $this->assertEquals('true', BooleanFilter::encodeValue(true));
+        $this->assertEquals('true', BooleanFilter::encodeValue(1));
 
-    public function testCanRetrieveApiVersion()
-    {
-        $this->assertInternalType('string', $this->client->getApiVersion());
-    }
-
-    public function testUserAgentIsIncluded()
-    {
-        // Make sure the user agent contains "zfr-stripe-php"
-        $command = $this->client->getCommand('GetAccount');
-        $request = $command->prepare();
-        $this->client->dispatch('command.before_send', array('command' => $command));
-        $this->assertRegExp('/^zfr-stripe-php/', (string)$request->getHeader('User-Agent', true));
+        $this->assertEquals('false', BooleanFilter::encodeValue(false));
+        $this->assertEquals('false', BooleanFilter::encodeValue(0));
     }
 }
