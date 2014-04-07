@@ -1,3 +1,7 @@
+# 1.5.2
+
+* Add the new `ending_before` property for the cursor-based pagination (from 2014-03-28 version only)
+
 # 1.5.1
 
 * Properly encode boolean values to "true" or "false" string, as required by Stripe API. The change has been applied
