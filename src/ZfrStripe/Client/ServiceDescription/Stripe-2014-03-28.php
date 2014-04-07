@@ -1554,6 +1554,12 @@ return array(
                     'type'        => 'string',
                     'required'    => true
                 ),
+                'subscription' => array(
+                    'description' => 'The identifier of the subscription for which you\'d like to retrieve the upcoming invoice',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
                 'expand' => array(
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
