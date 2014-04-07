@@ -1,3 +1,7 @@
+# 1.5.3
+
+* Add missing `subscription` parameter to `getUpcomingInvoice` method since 2014-01-31
+
 # 1.5.2
 
 * Add the new `ending_before` property for the cursor-based pagination (from 2014-03-28 version only)
