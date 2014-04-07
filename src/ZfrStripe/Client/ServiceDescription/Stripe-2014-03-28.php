@@ -208,6 +208,12 @@ return array(
                     'type'        => 'string',
                     'required'    => false
                 ),
+                'ending_before' => array(
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
                 'created' => array(
                     'description' => 'A filter based on the "created" field. Can be an exact UTC timestamp, or a hash',
                     'location'    => 'query',
@@ -440,6 +446,12 @@ return array(
                     'type'        => 'string',
                     'required'    => false
                 ),
+                'ending_before' => array(
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
                 'created' => array(
                     'description' => 'A filter based on the "created" field. Can be an exact UTC timestamp, or a hash',
                     'location'    => 'query',
@@ -633,6 +645,12 @@ return array(
                     'required'    => false
                 ),
                 'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'ending_before' => array(
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
@@ -876,6 +894,12 @@ return array(
                     'type'        => 'string',
                     'required'    => false
                 ),
+                'ending_before' => array(
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
                 'expand' => array(
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
@@ -1094,6 +1118,12 @@ return array(
                     'type'        => 'string',
                     'required'    => false
                 ),
+                'ending_before' => array(
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
                 'expand' => array(
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
@@ -1270,6 +1300,12 @@ return array(
                     'required'    => false
                 ),
                 'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'ending_before' => array(
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
@@ -1468,6 +1504,12 @@ return array(
                     'required'    => false
                 ),
                 'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'ending_before' => array(
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
@@ -1697,6 +1739,12 @@ return array(
                     'required'    => false
                 ),
                 'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'ending_before' => array(
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
@@ -1936,6 +1984,12 @@ return array(
                     'type'        => 'string',
                     'required'    => false
                 ),
+                'ending_before' => array(
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
                 'date' => array(
                     'description' => 'A filter based on the "date" field. Can be an exact UTC timestamp, or a hash',
                     'location'    => 'query',
@@ -2129,6 +2183,12 @@ return array(
                     'type'        => 'string',
                     'required'    => false
                 ),
+                'ending_before' => array(
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
                 'verified' => array(
                     'description' => 'Boolean to only return recipients that are verified or unverified',
                     'location'    => 'query',
@@ -2245,6 +2305,12 @@ return array(
                     'required'    => false
                 ),
                 'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'ending_before' => array(
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
@@ -2423,6 +2489,12 @@ return array(
                     'required'    => false
                 ),
                 'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'ending_before' => array(
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
