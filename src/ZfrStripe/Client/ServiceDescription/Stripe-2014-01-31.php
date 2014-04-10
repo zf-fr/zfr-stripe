@@ -18,7 +18,7 @@
 
 $errors = array(
     array(
-        'class' => 'ZfrStripe\Exception\ValidationErrorException',
+        'class' => 'ZfrStripe\Exception\BadRequestException',
         'code'  => 400
     ),
     array(
@@ -26,7 +26,7 @@ $errors = array(
         'code'  => 401
     ),
     array(
-        'class' => 'ZfrStripe\Exception\CardErrorException',
+        'class' => 'ZfrStripe\Exception\RequestFailedException',
         'code'  => 402
     ),
     array(

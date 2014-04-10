@@ -22,6 +22,6 @@ namespace ZfrStripe\Exception;
  * @author  Michaël Gallego <mic.gallego@gmail.com>
  * @licence MIT
  */
-class ValidationErrorException extends AbstractException
+class ApiRateLimitException extends BadRequestException
 {
 }
