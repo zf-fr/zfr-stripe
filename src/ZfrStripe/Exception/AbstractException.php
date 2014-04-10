@@ -43,10 +43,20 @@ abstract class AbstractException extends \Exception implements ExceptionInterfac
      */
     public static function fromCommand(CommandInterface $command, Response $response)
     {
-        $errors = json_decode($response->getBody(true), true);
-        $error  = isset($errors['error']['message']) ? $errors['error']['message'] : 'Unknown error';
+        $errors  = json_decode($response->getBody(true), true);
+        $type    = $errors['error']['type'];
+        $message = isset($errors['error']['message']) ? $errors['error']['message'] : 'Unknown error';
+        $code    = isset($errors['error']['code']) ? $errors['error']['code'] : null;
 
-        $exception = new static($error, $response->getStatusCode());
+        // We can trigger very specific exception based on the type and code
+        if ($type === 'card_error') {
+            $exception = new CardErrorException($message, $response->getStatusCode());
+        } elseif ($type === 'invalid_request_error' && $code === 'rate_limit') {
+            $exception = new ApiRateLimitException($message, $response->getStatusCode());
+        } else {
+            $exception = new static($message, $response->getStatusCode());
+        }
+
         $exception->setRequest($command->getRequest());
         $exception->setResponse($response);
 

@@ -140,10 +140,12 @@ ZfrStripe tries its best to throw useful exceptions. Two kinds of exceptions can
 Here are all the exceptions:
 
 * `ZfrStripe\Exception\UnauthorizedException`: your API key is likely to be wrong...
-* `ZfrStripe\Exception\CardErrorException`: occurs for 402 errors. According to Stripe, this error happen when
+* `ZfrStripe\Exception\ApiRateLimitException`: occurs when you have reached the Stripe API limit.
+* `ZfrStripe\Exception\BadRequestException`: occurs for 400 error code.
+* `ZfrStripe\Exception\CardErrorException`: occurs for any card errors. According to Stripe, this error happen when
 parameters were valid but the request failed (for instance if a card CVC is invalid).
 * `ZfrStripe\Exception\NotFoundException`: is thrown whenever client receives a 404 exception.
-* `ZfrStripe\Exception\ValidationErrorException`: some errors on your sent data.
+* `ZfrStripe\Exception\RequestFailedException`: occurs for generic 402 error.
 * `ZfrStripe\Exception\ServerErrorException`: any errors where Stripe is likely to be doing something wrong...
 
 Usage:

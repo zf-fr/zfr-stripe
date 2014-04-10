@@ -1,3 +1,11 @@
+# 1.6.0
+
+* Add new useful and more precise exceptions. This may be a minor BC. Before this release, ZfrStripe used to throw
+a CardErrorException on 402. Now, it only throws this exception if the error type is `card_error`, otherwise it
+throws a RequestFailedException. Alternatively, the ValidationErrorException has been replaced with a more generic
+BadRequestException, which more closely follows Stripe API. Furthermore, an ApiRateLimitException has been added to
+easily track an API rate limit error.
+
 # 1.5.3
 
 * Add missing `subscription` parameter to `getUpcomingInvoice` method since 2014-01-31
