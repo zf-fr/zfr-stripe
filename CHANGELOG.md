@@ -1,3 +1,8 @@
+# 1.6.1
+
+* You can now set `statement_description` with `createPlan` and `updatePlan` methods (only for version starting
+from 2014-03-28).
+
 # 1.6.0
 
 * Add new useful and more precise exceptions. This may be a minor BC. Before this release, ZfrStripe used to throw

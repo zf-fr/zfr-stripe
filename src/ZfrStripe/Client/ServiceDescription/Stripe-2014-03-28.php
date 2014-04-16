@@ -1047,6 +1047,12 @@ return array(
                     'type'        => 'array',
                     'required'    => false
                 ),
+                'statement_description' => array(
+                    'description' => 'An arbitrary string to be displayed alongside your company name on your customer\'s credit card statement',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
                 'expand' => array(
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
@@ -1161,6 +1167,12 @@ return array(
                     'description' => 'Optional metadata',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ),
+                'statement_description' => array(
+                    'description' => 'An arbitrary string to be displayed alongside your company name on your customer\'s credit card statement',
+                    'location'    => 'query',
+                    'type'        => 'string',
                     'required'    => false
                 ),
                 'expand' => array(
