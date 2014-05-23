@@ -79,6 +79,8 @@ $client->setAccessToken('my-customers-token');
 // All API calls will be made on behalf of this customer now!
 ```
 
+Please note that if you want to use again your own access token, you will need to make a new call to this method.
+
 #### Expand
 
 All Stripe API requests have support to expand some nested objects inside responses. Therefore, ZfrStripe supports this
