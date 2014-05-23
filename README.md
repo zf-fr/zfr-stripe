@@ -69,6 +69,16 @@ The parameters have a direct one-to-one mapping with the official documentation 
 check the `ZfrStripe\Client\ServiceDescription\Stripe-2014-01-31.php` file). To know what the responses look like, please
 refer to the [official API reference](https://stripe.com/docs/api).
 
+#### Stripe Connect
+
+If you are using Stripe Connect, you will want to make API calls on behalf of your client. You have nothing special
+to do: just use the `setAccessToken` method with the customer's access token:
+
+```php
+$client->setAccessToken('my-customers-token');
+// All API calls will be made on behalf of this customer now!
+```
+
 #### Expand
 
 All Stripe API requests have support to expand some nested objects inside responses. Therefore, ZfrStripe supports this
