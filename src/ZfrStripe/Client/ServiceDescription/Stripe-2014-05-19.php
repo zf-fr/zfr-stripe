@@ -1039,7 +1039,7 @@ return array(
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => true,
-                    'enum'        => array('week', 'month', 'year')
+                    'enum'        => array('day', 'week', 'month', 'year')
                 ),
                 'interval_count' => array(
                     'description' => 'Number of interval between each subscription billing',

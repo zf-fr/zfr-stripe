@@ -1,3 +1,7 @@
+# 1.7.1
+
+* Add support for "day" interval for plans.
+
 # 1.7.0
 
 * [BC] Update latest API descriptor to 2014-05-19. This adds support for metadata in subscriptions.
