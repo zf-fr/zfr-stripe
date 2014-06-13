@@ -1,3 +1,7 @@
+# 1.7.2
+
+* Add the new `receipt_email` property for charges.
+
 # 1.7.1
 
 * Add support for "day" interval for plans.

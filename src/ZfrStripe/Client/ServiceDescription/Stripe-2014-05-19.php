@@ -82,6 +82,12 @@ return array(
                     'type'        => 'integer',
                     'required'    => false
                 ),
+                'receipt_email' => array(
+                    'description' => 'The email address to send this charge\'s receipt to',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
                 'application_fee' => array(
                     'description' => 'A fee in cents that will be applied to the charge and transferred to the application owner\'s Stripe account',
                     'location'    => 'query',
@@ -148,6 +154,12 @@ return array(
                 ),
                 'statement_description' => array(
                     'description' => 'An arbitrary string to be displayed alongside your company name on your customer\'s credit card statement',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'receipt_email' => array(
+                    'description' => 'The email address to send this charge\'s receipt to',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
