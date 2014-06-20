@@ -1,3 +1,12 @@
+# 1.8.0
+
+* [BC] Update latest API descriptor to 2014-06-17. It includes the following changes:
+* Refunds is now a first-class resource, so you can retrieve, update and list refunds through specific methods.
+* Allow dispute to have metadata (starting from 2014-06-17).
+* Add the various "balance" methods that were missing. I've backported those methods to the last three descriptors
+available, because I'm not sure exactly when was this introduced. If you are using an older descriptor and want to
+test those methods to see if they are available, please open an issue.
+
 # 1.7.2
 
 * Add the new `receipt_email` property for charges.

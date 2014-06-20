@@ -32,11 +32,11 @@ $client = new StripeClient('my-api-key');
 > You can change the API key for the client using the `setApiKey` method. This is useful if you are using Stripe
 Connect and make both your own API calls and API calls on behalf of your users.
 
-The currently latest supported version of the API is **2014-05-19**. You can (and should) also explicitly specify the version
+The currently latest supported version of the API is **2014-06-17**. You can (and should) also explicitly specify the version
 of the client using the second parameter:
 
 ```php
-$client = new StripeClient('my-api-key', '2014-05-19');
+$client = new StripeClient('my-api-key', '2014-06-17');
 ```
 
 ### Versioning
@@ -66,7 +66,7 @@ $details = $client->createCharge(array(
 ```
 
 The parameters have a direct one-to-one mapping with the official documentation (for any reference, you can also
-check the `ZfrStripe\Client\ServiceDescription\Stripe-2014-01-31.php` file). To know what the responses look like, please
+check the `ZfrStripe\Client\ServiceDescription\Stripe-2014-06-17.php` file). To know what the responses look like, please
 refer to the [official API reference](https://stripe.com/docs/api).
 
 #### Stripe Connect
@@ -280,11 +280,23 @@ RECIPIENT RELATED METHODS:
 * array getRecipients(array $args = array())
 * array updateRecipient(array $args = array())
 
+REFUND RELATED METHODS (**only available from 2014-06-17 descriptor**):
+
+* array getRefund(array $args = array())
+* array getRefunds(array $args = array())
+* array updateRefund(array $args = array())
+
 APPLICATION FEE RELATED METHODS:
 
 * array getApplicationFee(array $args = array())
 * array getApplicationFees(array $args = array())
 * array refundApplicationFee(array $args = array())
+
+BALANCE RELATED METHODS:
+
+* array getAccountBalance(array $args = array())
+* array getBalanceTransaction(array $args = array())
+* array getBalanceTransactions(array $args = array())
 
 TOKEN RELATED METHODS:
 

@@ -2390,6 +2390,131 @@ return array(
 
         /**
          * --------------------------------------------------------------------------------
+         * BALANCE RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#balance
+         * --------------------------------------------------------------------------------
+         */
+
+        'GetAccountBalance' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/balance',
+            'summary'          => 'Get the current account balance',
+            'errorResponses'   => $errors,
+            'parameters'       => array(
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
+            )
+        ),
+
+        'GetBalanceTransaction' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/balance/history/{id}',
+            'summary'          => 'Get an existing balance transactionb y its id',
+            'errorResponses'   => $errors,
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the balance transaction to get',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
+            )
+        ),
+
+        'GetBalanceTransactions' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/balance/history',
+            'summary'          => 'Get all the balance transactions',
+            'errorResponses'   => $errors,
+            'parameters'       => array(
+                'limit' => array(
+                    'description' => 'Limit on how many application fees are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ),
+                'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'ending_before' => array(
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'available_on' => array(
+                    'description' => 'A filter based on the "available_on" field. Can be an exact UTC timestamp, or a hash',
+                    'location'    => 'query',
+                    'type'        => array('string', 'array'),
+                    'required'    => false
+                ),
+                'created' => array(
+                    'description' => 'A filter based on the "created" field. Can be an exact UTC timestamp, or a hash',
+                    'location'    => 'query',
+                    'type'        => array('string', 'array'),
+                    'required'    => false
+                ),
+                'currency' => array(
+                    'description' => 'Filter for currency',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'source' => array(
+                    'description' => 'Filter balance transactions using a specific source id (for example a charge id)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'transfer' => array(
+                    'description' => 'For automatic Stripe transfers only, only returns transactions that were transferred out on the specified transfer ID',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'type' => array(
+                    'description' => 'Only returns transactions of the given type',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false,
+                    'enum'        => array(
+                        'adjustment', 'application_fee', 'application_fee_refund', 'charge',
+                        'refund', 'transfer', 'transfer_failure'
+                    )
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+                'include' => array(
+                    'description' => 'Allow to include some additional properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
+            )
+        ),
+
+        /**
+         * --------------------------------------------------------------------------------
          * TOKEN RELATED METHODS
          *
          * DOC: https://stripe.com/docs/api#tokens
