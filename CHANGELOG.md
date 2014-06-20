@@ -1,3 +1,13 @@
+# 1.8.0
+
+* [BC] The "Stripe-Version" header is now added to all requests. This allow to do API calls using another API version
+than the one define in your Stripe dashboard (see doc for more details).
+* [BC] Update latest API descriptor to 2014-06-17. It includes the following changes:
+* Refunds is now a first-class resource, so you can retrieve, update and list refunds through specific methods.
+* Allow dispute to have metadata (starting from 2014-06-17).
+* Allow charges to have metadata (starting from 2014-06-17).
+* Add the various "balance" methods that were missing. It has been backported to all descriptors.
+
 # 1.7.2
 
 * Add the new `receipt_email` property for charges.

@@ -53,7 +53,7 @@ $errors = array(
 
 return array(
     'name'        => 'Stripe',
-    'apiVersion'  => '2014-05-19',
+    'apiVersion'  => '2014-06-17',
     'baseUrl'     => 'https://api.stripe.com',
     'description' => 'Stripe is a payment system',
     'operations'  => array(
@@ -255,7 +255,7 @@ return array(
 
         'RefundCharge' => array(
             'httpMethod'       => 'POST',
-            'uri'              => '/v1/charges/{id}/refund',
+            'uri'              => '/v1/charges/{id}/refunds',
             'summary'          => 'Refund an existing charge',
             'errorResponses'   => $errors,
             'parameters'       => array(
@@ -276,6 +276,12 @@ return array(
                     'location'    => 'query',
                     'type'        => 'boolean',
                     'filters'     => array('ZfrStripe\Client\Filter\BooleanFilter::encodeValue'),
+                    'required'    => false
+                ),
+                'metadata' => array(
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
                     'required'    => false
                 ),
                 'expand' => array(
@@ -1897,6 +1903,12 @@ return array(
                     'type'        => 'string',
                     'required'    => false
                 ),
+                'metadata' => array(
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
                 'expand' => array(
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
@@ -2288,6 +2300,121 @@ return array(
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
+                ),
+                'metadata' => array(
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
+            )
+        ),
+
+        /**
+         * --------------------------------------------------------------------------------
+         * REFUND RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#refunds
+         * --------------------------------------------------------------------------------
+         */
+
+        'GetRefund' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/charges/{charge}/refunds/{id}',
+            'summary'          => 'Get an existing refund',
+            'errorResponses'   => $errors,
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the refund',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'charge' => array(
+                    'description' => 'Unique identifier of the charge to get the refund from',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
+            )
+        ),
+
+        'GetRefunds' => array(
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/charges/{charge}/refunds',
+            'summary'          => 'Get existing refunds for a given charge',
+            'errorResponses'   => $errors,
+            'parameters'       => array(
+                'charge' => array(
+                    'description' => 'Charge to get the refunds from',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'limit' => array(
+                    'description' => 'Limit on how many charges are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ),
+                'starting_after' => array(
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'ending_before' => array(
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'expand' => array(
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ),
+                'include' => array(
+                    'description' => 'Allow to include some additional properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                )
+            )
+        ),
+
+        'UpdateRefund' => array(
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/charges/{charge}/refunds/{id}',
+            'summary'          => 'Update an existing charge',
+            'errorResponses'   => $errors,
+            'parameters'       => array(
+                'id' => array(
+                    'description' => 'Unique identifier of the refund to update',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ),
+                'charge' => array(
+                    'description' => 'Charge to get the refunds from',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true
                 ),
                 'metadata' => array(
                     'description' => 'Optional metadata',
