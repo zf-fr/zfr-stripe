@@ -123,11 +123,23 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  * @method array getRecipients(array $args = array()) {@command Stripe GetRecipients}
  * @method array updateRecipient(array $args = array()) {@command Stripe UpdateRecipient}
  *
+ * REFUND RELATED METHODS:
+ *
+ * @method array getRefund(array $args = array()) {@command Stripe GetRefund}
+ * @method array getRefunds(array $args = array()) {@command Stripe GetRefunds}
+ * @method array updateRefund(array $args = array()) {@command Stripe UpdateRefunds}
+ *
  * APPLICATION FEE RELATED METHODS:
  *
  * @method array getApplicationFee(array $args = array()) {@command Stripe GetApplicationFee}
  * @method array getApplicationFees(array $args = array()) {@command Stripe GetApplicationFees}
  * @method array refundApplicationFee(array $args = array()) {@command Stripe RefundApplicationFee}
+ *
+ * BALANCE RELATED METHODS:
+ *
+ * @method array getAccountBalance(array $args = array()) {@command Stripe GetAccountBalance}
+ * @method array getBalanceTransaction(array $args = array()) {@command Stripe GetBalanceTransaction}
+ * @method array getBalanceTransactions(array $args = array()) {@command Stripe GetBalanceTransactions}
  *
  * TOKEN RELATED METHODS:
  *
@@ -156,7 +168,9 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  * @method ResourceIterator getInvoiceItemsIterator()
  * @method ResourceIterator getTransfersIterator()
  * @method ResourceIterator getRecipientsIterator()
+ * @method ResourceIterator getRefundsIterator()
  * @method ResourceIterator getApplicationFeesIterator()
+ * @method ResourceIterator getBalanceTransactionsIterator()
  * @method ResourceIterator getEventsIterator()
  */
 class StripeClient extends Client
@@ -190,6 +204,9 @@ class StripeClient extends Client
 
         // Prefix the User-Agent by SDK version
         $this->setUserAgent('zfr-stripe-php', true);
+
+        // Force the API version to be coherent with the used descriptor
+        $this->setDefaultOption('headers', array('Stripe-Version' => (string) $version));
 
         // Add an event to set the Authorization param
         $dispatcher = $this->getEventDispatcher();
