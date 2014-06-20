@@ -2359,7 +2359,7 @@ return array(
             'parameters'       => array(
                 'charge' => array(
                     'description' => 'Charge to get the refunds from',
-                    'location'    => 'query',
+                    'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
                 ),
@@ -2412,7 +2412,7 @@ return array(
                 ),
                 'charge' => array(
                     'description' => 'Charge to get the refunds from',
-                    'location'    => 'query',
+                    'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
                 ),

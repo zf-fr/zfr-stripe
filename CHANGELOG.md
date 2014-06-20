@@ -1,3 +1,7 @@
+# 1.8.1
+
+* Fix descriptor for refunds endpoint.
+
 # 1.8.0
 
 * [BC] The "Stripe-Version" header is now added to all requests. This allow to do API calls using another API version
