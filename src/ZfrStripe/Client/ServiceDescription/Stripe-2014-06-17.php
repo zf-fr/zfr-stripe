@@ -53,7 +53,7 @@ $errors = array(
 
 return array(
     'name'        => 'Stripe',
-    'apiVersion'  => '2014-05-19',
+    'apiVersion'  => '2014-06-17',
     'baseUrl'     => 'https://api.stripe.com',
     'description' => 'Stripe is a payment system',
     'operations'  => array(
@@ -276,6 +276,12 @@ return array(
                     'location'    => 'query',
                     'type'        => 'boolean',
                     'filters'     => array('ZfrStripe\Client\Filter\BooleanFilter::encodeValue'),
+                    'required'    => false
+                ),
+                'metadata' => array(
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
                     'required'    => false
                 ),
                 'expand' => array(
