@@ -82,9 +82,8 @@ To do that, you just need to create a Stripe Client with a named version. Exampl
 $stripeClient = new StripeClient('my-api-key', '2013-12-03');
 ```
 
-Before ZfrStripe 1.8, this code would use the "2013-12-03", but will use the API version defined in your Stripe dashboard,
-that may be different, actually. Now, it also sends the "Stripe-Version" header so it will make sure that it will also
-use this version on Stripe, independently of your setting in your Stripe dashboard.
+Before ZfrStripe 1.8, this code would use the "2013-12-03" descriptor, but will use the API version defined in your Stripe dashboard,
+that may actually be different. Now, it also sends the "Stripe-Version" header so it will make sure that the descriptor matches Stripe version, independently of your setting in your Stripe dashboard.
 
 If you want to use another API version for some API calls, just create a new client with a different version:
 
