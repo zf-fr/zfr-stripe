@@ -1,3 +1,8 @@
+# 1.8.2
+
+* Add the `statement_description` to invoice.
+* Add the new `forgiven` property when updating an invoice for latest descriptor.
+
 # 1.8.1
 
 * Fix descriptor for refunds endpoint.

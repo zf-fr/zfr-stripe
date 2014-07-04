@@ -1448,6 +1448,18 @@ return array(
                     'type'        => 'string',
                     'required'    => false
                 ),
+                'description' => array(
+                    'description' => 'Optional description for the invoice',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'statement_description' => array(
+                    'description' => 'Extra information about a charge for the customer\'s credit card statement',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
                 'application_fee' => array(
                     'description' => 'A fee in cents that will be applied to the invoice and transferred to the application owner\'s Stripe account',
                     'location'    => 'query',
@@ -1643,6 +1655,24 @@ return array(
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ),
+                'description' => array(
+                    'description' => 'Optional description for the invoice',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'statement_description' => array(
+                    'description' => 'Extra information about a charge for the customer\'s credit card statement',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ),
+                'forgiven' => array(
+                    'description' => 'Whether an invoice is forgiven or not',
+                    'location'    => 'query',
+                    'type'        => 'boolean',
+                    'required'    => false
                 ),
                 'application_fee' => array(
                     'description' => 'A fee in cents that will be applied to the invoice and transferred to the application owner\'s Stripe account',
