@@ -1,3 +1,7 @@
+# 1.9.0
+
+* [BC] Update latest API descriptor to 2014-07-22.
+
 # 1.8.2
 
 * Add the `statement_description` to invoice.
