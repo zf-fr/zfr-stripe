@@ -135,6 +135,12 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  * @method array getApplicationFees(array $args = array()) {@command Stripe GetApplicationFees}
  * @method array refundApplicationFee(array $args = array()) {@command Stripe RefundApplicationFee}
  *
+ * APPLICATION FEE REFUND RELATED METHODS:
+ *
+ * @method array getApplicationFeeRefund(array $args = array()) {@command Stripe GetApplicationFeeRefund}
+ * @method array getApplicationFeeRefunds(array $args = array()) {@command Stripe GetApplicationFeeRefunds}
+ * @method array updateApplicationFeeRefund(array $args = array()) {@command Stripe UpdateApplicationFeeRefund}
+ *
  * BALANCE RELATED METHODS:
  *
  * @method array getAccountBalance(array $args = array()) {@command Stripe GetAccountBalance}
@@ -170,6 +176,7 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  * @method ResourceIterator getRecipientsIterator()
  * @method ResourceIterator getRefundsIterator()
  * @method ResourceIterator getApplicationFeesIterator()
+ * @method ResourceIterator getApplicationFeeRefundsIterator()
  * @method ResourceIterator getBalanceTransactionsIterator()
  * @method ResourceIterator getEventsIterator()
  */
@@ -178,7 +185,7 @@ class StripeClient extends Client
     /**
      * Stripe API version
      */
-    const LATEST_API_VERSION = '2014-07-22';
+    const LATEST_API_VERSION = '2014-07-26';
 
     /**
      * @var string

@@ -1,3 +1,8 @@
+# 1.10.0
+
+* [BC] Update latest API descriptor to 2014-07-26. This adds new endpoint for application fee refunds, and change
+the endpoint to refund an application fee.
+
 # 1.9.0
 
 * [BC] Update latest API descriptor to 2014-07-22.
