@@ -1,3 +1,7 @@
+# 1.11.0
+
+* [BC] Update latest API descriptor to 2014-08-04. This change the response when getting transfers
+
 # 1.10.0
 
 * [BC] Update latest API descriptor to 2014-07-26. This adds new endpoint for application fee refunds, and change
