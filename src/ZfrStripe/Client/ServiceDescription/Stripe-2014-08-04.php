@@ -17,11 +17,11 @@
  */
 
 /**
- * The 2014-04-04 does not change anything in the API calls, however it changes the response
+ * The 2014-08-04 does not change anything in the API calls, however it changes the response
  * for automatic transfers
  */
 return array_merge(
-    include_once __DIR__ . '/Stripe-2014-08-04.php',
+    include_once __DIR__ . '/Stripe-2014-07-26.php',
     array(
         'apiVersion' => '2014-08-04'
     )
