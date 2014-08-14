@@ -2704,7 +2704,7 @@ return array(
         'GetBalanceTransaction' => array(
             'httpMethod'       => 'GET',
             'uri'              => '/v1/balance/history/{id}',
-            'summary'          => 'Get an existing balance transactionb y its id',
+            'summary'          => 'Get an existing balance transaction by its id',
             'errorResponses'   => $errors,
             'parameters'       => array(
                 'id' => array(
