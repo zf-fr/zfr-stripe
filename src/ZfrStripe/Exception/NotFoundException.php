@@ -22,6 +22,6 @@ namespace ZfrStripe\Exception;
  * @author  Michaël Gallego <mic.gallego@gmail.com>
  * @licence MIT
  */
-class NotFoundException extends AbstractException
+class NotFoundResponseException extends AbstractResponseException
 {
 }

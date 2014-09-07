@@ -1,3 +1,16 @@
+# 2.0.0
+
+* [BC] PHP minimum dependency has been raised to PHP 5.4
+* [BC] Any descriptor before 2014-03-28 has been removed. If you need a previous version, please use 1.x branch.
+* Add new method to update coupons.
+* Add missing recipient card endpoints.
+* API version can now be changed by using the same client.
+* After some talk with Stripe developers, I realized I could simplify how versioning is done inside ZfrStripe. Starting
+from v2, I will reuse the same descriptor until an endpoint actually changes (for instance, in January 2014 the endpoint
+to get customer's subscriptions changed from "/customers/cus_abc/subscription" to "/customers/cus_abc_subscriptions"). However,
+if a new endpoint is introduced, it can actually be accessed even for older versions so that we do not need to duplicate
+the whole descriptor.
+
 # 1.12.0
 
 * [BC] Update latest API descriptor to 2014-08-20. This changes the response when getting disputes.

@@ -18,27 +18,10 @@
 
 namespace ZfrStripe\Exception;
 
-use Guzzle\Http\Message\Request;
-use Guzzle\Http\Message\Response;
-use Guzzle\Plugin\ErrorResponse\ErrorResponseExceptionInterface;
-
 /**
  * @author  Michaël Gallego <mic.gallego@gmail.com>
  * @licence MIT
  */
-interface ExceptionInterface extends ErrorResponseExceptionInterface
+interface ExceptionInterface
 {
-    /**
-     * Get the request object
-     *
-     * @return Request
-     */
-    public function getRequest();
-
-    /**
-     * Get the response object
-     *
-     * @return Response
-     */
-    public function getResponse();
 }

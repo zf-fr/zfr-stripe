@@ -35,7 +35,7 @@ class StripeCommandsCursorIterator extends ResourceIterator
      * @param CommandInterface $command
      * @param array            $data
      */
-    public function __construct(CommandInterface $command, array $data = array())
+    public function __construct(CommandInterface $command, array $data = [])
     {
         parent::__construct($command, $data);
 
@@ -47,10 +47,10 @@ class StripeCommandsCursorIterator extends ResourceIterator
      */
     protected function sendRequest()
     {
-        $this->command->set('limit', $this->pageSize);
+        $this->command['limit'] = $this->pageSize;
 
         if ($this->nextToken) {
-            $this->command->set('starting_after', $this->nextToken);
+            $this->command['starting_after'] = $this->nextToken;
         }
 
         $result   = $this->command->execute();

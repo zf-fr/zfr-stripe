@@ -47,7 +47,7 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
         $request  = $this->getMock('Guzzle\Http\Message\Request', [], [], '', false);
         $command->expects($this->once())->method('getRequest')->will($this->returnValue($request));
         $response = new Response(402);
-        $response->setBody(json_encode(array('error' => array('type' => 'card_error'))));
+        $response->setBody(json_encode(['error' => ['type' => 'card_error']]));
 
         $exception = RequestFailedException::fromCommand($command, $response);
 
@@ -60,10 +60,10 @@ class ExceptionTest extends \PHPUnit_Framework_TestCase
         $request  = $this->getMock('Guzzle\Http\Message\Request', [], [], '', false);
         $command->expects($this->once())->method('getRequest')->will($this->returnValue($request));
         $response = new Response(400);
-        $response->setBody(json_encode(array('error' => array(
+        $response->setBody(json_encode(['error' => [
             'type' => 'invalid_request_error',
             'code' => 'rate_limit'
-        ))));
+        ]]));
 
         $exception = BadRequestException::fromCommand($command, $response);
 

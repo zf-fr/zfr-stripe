@@ -18,15 +18,17 @@
 
 namespace ZfrStripe\Exception;
 
+use Exception;
 use Guzzle\Http\Message\Request;
 use Guzzle\Http\Message\Response;
+use Guzzle\Plugin\ErrorResponse\ErrorResponseExceptionInterface;
 use Guzzle\Service\Command\CommandInterface;
 
 /**
  * @author  Michaël Gallego <mic.gallego@gmail.com>
  * @licence MIT
  */
-abstract class AbstractException extends \Exception implements ExceptionInterface
+abstract class AbstractResponseException extends Exception implements ExceptionInterface, ErrorResponseExceptionInterface
 {
     /**
      * @var Request

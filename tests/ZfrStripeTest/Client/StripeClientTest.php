@@ -43,12 +43,28 @@ class StripeClientTest extends PHPUnit_Framework_TestCase
         $this->assertInternalType('string', $this->client->getApiVersion());
     }
 
+    public function testTriggerExceptionIfUnsupportedVersionIsSet()
+    {
+        $this->setExpectedException('ZfrStripe\Exception\UnsupportedStripeVersionException');
+
+        $this->client->setApiVersion('2014-01-01');
+    }
+
+    public function testAssertApiVersionHeaderIsAdded()
+    {
+        $this->assertEquals($this->client->getApiVersion(), $this->client->getDefaultOption('headers/Stripe-Version'));
+
+        // Assert it changes it if we update the version
+        $this->client->setApiVersion('2014-05-19');
+        $this->assertEquals('2014-05-19', $this->client->getDefaultOption('headers/Stripe-Version'));
+    }
+
     public function testUserAgentIsIncluded()
     {
         // Make sure the user agent contains "zfr-stripe-php"
         $command = $this->client->getCommand('GetAccount');
         $request = $command->prepare();
-        $this->client->dispatch('command.before_send', array('command' => $command));
+        $this->client->dispatch('command.before_send', ['command' => $command]);
         $this->assertRegExp('/^zfr-stripe-php/', (string)$request->getHeader('User-Agent', true));
     }
 }

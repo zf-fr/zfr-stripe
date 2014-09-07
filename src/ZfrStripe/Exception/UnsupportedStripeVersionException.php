@@ -16,43 +16,14 @@
  * and is licensed under the MIT license.
  */
 
-namespace ZfrStripe\Client\Iterator;
+namespace ZfrStripe\Exception;
 
-use Guzzle\Service\Command\CommandInterface;
-use Guzzle\Service\Resource\ResourceIterator;
+use RuntimeException as BaseRuntimeException;
 
 /**
- * Basic iterator that is used to iterate over all Stripe commands
- *
  * @author  Michaël Gallego <mic.gallego@gmail.com>
  * @licence MIT
  */
-class StripeCommandsIterator extends ResourceIterator
+class UnsupportedStripeVersionException extends BaseRuntimeException implements ExceptionInterface
 {
-    /**
-     * @param CommandInterface $command
-     * @param array            $data
-     */
-    public function __construct(CommandInterface $command, array $data = array())
-    {
-        parent::__construct($command, $data);
-
-        $this->pageSize = 100; // This is the maximum allowed by Stripe
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    protected function sendRequest()
-    {
-        $this->command->set('count', $this->pageSize);
-        $this->command->set('offset', $this->iteratedCount - 1);
-
-        $result = $this->command->execute();
-        $data   = $result['data'];
-
-        $this->nextToken = empty($data) ? false : true;
-
-        return $data;
-    }
 }

@@ -25,6 +25,7 @@ use Guzzle\Service\Description\ServiceDescription;
 use Guzzle\Service\Resource\ResourceIterator;
 use ZfrStripe\Client\Iterator\StripeCommandsCursorIterator;
 use ZfrStripe\Client\Iterator\StripeCommandsIterator;
+use ZfrStripe\Exception\UnsupportedStripeVersionException;
 use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
 
 /**
@@ -56,6 +57,14 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  * @method array getCards(array $args = array()) {@command Stripe GetCards}
  * @method array updateCard(array $args = array()) {@command Stripe UpdateCard}
  *
+ * RECIPIENT CARD RELATED METHODS:
+ *
+ * @method array createRecipientCard(array $args = array()) {@command Stripe CreateRecipientCard}
+ * @method array deleteRecipientCard(array $args = array()) {@command Stripe DeleteRecipientCard}
+ * @method array getRecipientCard(array $args = array()) {@command Stripe GetRecipientCard}
+ * @method array getRecipientCards(array $args = array()) {@command Stripe GetRecipientCards}
+ * @method array updateRecipientCard(array $args = array()) {@command Stripe UpdateRecipientCard}
+ *
  * SUBSCRIPTION RELATED METHODS:
  *
  * @method array cancelSubscription(array $args = array()) {@command Stripe CancelSubscription}
@@ -78,6 +87,7 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  * @method array deleteCoupon(array $args = array()) {@command Stripe DeleteCoupon}
  * @method array getCoupon(array $args = array()) {@command Stripe GetCoupon}
  * @method array getCoupons(array $args = array()) {@command Stripe GetCoupons}
+ * @method array updateCoupon(array $args = array()) {@command Stripe UpdateCoupon}
  *
  * DISCOUNT RELATED METHODS:
  *
@@ -167,6 +177,7 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  * @method ResourceIterator getCustomersIterator()
  * @method ResourceIterator getChargesIterator()
  * @method ResourceIterator getCardsIterator()
+ * @method ResourceIterator getRecipientCardsIterator()
  * @method ResourceIterator getSubscriptionsIterator()
  * @method ResourceIterator getPlansIterator()
  * @method ResourceIterator getCouponsIterator()
@@ -188,9 +199,21 @@ class StripeClient extends Client
     const LATEST_API_VERSION = '2014-08-20';
 
     /**
+     * @var array
+     */
+    protected $availableVersions = [
+        '2014-03-28', '2014-05-19', '2014-06-17', '2014-07-22', '2014-07-26', '2014-08-04', '2014-08-20'
+    ];
+
+    /**
      * @var string
      */
     protected $apiKey;
+
+    /**
+     * @var string
+     */
+    protected $version;
 
     /**
      * Constructor
@@ -202,25 +225,17 @@ class StripeClient extends Client
     {
         parent::__construct();
 
-        $this->apiKey = (string) $apiKey;
+        $this->setApiKey($apiKey);
+        $this->setApiVersion($version);
 
-        $this->setDescription(ServiceDescription::factory(sprintf(
-            __DIR__ . '/ServiceDescription/Stripe-%s.php',
-            (string) $version
-        )));
-
-        // Prefix the User-Agent by SDK version
         $this->setUserAgent('zfr-stripe-php', true);
 
-        // Force the API version to be coherent with the used descriptor
-        $this->setDefaultOption('headers', array('Stripe-Version' => (string) $version));
-
-        // Add an event to set the Authorization param
+        // Add an event to set the Authorization param before sending any request
         $dispatcher = $this->getEventDispatcher();
 
         $dispatcher->addSubscriber(new ErrorResponsePlugin());
-        $dispatcher->addListener('command.after_prepare', array($this, 'afterPrepare'));
-        $dispatcher->addListener('command.before_send', array($this, 'authorizeRequest'));
+        $dispatcher->addListener('command.after_prepare', [$this, 'afterPrepare']);
+        $dispatcher->addListener('command.before_send', [$this, 'authorizeRequest']);
     }
 
     /**
@@ -247,23 +262,45 @@ class StripeClient extends Client
     /**
      * {@inheritdoc}
      */
-    public function __call($method, $args = array())
+    public function __call($method, $args = [])
     {
         if (substr($method, -8) === 'Iterator') {
             // Allow magic method calls for iterators (e.g. $client-><CommandName>Iterator($params))
-            $commandOptions  = isset($args[0]) ? $args[0] : array();
-            $iteratorOptions = isset($args[1]) ? $args[1] : array();
+            $commandOptions  = isset($args[0]) ? $args[0] : [];
+            $iteratorOptions = isset($args[1]) ? $args[1] : [];
             $command         = $this->getCommand(substr($method, 0, -8), $commandOptions);
 
-            // Based on the API version, we use (or not) the new cursor based pagination
-            if ($this->getApiVersion() >= '2014-03-28') {
-                return new StripeCommandsCursorIterator($command, $iteratorOptions);
-            } else {
-                return new StripeCommandsIterator($command, $iteratorOptions);
-            }
+            return new StripeCommandsCursorIterator($command, $iteratorOptions);
         }
 
         return parent::__call(ucfirst($method), $args);
+    }
+
+    /**
+     * Set the Stripe API version
+     *
+     * This method forces to add a Stripe-Version header, so that you can use the wanted version no matter
+     * what the setting is on Stripe
+     *
+     * @param  string $version
+     * @return void
+     */
+    public function setApiVersion($version)
+    {
+        if (!in_array($version, $this->availableVersions, true)) {
+            throw new UnsupportedStripeVersionException(sprintf(
+                'The given Stripe version ("%s") is not supported by ZfrStripe. Value must be one of the following: "%s"',
+                $version,
+                implode(', ', $this->availableVersions)
+            ));
+        }
+
+        $this->version = (string) $version;
+        $this->setDefaultOption('headers', ['Stripe-Version' => (string) $this->version]);
+
+        $this->setDescription(ServiceDescription::factory(sprintf(
+            __DIR__ . '/ServiceDescription/Stripe-v1.0.php'
+        )));
     }
 
     /**
@@ -273,7 +310,7 @@ class StripeClient extends Client
      */
     public function getApiVersion()
     {
-        return $this->serviceDescription->getApiVersion();
+        return $this->version;
     }
 
     /**

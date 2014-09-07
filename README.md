@@ -5,11 +5,9 @@ ZfrStripe
 
 ZfrStripe is a modern PHP library based on Guzzle for [Stripe payment system](https://www.stripe.com).
 
-> Note : this library does not contain tests, mainly because I'm not sure about how to write tests for an API
-wrapper. Don't hesitate to help on this ;-).
-
 ## Dependencies
 
+* PHP 5.4+
 * [Guzzle](http://www.guzzlephp.org): >= 3.6
 
 ## Installation
@@ -17,7 +15,7 @@ wrapper. Don't hesitate to help on this ;-).
 Installation of ZfrStripe is only officially supported using Composer:
 
 ```sh
-php composer.phar require zfr/zfr-stripe:1.*
+php composer.phar require zfr/zfr-stripe:2.*
 ```
 
 ## Tutorial
@@ -36,72 +34,75 @@ The currently latest supported version of the API is **2014-08-20**. You can (an
 of the client using the second parameter:
 
 ```php
-$client = new StripeClient('my-api-key', '2014-06-17');
+$client = new StripeClient('my-api-key', '2014-08-20');
 ```
 
 ### Versioning
 
 Stripe versions its API using a dated version ("2013-12-03", "2014-01-31"...). Their [versioning policy](https://stripe.com/docs/upgrades)
 is to release a new dated version each time something changes in their API (for instance, if a response returns
-new attributes, if a property is marked as deprecated)...
+new attributes, if new endpoint is added)...
 
-ZfrStripe will follow this scheming method by releasing a new service description.
+Starting from v2, ZfrStripe does not follow this mechanism strictly, because new endpoints are actually also available for older versions of Stripe. We therefore only release a new descriptor each time an endpoint is **removed** or if its URL changes.
 
-By default, each new minor version (1.1.0 to 1.2.0 for instance) *may* update the service descriptor to the latest
-available. This means that to keep BC you should either tighten your dependency (1.3.* instead of 1.* for instance)
-OR always specify the exact service descriptor you want, as shown above.
+However, each new minor version (2.1.0 to 2.2.0 for instance) will update the Stripe API version to the latest available. This means that Stripe responses *may* change. This means that to keep BC you should either tighten your dependency (2.1.* instead of 2.* for instance) OR always specify the exact version you want, as shown above.
 
-You can know about the available descriptors in the `ZfrStripe\Client\ServiceDescription` folder.
+Currently, the following Stripe API versions are accepted by ZfrStripe: `2014-03-28`, `2014-05-19`, `2014-06-17`, `2014-07-22`,  `2014-07-26`,  `2014-08-04`, `2014-08-20`. I will try to update the library as soon as new version are released.
+
+> If you need support for older versions, please use branch v1 of ZfrStripe.
 
 ### How to use it?
 
 Using the client is easy. For instance, here is how you'd create a new charge:
 
 ```php
-$details = $client->createCharge(array(
+$details = $client->createCharge([
     'amount'   => 500,
     'currency' => 'EUR',
     'customer' => 'cus_37EGGf4LMGgYy8'
-));
+]);
 ```
 
 The parameters have a direct one-to-one mapping with the official documentation (for any reference, you can also
-check the `ZfrStripe\Client\ServiceDescription\Stripe-2014-07-26.php` file). To know what the responses look like, please
+check the `ZfrStripe\Client\ServiceDescription\Stripe-v1.0.php` file). To know what the responses look like, please
 refer to the [official API reference](https://stripe.com/docs/api).
 
 #### Using a different Stripe API version
 
-Starting from ZfrStripe 1.8, we send the "Stripe-Version" header to all requests made to Stripe. Usually, the best
-way is to upgrade your API version globally in your Stripe dashboard. However, you may want to create two Stripe
-clients using two different descriptors, or testing new feature in your test environment, without changing it
-globally to your whole Stripe account.
+For each requests, we send the "Stripe-Version" header to Stripe. Usually, the best
+way is to upgrade your API version globally in your Stripe dashboard. However, you may want to use two different versions in different part of your code, or test new features during development without changing it globally to your whole Stripe account.
 
-To do that, you just need to create a Stripe Client with a named version. Example:
+To do that, you can explicitely set the wanted version in the constructor. Example:
 
 ```php
-$stripeClient = new StripeClient('my-api-key', '2013-12-03');
+$stripeClient = new StripeClient('my-api-key', '2014-03-28');
 ```
 
-Before ZfrStripe 1.8, this code would use the "2013-12-03" descriptor, but will use the API version defined in your Stripe dashboard,
-that may actually be different. Now, it also sends the "Stripe-Version" header so it will make sure that the descriptor matches Stripe version, independently of your setting in your Stripe dashboard.
-
-If you want to use another API version for some API calls, just create a new client with a different version:
+You can dynamically change the version using the `setApiVersion` method:
 
 ```php
-$stripeClient = new StripeClient('my-api-key', '2014-07-26');
+$stripeClient = new StripeClient('my-api-key', '2014-03-28');
+
+// Responses will be formatted according to the 2014-03-28 version...
+
+$stripeClient->setApiVersion('2014-08-20');
+
+// Responses will now be formatted according to the 2014-08-20 version...
 ```
+
+Alternatively, you can also create different Stripe clients.
 
 #### Stripe Connect
 
 If you are using Stripe Connect, you will want to make API calls on behalf of your client. You have nothing special
-to do: just use the `setAccessToken` method with the customer's access token:
+to do: just use the `setApiKey` method with the customer's access token:
 
 ```php
-$client->setAccessToken('my-customers-token');
+$client->setApiKey('my-customers-token');
 // All API calls will be made on behalf of this customer now!
 ```
 
-Please note that if you want to use again your own access token, you will need to make a new call to this method.
+Please note that if you want to use again your own secret key, you will need to make a new call to this method.
 
 #### Expand
 
@@ -109,9 +110,9 @@ All Stripe API requests have support to expand some nested objects inside respon
 through the `expand` parameter, which must be an array:
 
 ```php
-$details = $client->getCharges(array(
-    'expand' => array('customer')
-));
+$details = $client->getCharges([
+    'expand' => ['customer']
+]);
 ```
 
 #### Iterators
@@ -145,10 +146,7 @@ foreach ($iterator as $event) {
 }
 ```
 
-> Note: starting from 2014-03-28 version, Stripe has changed how it handles pagination, and now uses a cursor-based
-pagination. This is much more flexible, as it allows you to keep track of your pagination, even if new items were
-added while you paginate data. Furthermore, it has a new property that allows us to avoid doing an additional request
-at the end to check if there are more data to fetch:
+You can also take advantage of Stripe [cursor-based pagination](https://stripe.com/docs/api#pagination):
 
 ```php
 $iterator = $client->getInvoicesIterator(['starting_after' => 'in_abcdef');
@@ -188,13 +186,13 @@ Usage:
 use ZfrStripe\Exception\TransactionErrorException;
 
 try {
-    $client->createCard(array(
-        'card' => array(
+    $client->createCard([
+        'card' => [
             'number'    => '4242424242424242',
             'exp_month' => '01',
             'exp_year'  => '2016'
-        )
-    ));
+        ]
+    ]);
 } catch (CardErrorException $exception) {
     // Seems we couldn't create the card, maybe because it's invalid
     $why = $exception->getMessage();
@@ -235,6 +233,14 @@ CARD RELATED METHODS:
 * array getCards(array $args = array())
 * array updateCard(array $args = array())
 
+RECIPIENT CARD RELATED METHODS:
+
+* array createRecipientCard(array $args = array())
+* array deleteRecipientCard(array $args = array())
+* array getRecipientCard(array $args = array())
+* array getRecipientCards(array $args = array())
+* array updateRecipientCard(array $args = array())
+
 SUBSCRIPTION RELATED METHODS:
 
 * array cancelSubscription(array $args = array())
@@ -257,6 +263,7 @@ COUPON RELATED METHODS:
 * array deleteCoupon(array $args = array())
 * array getCoupon(array $args = array())
 * array getCoupons(array $args = array())
+* array updateCoupon(array $args = array())
 
 DISCOUNT RELATED METHODS:
 
@@ -302,7 +309,7 @@ RECIPIENT RELATED METHODS:
 * array getRecipients(array $args = array())
 * array updateRecipient(array $args = array())
 
-REFUND RELATED METHODS (**only available from 2014-06-17 descriptor**):
+REFUND RELATED METHODS:
 
 * array getRefund(array $args = array())
 * array getRefunds(array $args = array())

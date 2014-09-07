@@ -36,11 +36,11 @@ class StripeQueryAggregator implements QueryAggregatorInterface
      */
     public function aggregate($key, $value, QueryString $query)
     {
-        $ret = array();
+        $ret = [];
 
         foreach ($value as $k => $v) {
             if (is_int($k)) {
-                return array($query->encodeValue("{$key}[]") => $value);
+                return [$query->encodeValue("{$key}[]") => $value];
             }
 
             $k = "{$key}[{$k}]";

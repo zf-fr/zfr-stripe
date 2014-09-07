@@ -32,16 +32,16 @@ class StripeQueryAggregatorTest extends \PHPUnit_Framework_TestCase
         $query      = new QueryString();
         $aggregator = new StripeQueryAggregator();
 
-        $result = $aggregator->aggregate('expand', array('customer', 'invoice'), $query);
-        $expected[$query->encodeValue('expand[]')] = array('customer', 'invoice');
+        $result = $aggregator->aggregate('expand', ['customer', 'invoice'], $query);
+        $expected[$query->encodeValue('expand[]')] = ['customer', 'invoice'];
 
         $this->assertEquals($expected, $result);
 
-        $result   = $aggregator->aggregate('card', array('ccv' => '123', 'name' => 'foo'), $query);
-        $expected = array(
+        $result   = $aggregator->aggregate('card', ['ccv' => '123', 'name' => 'foo'], $query);
+        $expected = [
             $query->encodeValue('card[ccv]')  => '123',
             $query->encodeValue('card[name]') => 'foo'
-        );
+        ];
 
         $this->assertEquals($expected, $result);
     }
