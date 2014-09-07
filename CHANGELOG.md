@@ -1,6 +1,10 @@
+# 1.12.0
+
+* [BC] Update latest API descriptor to 2014-08-20. This changes the response when getting disputes.
+
 # 1.11.0
 
-* [BC] Update latest API descriptor to 2014-08-04. This change the response when getting transfers
+* [BC] Update latest API descriptor to 2014-08-04. This changes the response when getting transfers.
 
 # 1.10.0
 
