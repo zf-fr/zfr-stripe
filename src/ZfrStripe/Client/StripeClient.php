@@ -225,9 +225,9 @@ class StripeClient extends Client
     {
         parent::__construct();
 
-        $this->apiKey = (string) $apiKey;
-
+        $this->setApiKey($apiKey);
         $this->setApiVersion($version);
+
         $this->setUserAgent('zfr-stripe-php', true);
 
         // Add an event to set the Authorization param before sending any request
