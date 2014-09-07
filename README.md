@@ -235,6 +235,14 @@ CARD RELATED METHODS:
 * array getCards(array $args = array())
 * array updateCard(array $args = array())
 
+RECIPIENT CARD RELATED METHODS:
+
+* array createRecipientCard(array $args = array())
+* array deleteRecipientCard(array $args = array())
+* array getRecipientCard(array $args = array())
+* array getRecipientCards(array $args = array())
+* array updateRecipientCard(array $args = array())
+
 SUBSCRIPTION RELATED METHODS:
 
 * array cancelSubscription(array $args = array())
@@ -257,6 +265,7 @@ COUPON RELATED METHODS:
 * array deleteCoupon(array $args = array())
 * array getCoupon(array $args = array())
 * array getCoupons(array $args = array())
+* array updateCoupon(array $args = array())
 
 DISCOUNT RELATED METHODS:
 

@@ -16,47 +16,46 @@
  * and is licensed under the MIT license.
  */
 
-$errors = array(
-    array(
+$errors = [
+    [
         'class' => 'ZfrStripe\Exception\BadRequestException',
         'code'  => 400
-    ),
-    array(
+    ],
+    [
         'class' => 'ZfrStripe\Exception\UnauthorizedException',
         'code'  => 401
-    ),
-    array(
+    ],
+    [
         'class' => 'ZfrStripe\Exception\RequestFailedException',
         'code'  => 402
-    ),
-    array(
+    ],
+    [
         'class' => 'ZfrStripe\Exception\NotFoundException',
         'code'  => 404
-    ),
-    array(
+    ],
+    [
         'class' => 'ZfrStripe\Exception\ServerErrorException',
         'code'  => 500
-    ),
-    array(
+    ],
+    [
         'class' => 'ZfrStripe\Exception\ServerErrorException',
         'code'  => 502
-    ),
-    array(
+    ],
+    [
         'class' => 'ZfrStripe\Exception\ServerErrorException',
         'code'  => 503
-    ),
-    array(
+    ],
+    [
         'class' => 'ZfrStripe\Exception\ServerErrorException',
         'code'  => 504
-    )
-);
+    ]
+];
 
-return array(
+return [
     'name'        => 'Stripe',
-    'apiVersion'  => '2014-05-19',
     'baseUrl'     => 'https://api.stripe.com',
     'description' => 'Stripe is a payment system',
-    'operations'  => array(
+    'operations'  => [
         /**
          * --------------------------------------------------------------------------------
          * CHARGES RELATED METHODS
@@ -64,261 +63,268 @@ return array(
          * DOC: https://stripe.com/docs/api#charges
          * --------------------------------------------------------------------------------
          */
-        'CaptureCharge' => array(
+
+        'CaptureCharge' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/charges/{id}/capture',
             'summary'          => 'Capture an existing charge',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the charge',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'amount' => array(
+                ],
+                'amount' => [
                     'description' => 'Amount (in cents) to capture',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'receipt_email' => array(
+                ],
+                'receipt_email' => [
                     'description' => 'The email address to send this charge\'s receipt to',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'application_fee' => array(
+                ],
+                'application_fee' => [
                     'description' => 'A fee in cents that will be applied to the charge and transferred to the application owner\'s Stripe account',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'CreateCharge' => array(
+        'CreateCharge' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/charges',
             'summary'          => 'Create a new charge (either card or customer is needed)',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'amount' => array(
+            'parameters'       => [
+                'amount' => [
                     'description' => 'Amount (in cents)',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => true
-                ),
-                'currency' => array(
+                ],
+                'currency' => [
                     'description' => '3-letter ISO code for currency',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'customer' => array(
+                ],
+                'customer' => [
                     'description' => 'Unique client identifier',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'card' => array(
+                ],
+                'card' => [
                     'description' => 'Unique card identifier (can either be an ID or a hash)',
                     'location'    => 'query',
-                    'type'        => array('string', 'array'),
+                    'type'        => ['string', 'array'],
                     'required'    => false
-                ),
-                'capture' => array(
+                ],
+                'capture' => [
                     'description' => 'Whether or not to immediately capture the charge',
                     'location'    => 'query',
                     'type'        => 'boolean',
-                    'filters'     => array('ZfrStripe\Client\Filter\BooleanFilter::encodeValue'),
+                    'filters'     => ['ZfrStripe\Client\Filter\BooleanFilter::encodeValue'],
                     'required'    => false
-                ),
-                'description' => array(
+                ],
+                'description' => [
                     'description' => 'Optional description for the charge',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'metadata' => array(
+                ],
+                'metadata' => [
                     'description' => 'Optional metadata',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'statement_description' => array(
+                ],
+                'statement_description' => [
                     'description' => 'An arbitrary string to be displayed alongside your company name on your customer\'s credit card statement',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'receipt_email' => array(
+                ],
+                'receipt_email' => [
                     'description' => 'The email address to send this charge\'s receipt to',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'application_fee' => array(
+                ],
+                'application_fee' => [
                     'description' => 'A fee in cents that will be applied to the charge and transferred to the application owner\'s Stripe account',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetCharge' => array(
+        'GetCharge' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/charges/{id}',
             'summary'          => 'Get an existing charge',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the charge',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetCharges' => array(
+        'GetCharges' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/charges',
             'summary'          => 'Get existing charges',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'limit' => array(
+            'parameters'       => [
+                'limit' => [
                     'description' => 'Limit on how many charges are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 100,
                     'required'    => false
-                ),
-                'starting_after' => array(
+                ],
+                'starting_after' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'ending_before' => array(
+                ],
+                'ending_before' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'created' => array(
+                ],
+                'created' => [
                     'description' => 'A filter based on the "created" field. Can be an exact UTC timestamp, or a hash',
                     'location'    => 'query',
-                    'type'        => array('string', 'array'),
+                    'type'        => ['string', 'array'],
                     'required'    => false
-                ),
-                'customer' => array(
+                ],
+                'customer' => [
                     'description' => 'Only return charges for a specific customer',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'include' => array(
+                ],
+                'include' => [
                     'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'RefundCharge' => array(
+        'RefundCharge' => [
             'httpMethod'       => 'POST',
-            'uri'              => '/v1/charges/{id}/refund',
+            'uri'              => '/v1/charges/{id}/refunds',
             'summary'          => 'Refund an existing charge',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the charge',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'amount' => array(
+                ],
+                'amount' => [
                     'description' => 'Amount (in cents) - default to the whole charge',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'refund_application_fee' => array(
+                ],
+                'refund_application_fee' => [
                     'description' => 'Indicate whether the application fee should be refunded when refunding this charge',
                     'location'    => 'query',
                     'type'        => 'boolean',
-                    'filters'     => array('ZfrStripe\Client\Filter\BooleanFilter::encodeValue'),
+                    'filters'     => ['ZfrStripe\Client\Filter\BooleanFilter::encodeValue'],
                     'required'    => false
-                ),
-                'expand' => array(
-                    'description' => 'Allow to expand some properties',
-                    'location'    => 'query',
-                    'type'        => 'array',
-                    'required'    => false
-                )
-            )
-        ),
-
-        'UpdateCharge' => array(
-            'httpMethod'       => 'POST',
-            'uri'              => '/v1/charges/{id}',
-            'summary'          => 'Update an existing charge',
-            'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
-                    'description' => 'Unique identifier of the charge to update',
-                    'location'    => 'uri',
-                    'type'        => 'string',
-                    'required'    => true
-                ),
-                'description' => array(
-                    'description' => 'Optional description for the charge',
-                    'location'    => 'query',
-                    'type'        => 'string',
-                    'required'    => false
-                ),
-                'metadata' => array(
+                ],
+                'metadata' => [
                     'description' => 'Optional metadata',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
+
+        'UpdateCharge' => [
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/charges/{id}',
+            'summary'          => 'Update an existing charge',
+            'errorResponses'   => $errors,
+            'parameters'       => [
+                'id' => [
+                    'description' => 'Unique identifier of the charge to update',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'description' => [
+                    'description' => 'Optional description for the charge',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'metadata' => [
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'expand' => [
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
 
         /**
          * --------------------------------------------------------------------------------
@@ -327,226 +333,227 @@ return array(
          * DOC: https://stripe.com/docs/api#customers
          * --------------------------------------------------------------------------------
          */
-        'CreateCustomer' => array(
+
+        'CreateCustomer' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/customers',
             'summary'          => 'Create a new customer (either card or customer is needed)',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'account_balance' => array(
+            'parameters'       => [
+                'account_balance' => [
                     'description' => 'An integer amount in cents that is the starting account balance for your customer',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'card' => array(
+                ],
+                'card' => [
                     'description' => 'Unique card identifier (can either be an ID or a hash)',
                     'location'    => 'query',
-                    'type'        => array('string', 'array'),
+                    'type'        => ['string', 'array'],
                     'required'    => false
-                ),
-                'coupon' => array(
+                ],
+                'coupon' => [
                     'description' => 'Optional coupon identifier that applies a discount on all recurring charges',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'plan' => array(
+                ],
+                'plan' => [
                     'description' => 'Optional plan for the customer',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'quantity' => array(
+                ],
+                'quantity' => [
                     'description' => 'Quantity you\'d like to apply to the subscription you\'re creating',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'trial_end' => array(
+                ],
+                'trial_end' => [
                     'description' => 'UTC integer timestamp representing the end of the trial period the customer will get before being charged for the first time',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'description' => array(
+                ],
+                'description' => [
                     'description' => 'Optional description for the customer',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'email' => array(
+                ],
+                'email' => [
                     'description' => 'Optional customer\'s email address',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'metadata' => array(
+                ],
+                'metadata' => [
                     'description' => 'Optional metadata',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'DeleteCustomer' => array(
+        'DeleteCustomer' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/customers/{id}',
             'summary'          => 'Delete an existing customer',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the customer',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetCustomer' => array(
+        'GetCustomer' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/customers/{id}',
             'summary'          => 'Get an existing customer',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the customer',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetCustomers' => array(
+        'GetCustomers' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/customers',
             'summary'          => 'Get existing customers',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'limit' => array(
+            'parameters'       => [
+                'limit' => [
                     'description' => 'Limit on how many customers are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 100,
                     'required'    => false
-                ),
-                'starting_after' => array(
+                ],
+                'starting_after' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'ending_before' => array(
+                ],
+                'ending_before' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'created' => array(
+                ],
+                'created' => [
                     'description' => 'A filter based on the "created" field. Can be an exact UTC timestamp, or a hash',
                     'location'    => 'query',
-                    'type'        => array('string', 'array'),
+                    'type'        => ['string', 'array'],
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'include' => array(
+                ],
+                'include' => [
                     'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'UpdateCustomer' => array(
+        'UpdateCustomer' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/customers/{id}',
             'summary'          => 'Update an existing customer',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the customer to update',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'account_balance' => array(
+                ],
+                'account_balance' => [
                     'description' => 'An integer amount in cents that is the starting account balance for your customer',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'card' => array(
+                ],
+                'card' => [
                     'description' => 'Unique card identifier (can either be an ID or a hash)',
                     'location'    => 'query',
-                    'type'        => array('string', 'array'),
+                    'type'        => ['string', 'array'],
                     'required'    => false
-                ),
-                'default_card' => array(
+                ],
+                'default_card' => [
                     'description' => 'Default card identifier',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'coupon' => array(
+                ],
+                'coupon' => [
                     'description' => 'Optional coupon identifier that applies a discount on all recurring charges',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'description' => array(
+                ],
+                'description' => [
                     'description' => 'Optional description for the customer',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'email' => array(
+                ],
+                'email' => [
                     'description' => 'Optional customer\'s email address',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'metadata' => array(
+                ],
+                'metadata' => [
                     'description' => 'Optional metadata',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
         /**
          * --------------------------------------------------------------------------------
@@ -555,205 +562,414 @@ return array(
          * DOC: https://stripe.com/docs/api#cards
          * --------------------------------------------------------------------------------
          */
-        'CreateCard' => array(
+
+        'CreateCard' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/customers/{customer}/cards',
             'summary'          => 'Create a new card for a customer',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'customer' => array(
+            'parameters'       => [
+                'customer' => [
                     'description' => 'Unique identifier of the customer',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'card' => array(
+                ],
+                'card' => [
                     'description' => 'Unique card identifier (can either be an ID or a hash)',
                     'location'    => 'query',
-                    'type'        => array('string', 'array'),
+                    'type'        => ['string', 'array'],
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'DeleteCard' => array(
+        'DeleteCard' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/customers/{customer}/cards/{id}',
             'summary'          => 'Delete an existing customer\'s card',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the card to delete',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'customer' => array(
+                ],
+                'customer' => [
                     'description' => 'Unique identifier of the customer to delete the card',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetCard' => array(
+        'GetCard' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/customers/{customer}/cards/{id}',
             'summary'          => 'Get an existing customer\'s card',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the card to get',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'customer' => array(
+                ],
+                'customer' => [
                     'description' => 'Unique identifier of the customer to get the card from',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetCards' => array(
+        'GetCards' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/customers/{customer}/cards',
             'summary'          => 'Get existing customers\'s cards',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'customer' => array(
+            'parameters'       => [
+                'customer' => [
                     'description' => 'Unique identifier of the customer to get the cards from',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'limit' => array(
+                ],
+                'limit' => [
                     'description' => 'Limit on how many cards are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 100,
                     'required'    => false
-                ),
-                'starting_after' => array(
+                ],
+                'starting_after' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'ending_before' => array(
+                ],
+                'ending_before' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'include' => array(
+                ],
+                'include' => [
                     'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'UpdateCard' => array(
+        'UpdateCard' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/customers/{customer}/cards/{id}',
             'summary'          => 'Update an existing customer',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the card to update',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'customer' => array(
+                ],
+                'customer' => [
                     'description' => 'Unique identifier of the customer to get the card from',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'address_city' => array(
+                ],
+                'address_city' => [
                     'location' => 'query',
                     'type'     => 'string',
                     'required' => false
-                ),
-                'address_country' => array(
+                ],
+                'address_country' => [
                     'location' => 'query',
                     'type'     => 'string',
                     'required' => false
-                ),
-                'address_line1' => array(
+                ],
+                'address_line1' => [
                     'location' => 'query',
                     'type'     => 'string',
                     'required' => false
-                ),
-                'address_line2' => array(
+                ],
+                'address_line2' => [
                     'location' => 'query',
                     'type'     => 'string',
                     'required' => false
-                ),
-                'address_state' => array(
+                ],
+                'address_state' => [
                     'location' => 'query',
                     'type'     => 'string',
                     'required' => false
-                ),
-                'address_zip' => array(
+                ],
+                'address_zip' => [
                     'location' => 'query',
                     'type'     => 'string',
                     'required' => false
-                ),
-                'exp_month' => array(
+                ],
+                'exp_month' => [
                     'location' => 'query',
                     'type'     => 'string',
                     'required' => false
-                ),
-                'exp_year' => array(
+                ],
+                'exp_year' => [
                     'location' => 'query',
                     'type'     => 'string',
                     'required' => false
-                ),
-                'name' => array(
+                ],
+                'name' => [
                     'location' => 'query',
                     'type'     => 'string',
                     'required' => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
+
+        /**
+         * --------------------------------------------------------------------------------
+         * CARD RECIPIENTS RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#cards
+         * --------------------------------------------------------------------------------
+         */
+
+        'CreateRecipientCard' => [
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/recipients/{recipient}/cards',
+            'summary'          => 'Create a new card for a recipient',
+            'errorResponses'   => $errors,
+            'parameters'       => [
+                'recipient' => [
+                    'description' => 'Unique identifier of the recipient',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'card' => [
+                    'description' => 'Unique card identifier (can either be an ID or a hash)',
+                    'location'    => 'query',
+                    'type'        => ['string', 'array'],
+                    'required'    => false
+                ],
+                'expand' => [
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'DeleteRecipientCard' => [
+            'httpMethod'       => 'DELETE',
+            'uri'              => '/v1/recipients/{recipient}/cards/{id}',
+            'summary'          => 'Delete an existing recipients\'s card',
+            'errorResponses'   => $errors,
+            'parameters'       => [
+                'id' => [
+                    'description' => 'Unique identifier of the card to delete',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'recipient' => [
+                    'description' => 'Unique identifier of the recipient to delete the card',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'expand' => [
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetRecipientCard' => [
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/recipients/{recipient}/cards/{id}',
+            'summary'          => 'Get an existing recipient\'s card',
+            'errorResponses'   => $errors,
+            'parameters'       => [
+                'id' => [
+                    'description' => 'Unique identifier of the card to get',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'recipient' => [
+                    'description' => 'Unique identifier of the recipient to get the card from',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'expand' => [
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetRecipientCards' => [
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/recipients/{recipient}/cards',
+            'summary'          => 'Get existing recipients\'s cards',
+            'errorResponses'   => $errors,
+            'parameters'       => [
+                'recipient' => [
+                    'description' => 'Unique identifier of the recipient to get the cards from',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'Limit on how many cards are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ],
+                'starting_after' => [
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'ending_before' => [
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'expand' => [
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'include' => [
+                    'description' => 'Allow to include some additional properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'UpdateRecipientCard' => [
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/recipients/{recipient}/cards/{id}',
+            'summary'          => 'Update an existing recipient\'s card',
+            'errorResponses'   => $errors,
+            'parameters'       => [
+                'id' => [
+                    'description' => 'Unique identifier of the card to update',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'recipient' => [
+                    'description' => 'Unique identifier of the recipient to get the card from',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'address_city' => [
+                    'location' => 'query',
+                    'type'     => 'string',
+                    'required' => false
+                ],
+                'address_country' => [
+                    'location' => 'query',
+                    'type'     => 'string',
+                    'required' => false
+                ],
+                'address_line1' => [
+                    'location' => 'query',
+                    'type'     => 'string',
+                    'required' => false
+                ],
+                'address_line2' => [
+                    'location' => 'query',
+                    'type'     => 'string',
+                    'required' => false
+                ],
+                'address_state' => [
+                    'location' => 'query',
+                    'type'     => 'string',
+                    'required' => false
+                ],
+                'address_zip' => [
+                    'location' => 'query',
+                    'type'     => 'string',
+                    'required' => false
+                ],
+                'exp_month' => [
+                    'location' => 'query',
+                    'type'     => 'string',
+                    'required' => false
+                ],
+                'exp_year' => [
+                    'location' => 'query',
+                    'type'     => 'string',
+                    'required' => false
+                ],
+                'name' => [
+                    'location' => 'query',
+                    'type'     => 'string',
+                    'required' => false
+                ],
+                'expand' => [
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
 
         /**
          * --------------------------------------------------------------------------------
@@ -762,252 +978,253 @@ return array(
          * DOC: https://stripe.com/docs/api#subscriptions
          * --------------------------------------------------------------------------------
          */
-        'CancelSubscription' => array(
+
+        'CancelSubscription' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/customers/{customer}/subscriptions/{id}',
             'summary'          => 'Delete an existing customer\'s subscription',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the subscription to cancel',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'customer' => array(
+                ],
+                'customer' => [
                     'description' => 'Unique identifier of the customer to delete the card',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'at_period_end' => array(
+                ],
+                'at_period_end' => [
                     'description' => 'A flag that if set to true will delay the cancellation of the subscription until the end of the current period.',
                     'location'    => 'query',
                     'type'        => 'boolean',
-                    'filters'     => array('ZfrStripe\Client\Filter\BooleanFilter::encodeValue'),
+                    'filters'     => ['ZfrStripe\Client\Filter\BooleanFilter::encodeValue'],
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'CreateSubscription' => array(
+        'CreateSubscription' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/customers/{customer}/subscriptions',
             'summary'          => 'Create a customer\'s new subscription',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'customer' => array(
+            'parameters'       => [
+                'customer' => [
                     'description' => 'Unique identifier of the customer',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'plan' => array(
+                ],
+                'plan' => [
                     'description' => 'Unique plan identifier',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'quantity' => array(
+                ],
+                'quantity' => [
                     'description' => 'Quantity you\'d like to apply to the subscription you\'re creating',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'card' => array(
+                ],
+                'card' => [
                     'description' => 'Unique card identifier (can either be an ID or a hash)',
                     'location'    => 'query',
-                    'type'        => array('string', 'array'),
+                    'type'        => ['string', 'array'],
                     'required'    => false
-                ),
-                'coupon' => array(
+                ],
+                'coupon' => [
                     'description' => 'Optional coupon identifier that applies a discount at the same time as creating the subscription',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'trial_end' => array(
+                ],
+                'trial_end' => [
                     'description' => 'UTC integer timestamp representing the end of the trial period the customer will get before being charged for the first time',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'application_fee_percent' => array(
+                ],
+                'application_fee_percent' => [
                     'description' => 'A positive decimal (with at most two decimal places) between 1 and 100 that represents the percentage of the subscription invoice amount due each billing period that will be transferred to the application owner’s Stripe account',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'metadata' => array(
+                ],
+                'metadata' => [
                     'description' => 'Optional metadata',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetSubscription' => array(
+        'GetSubscription' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/customers/{customer}/subscriptions/{id}',
             'summary'          => 'Get an existing customer\'s active subscription',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the active subscription to get',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'customer' => array(
+                ],
+                'customer' => [
                     'description' => 'Unique identifier of the customer to get the subscription from',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetSubscriptions' => array(
+        'GetSubscriptions' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/customers/{customer}/subscriptions',
             'summary'          => 'Get existing customers\'s active subscriptions',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'customer' => array(
+            'parameters'       => [
+                'customer' => [
                     'description' => 'Unique identifier of the customer to get the subscriptions from',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'limit' => array(
+                ],
+                'limit' => [
                     'description' => 'Limit on how many subscriptions are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 100,
                     'required'    => false
-                ),
-                'starting_after' => array(
+                ],
+                'starting_after' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'ending_before' => array(
+                ],
+                'ending_before' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'include' => array(
+                ],
+                'include' => [
                     'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'UpdateSubscription' => array(
+        'UpdateSubscription' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/customers/{customer}/subscriptions/{id}',
             'summary'          => 'Update a customer\'s subscription',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the subscription to update',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'customer' => array(
+                ],
+                'customer' => [
                     'description' => 'Unique identifier of the customer',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'plan' => array(
+                ],
+                'plan' => [
                     'description' => 'Unique plan identifier',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'quantity' => array(
+                ],
+                'quantity' => [
                     'description' => 'Quantity you\'d like to apply to the subscription you\'re creating',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'card' => array(
+                ],
+                'card' => [
                     'description' => 'Unique card identifier (can either be an ID or a hash)',
                     'location'    => 'query',
-                    'type'        => array('string', 'array'),
+                    'type'        => ['string', 'array'],
                     'required'    => false
-                ),
-                'coupon' => array(
+                ],
+                'coupon' => [
                     'description' => 'Optional coupon identifier that applies a discount at the same time as creating the subscription',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'prorate' => array(
+                ],
+                'prorate' => [
                     'description' => 'Flag telling us whether to prorate switching plans during a billing cycle',
                     'location'    => 'query',
                     'type'        => 'boolean',
-                    'filters'     => array('ZfrStripe\Client\Filter\BooleanFilter::encodeValue'),
+                    'filters'     => ['ZfrStripe\Client\Filter\BooleanFilter::encodeValue'],
                     'required'    => false
-                ),
-                'trial_end' => array(
+                ],
+                'trial_end' => [
                     'description' => 'UTC integer timestamp representing the end of the trial period the customer will get before being charged for the first time',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'application_fee_percent' => array(
+                ],
+                'application_fee_percent' => [
                     'description' => 'A positive decimal (with at most two decimal places) between 1 and 100 that represents the percentage of the subscription invoice amount due each billing period that will be transferred to the application owner’s Stripe account',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'metadata' => array(
+                ],
+                'metadata' => [
                     'description' => 'Optional metadata',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
         /**
          * --------------------------------------------------------------------------------
@@ -1016,197 +1233,198 @@ return array(
          * DOC: https://stripe.com/docs/api#plans
          * --------------------------------------------------------------------------------
          */
-        'CreatePlan' => array(
+
+        'CreatePlan' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/plans',
             'summary'          => 'Create a new plan',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique string to identify the plan',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'name' => array(
+                ],
+                'name' => [
                     'description' => 'Unique name of the plan',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'amount' => array(
+                ],
+                'amount' => [
                     'description' => 'Amount (in cents)',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => true
-                ),
-                'currency' => array(
+                ],
+                'currency' => [
                     'description' => '3-letter ISO code for currency',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'interval' => array(
+                ],
+                'interval' => [
                     'description' => 'Specify the billing frequency',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => true,
-                    'enum'        => array('day', 'week', 'month', 'year')
-                ),
-                'interval_count' => array(
+                    'enum'        => ['day', 'week', 'month', 'year']
+                ],
+                'interval_count' => [
                     'description' => 'Number of interval between each subscription billing',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'trial_period_days' => array(
+                ],
+                'trial_period_days' => [
                     'description' => 'Specifies a trial period in (an integer number of) days',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'metadata' => array(
+                ],
+                'metadata' => [
                     'description' => 'Optional metadata',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'statement_description' => array(
+                ],
+                'statement_description' => [
                     'description' => 'An arbitrary string to be displayed alongside your company name on your customer\'s credit card statement',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'DeletePlan' => array(
+        'DeletePlan' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/plans/{id}',
             'summary'          => 'Delete an existing plan',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the plan',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetPlan' => array(
+        'GetPlan' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/plans/{id}',
             'summary'          => 'Get an existing plan',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the plan',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetPlans' => array(
+        'GetPlans' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/plans',
             'summary'          => 'Get existing plans',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'limit' => array(
+            'parameters'       => [
+                'limit' => [
                     'description' => 'Limit on how many plans are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 100,
                     'required'    => false
-                ),
-                'starting_after' => array(
+                ],
+                'starting_after' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'ending_before' => array(
+                ],
+                'ending_before' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'include' => array(
+                ],
+                'include' => [
                     'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'UpdatePlan' => array(
+        'UpdatePlan' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/plans/{id}',
             'summary'          => 'Update an existing plan',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the plan to update',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'name' => array(
+                ],
+                'name' => [
                     'description' => 'Unique name of the plan',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'metadata' => array(
+                ],
+                'metadata' => [
                     'description' => 'Optional metadata',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'statement_description' => array(
+                ],
+                'statement_description' => [
                     'description' => 'An arbitrary string to be displayed alongside your company name on your customer\'s credit card statement',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
         /**
          * --------------------------------------------------------------------------------
@@ -1215,152 +1433,180 @@ return array(
          * DOC: https://stripe.com/docs/api#coupons
          * --------------------------------------------------------------------------------
          */
-        'CreateCoupon' => array(
+
+        'CreateCoupon' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/coupons',
             'summary'          => 'Create a new coupon',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique string to identify the coupon (you can specify none and it will be auto-generated)',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'duration' => array(
+                ],
+                'duration' => [
                     'description' => 'Specifies how long the discount will be in effect (can be "forever", "once" or "repeating")',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => true,
-                    'enum'        => array('forever', 'once', 'repeating')
-                ),
-                'amount_off' => array(
+                    'enum'        => ['forever', 'once', 'repeating']
+                ],
+                'amount_off' => [
                     'description' => 'A positive integer representing the amount to subtract from an invoice total (required if "percent_off" is not passed)',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'currency' => array(
+                ],
+                'currency' => [
                     'description' => 'Currency of the amount_off parameter (required if "amount_off" is passed)',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'duration_in_months' => array(
+                ],
+                'duration_in_months' => [
                     'description' => 'If "duration" is repeating, a positive integer that specifies the number of months the discount will be in effect',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'max_redemptions' => array(
+                ],
+                'max_redemptions' => [
                     'description' => 'A positive integer specifying the number of times the coupon can be redeemed before it\'s no longer valid',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'percent_off' => array(
+                ],
+                'percent_off' => [
                     'description' => 'A positive integer between 1 and 100 that represents the discount the coupon will apply (required if amount_off is not passed)',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'redeem_by' => array(
+                ],
+                'redeem_by' => [
                     'description' => 'UTC timestamp specifying the last time at which the coupon can be redeemed',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'DeleteCoupon' => array(
+        'DeleteCoupon' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/coupons/{id}',
             'summary'          => 'Delete an existing coupon',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the coupon',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetCoupon' => array(
+        'GetCoupon' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/coupons/{id}',
             'summary'          => 'Get an existing coupon',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the plan',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetCoupons' => array(
+        'GetCoupons' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/coupons/{id}',
             'summary'          => 'Get existing plans',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'limit' => array(
+            'parameters'       => [
+                'limit' => [
                     'description' => 'Limit on how many coupons are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 100,
                     'required'    => false
-                ),
-                'starting_after' => array(
+                ],
+                'starting_after' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'ending_before' => array(
+                ],
+                'ending_before' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'include' => array(
+                ],
+                'include' => [
                     'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
+
+        'UpdateCoupon' => [
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/coupons/{id}',
+            'summary'          => 'Update an existing coupon',
+            'errorResponses'   => $errors,
+            'parameters'       => [
+                'id' => [
+                    'description' => 'Unique identifier of the coupon to update',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'metadata' => [
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'expand' => [
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
 
         /**
          * --------------------------------------------------------------------------------
@@ -1369,53 +1615,54 @@ return array(
          * DOC: https://stripe.com/docs/api#discounts
          * --------------------------------------------------------------------------------
          */
-        'DeleteCustomerDiscount' => array(
+
+        'DeleteCustomerDiscount' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/customers/{customer}/discount',
             'summary'          => 'Delete a customer wide discount',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'customer' => array(
+            'parameters'       => [
+                'customer' => [
                     'description' => 'Unique identifier of the customer to delete the discount from',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'DeleteSubscriptionDiscount' => array(
+        'DeleteSubscriptionDiscount' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/customers/{customer}/subscriptions/{subscription}/discount',
             'summary'          => 'Delete a discount applied on a subscription',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'customer' => array(
+            'parameters'       => [
+                'customer' => [
                     'description' => 'Unique identifier of the customer to delete the discount from',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'subscription' => array(
+                ],
+                'subscription' => [
                     'description' => 'Unique identifier of the subscription to delete the discount from',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
         /**
          * --------------------------------------------------------------------------------
@@ -1424,241 +1671,272 @@ return array(
          * DOC: https://stripe.com/docs/api#invoices
          * --------------------------------------------------------------------------------
          */
-        'CreateInvoice' => array(
+
+        'CreateInvoice' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/invoices',
             'summary'          => 'Create a new invoice',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'customer' => array(
+            'parameters'       => [
+                'customer' => [
                     'description' => 'Unique string to identify the plan',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'subscription' => array(
+                ],
+                'subscription' => [
                     'description' => 'Identifier of the subscription to invoice',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'application_fee' => array(
+                ],
+                'description' => [
+                    'description' => 'Optional description for the invoice',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'statement_description' => [
+                    'description' => 'Extra information about a charge for the customer\'s credit card statement',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'application_fee' => [
                     'description' => 'A fee in cents that will be applied to the invoice and transferred to the application owner\'s Stripe account',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetInvoice' => array(
+        'GetInvoice' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoices/{id}',
             'summary'          => 'Get an existing invoice',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the invoice',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetInvoiceLineItems' => array(
+        'GetInvoiceLineItems' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoices/{id}/lines',
             'summary'          => 'Get an existing invoice line items',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the invoice',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'count' => array(
+                ],
+                'count' => [
                     'description' => 'Limit on how many invoice line items are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 100,
                     'required'    => false
-                ),
-                'offset' => array(
+                ],
+                'offset' => [
                     'description' => 'Offset into the list of returned items',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'customer' => array(
+                ],
+                'customer' => [
                     'description' => 'Only return invoice line items for a specific customer',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'subscription' => array(
+                ],
+                'subscription' => [
                     'description' => 'In the case of upcoming invoices, the subscription is optional. Otherwise it is ignored',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetInvoices' => array(
+        'GetInvoices' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoices',
             'summary'          => 'Get existing invoices',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'limit' => array(
+            'parameters'       => [
+                'limit' => [
                     'description' => 'Limit on how many invoices are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 100,
                     'required'    => false
-                ),
-                'starting_after' => array(
+                ],
+                'starting_after' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'ending_before' => array(
+                ],
+                'ending_before' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'date' => array(
+                ],
+                'date' => [
                     'description' => 'A filter based on the "date" field. Can be an exact UTC timestamp, or a hash',
                     'location'    => 'query',
-                    'type'        => array('string', 'array'),
+                    'type'        => ['string', 'array'],
                     'required'    => false
-                ),
-                'customer' => array(
+                ],
+                'customer' => [
                     'description' => 'Only return invoices for a specific customer',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'include' => array(
+                ],
+                'include' => [
                     'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetUpcomingInvoice' => array(
+        'GetUpcomingInvoice' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoices/upcoming',
             'summary'          => 'Get upcoming invoices',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'customer' => array(
+            'parameters'       => [
+                'customer' => [
                     'description' => 'Only return upcoming invoices for a specific customer',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'subscription' => array(
+                ],
+                'subscription' => [
                     'description' => 'The identifier of the subscription for which you\'d like to retrieve the upcoming invoice',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'PayInvoice' => array(
+        'PayInvoice' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/invoices/{id}/pay',
             'summary'          => 'Pay an existing invoice',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the invoice to pay',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'UpdateInvoice' => array(
+        'UpdateInvoice' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/invoices/{id}',
             'summary'          => 'Update an existing invoice',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the invoice to update',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'application_fee' => array(
+                ],
+                'description' => [
+                    'description' => 'Optional description for the invoice',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'statement_description' => [
+                    'description' => 'Extra information about a charge for the customer\'s credit card statement',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'forgiven' => [
+                    'description' => 'Whether an invoice is forgiven or not',
+                    'location'    => 'query',
+                    'type'        => 'boolean',
+                    'required'    => false
+                ],
+                'application_fee' => [
                     'description' => 'A fee in cents that will be applied to the invoice and transferred to the application owner\'s Stripe account',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'closed' => array(
+                ],
+                'closed' => [
                     'description' => 'Boolean representing whether an invoice is closed or not',
                     'location'    => 'query',
                     'type'        => 'boolean',
-                    'filters'     => array('ZfrStripe\Client\Filter\BooleanFilter::encodeValue'),
+                    'filters'     => ['ZfrStripe\Client\Filter\BooleanFilter::encodeValue'],
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
         /**
          * --------------------------------------------------------------------------------
@@ -1667,189 +1945,190 @@ return array(
          * DOC: https://stripe.com/docs/api#invoiceitems
          * --------------------------------------------------------------------------------
          */
-        'CreateInvoiceItem' => array(
+
+        'CreateInvoiceItem' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/invoiceitems',
             'summary'          => 'Create a new invoice item',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'customer' => array(
+            'parameters'       => [
+                'customer' => [
                     'description' => 'ID of the customer who will be billed when this invoice item is billed',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'amount' => array(
+                ],
+                'amount' => [
                     'description' => 'Amount (in cents)',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => true
-                ),
-                'currency' => array(
+                ],
+                'currency' => [
                     'description' => '3-letter ISO code for currency',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'invoice' => array(
+                ],
+                'invoice' => [
                     'description' => 'Identifier of an existing invoice to add this invoice item to',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'subscription' => array(
+                ],
+                'subscription' => [
                     'description' => 'Identifier of a subscription to add this invoice item to',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'description' => array(
+                ],
+                'description' => [
                     'description' => 'Optional description to add',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'metadata' => array(
+                ],
+                'metadata' => [
                     'description' => 'Optional metadata',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'DeleteInvoiceItem' => array(
+        'DeleteInvoiceItem' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/invoiceitems/{id}',
             'summary'          => 'Delete an existing invoice item',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the invoice item',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetInvoiceItem' => array(
+        'GetInvoiceItem' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoiceitems/{id}',
             'summary'          => 'Get an existing invoice item',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the invoice item',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetInvoiceItems' => array(
+        'GetInvoiceItems' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoiceitems',
             'summary'          => 'Get existing invoice items',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'limit' => array(
+            'parameters'       => [
+                'limit' => [
                     'description' => 'Limit on how many invoice items are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 100,
                     'required'    => false
-                ),
-                'starting_after' => array(
+                ],
+                'starting_after' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'ending_before' => array(
+                ],
+                'ending_before' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'date' => array(
+                ],
+                'date' => [
                     'description' => 'A filter based on the "date" field. Can be an exact UTC timestamp, or a hash',
                     'location'    => 'query',
                     'required'    => false
-                ),
-                'customer' => array(
+                ],
+                'customer' => [
                     'description' => 'Only return invoices for a specific customer',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'include' => array(
+                ],
+                'include' => [
                     'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'UpdateInvoiceItem' => array(
+        'UpdateInvoiceItem' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/invoiceitems/{id}',
             'summary'          => 'Update an existing invoice item',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the invoice item to update',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'description' => array(
+                ],
+                'description' => [
                     'description' => 'Optional description',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'metadata' => array(
+                ],
+                'metadata' => [
                     'description' => 'Optional metadata',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
         /**
          * --------------------------------------------------------------------------------
@@ -1858,53 +2137,60 @@ return array(
          * DOC: https://stripe.com/docs/api#disputes
          * --------------------------------------------------------------------------------
          */
-        'CloseDispute' => array(
+
+        'CloseDispute' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/charges/{charge}/dispute/close',
             'summary'          => 'Close a dispute',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'charge' => array(
+            'parameters'       => [
+                'charge' => [
                     'description' => 'ID of the charge to close the dispute',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'UpdateDispute' => array(
+        'UpdateDispute' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/charges/{charge}/dispute',
             'summary'          => 'Update a dispute',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'charge' => array(
+            'parameters'       => [
+                'charge' => [
                     'description' => 'ID of the charge to update the dispute',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'evidence' => array(
+                ],
+                'evidence' => [
                     'description' => 'Evidence text',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'metadata' => [
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
         /**
          * --------------------------------------------------------------------------------
@@ -1913,190 +2199,191 @@ return array(
          * DOC: https://stripe.com/docs/api#transfers
          * --------------------------------------------------------------------------------
          */
-        'CancelTransfer' => array(
+
+        'CancelTransfer' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/transfers/{id}/cancel',
             'summary'          => 'Cancel an existing transfer',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the transfer',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'CreateTransfer' => array(
+        'CreateTransfer' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/transfers',
             'summary'          => 'Create a new transfer',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'amount' => array(
+            'parameters'       => [
+                'amount' => [
                     'description' => 'Amount (in cents)',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => true
-                ),
-                'currency' => array(
+                ],
+                'currency' => [
                     'description' => '3-letter ISO code for currency',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'recipient' => array(
+                ],
+                'recipient' => [
                     'description' => 'ID of an existing, verified recipient',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'description' => array(
+                ],
+                'description' => [
                     'description' => 'Optional description to add',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'statement_description' => array(
+                ],
+                'statement_description' => [
                     'description' => 'An arbitrary string which will be displayed on the recipient\'s bank statement',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'metadata' => array(
+                ],
+                'metadata' => [
                     'description' => 'Optional metadata',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetTransfer' => array(
+        'GetTransfer' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/transfers/{id}',
             'summary'          => 'Get an existing transfer',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the transfer',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetTransfers' => array(
+        'GetTransfers' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/transfers',
             'summary'          => 'Get existing transfers',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'limit' => array(
+            'parameters'       => [
+                'limit' => [
                     'description' => 'Limit on how many transfers are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 100,
                     'required'    => false
-                ),
-                'starting_after' => array(
+                ],
+                'starting_after' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'ending_before' => array(
+                ],
+                'ending_before' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'date' => array(
+                ],
+                'date' => [
                     'description' => 'A filter based on the "date" field. Can be an exact UTC timestamp, or a hash',
                     'location'    => 'query',
                     'required'    => false
-                ),
-                'recipient' => array(
+                ],
+                'recipient' => [
                     'description' => 'Only return transfers for a specific recipient',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'status' => array(
+                ],
+                'status' => [
                     'description' => 'Optionally filter by status',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false,
-                    'enum'        => array('pending', 'paid', 'failed')
-                ),
-                'expand' => array(
+                    'enum'        => ['pending', 'paid', 'failed']
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'include' => array(
+                ],
+                'include' => [
                     'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'UpdateTransfer' => array(
+        'UpdateTransfer' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/transfers/{id}',
             'summary'          => 'Update an existing transfer',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the transfer to update',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'description' => array(
+                ],
+                'description' => [
                     'description' => 'Optional description',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'metadata' => array(
+                ],
+                'metadata' => [
                     'description' => 'Optional metadata',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
         /**
          * --------------------------------------------------------------------------------
@@ -2105,204 +2392,320 @@ return array(
          * DOC: https://stripe.com/docs/api#recipients
          * --------------------------------------------------------------------------------
          */
-        'CreateRecipient' => array(
+
+        'CreateRecipient' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/recipients',
             'summary'          => 'Create a new recipient',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'name' => array(
+            'parameters'       => [
+                'name' => [
                     'description' => 'The recipient\'s full, legal name',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'type' => array(
+                ],
+                'type' => [
                     'description' => 'Type of the recipient (can be "individual" or "corporation")',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => true,
-                    'enum'        => array('individual', 'corporation')
-                ),
-                'tax_id' => array(
+                    'enum'        => ['individual', 'corporation']
+                ],
+                'tax_id' => [
                     'description' => 'The recipient\'s tax ID, as a string',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'bank_account' => array(
+                ],
+                'bank_account' => [
                     'description' => 'A bank account to attach to the recipient',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'email' => array(
+                ],
+                'email' => [
                     'description' => 'The recipient\'s email address',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'description' => array(
+                ],
+                'description' => [
                     'description' => 'Optional description to add',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'metadata' => array(
+                ],
+                'metadata' => [
                     'description' => 'Optional metadata',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'DeleteRecipient' => array(
+        'DeleteRecipient' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/recipients/{id}',
             'summary'          => 'Delete an existing recipient',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the recipient',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetRecipient' => array(
+        'GetRecipient' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/recipients/{id}',
             'summary'          => 'Get an existing recipient',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the recipient',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetRecipients' => array(
+        'GetRecipients' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/recipients',
             'summary'          => 'Get existing recipients',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'limit' => array(
+            'parameters'       => [
+                'limit' => [
                     'description' => 'Limit on how many recipients are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 100,
                     'required'    => false
-                ),
-                'starting_after' => array(
+                ],
+                'starting_after' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'ending_before' => array(
+                ],
+                'ending_before' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'verified' => array(
+                ],
+                'verified' => [
                     'description' => 'Boolean to only return recipients that are verified or unverified',
                     'location'    => 'query',
                     'type'        => 'boolean',
-                    'filters'     => array('ZfrStripe\Client\Filter\BooleanFilter::encodeValue'),
+                    'filters'     => ['ZfrStripe\Client\Filter\BooleanFilter::encodeValue'],
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'UpdateRecipient' => array(
+        'UpdateRecipient' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/recipients/{id}',
             'summary'          => 'Update an existing recipient',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the recipient to update',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'name' => array(
+                ],
+                'name' => [
                     'description' => 'The recipient\'s full, legal name',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'tax_id' => array(
+                ],
+                'tax_id' => [
                     'description' => 'The recipient\'s tax ID, as a string',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'bank_account' => array(
+                ],
+                'bank_account' => [
                     'description' => 'A bank account to attach to the recipient',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'email' => array(
+                ],
+                'email' => [
                     'description' => 'The recipient\'s email address',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'description' => array(
+                ],
+                'description' => [
                     'description' => 'Optional description to add',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'metadata' => array(
+                ],
+                'metadata' => [
                     'description' => 'Optional metadata',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
+
+        /**
+         * --------------------------------------------------------------------------------
+         * REFUND RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#refunds
+         * --------------------------------------------------------------------------------
+         */
+
+        'GetRefund' => [
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/charges/{charge}/refunds/{id}',
+            'summary'          => 'Get an existing refund',
+            'errorResponses'   => $errors,
+            'parameters'       => [
+                'id' => [
+                    'description' => 'Unique identifier of the refund',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'charge' => [
+                    'description' => 'Unique identifier of the charge to get the refund from',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'expand' => [
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetRefunds' => [
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/charges/{charge}/refunds',
+            'summary'          => 'Get existing refunds for a given charge',
+            'errorResponses'   => $errors,
+            'parameters'       => [
+                'charge' => [
+                    'description' => 'Charge to get the refunds from',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'Limit on how many charges are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ],
+                'starting_after' => [
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'ending_before' => [
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'expand' => [
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'include' => [
+                    'description' => 'Allow to include some additional properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'UpdateRefund' => [
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/charges/{charge}/refunds/{id}',
+            'summary'          => 'Update an existing charge',
+            'errorResponses'   => $errors,
+            'parameters'       => [
+                'id' => [
+                    'description' => 'Unique identifier of the refund to update',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'charge' => [
+                    'description' => 'Charge to get the refunds from',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'metadata' => [
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'expand' => [
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
 
         /**
          * --------------------------------------------------------------------------------
@@ -2311,106 +2714,216 @@ return array(
          * DOC: https://stripe.com/docs/api#application_fees
          * --------------------------------------------------------------------------------
          */
-        'GetApplicationFee' => array(
+
+        'GetApplicationFee' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/application_fees/{id}',
             'summary'          => 'Get details about an application fee that your account has collected',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the application fee',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetApplicationFees' => array(
+        'GetApplicationFees' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/application_fees',
             'summary'          => 'Get details about all application fees that your account has collected',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'limit' => array(
+            'parameters'       => [
+                'limit' => [
                     'description' => 'Limit on how many application fees are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 100,
                     'required'    => false
-                ),
-                'starting_after' => array(
+                ],
+                'starting_after' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'ending_before' => array(
+                ],
+                'ending_before' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'created' => array(
+                ],
+                'created' => [
                     'description' => 'A filter based on the "created" field. Can be an exact UTC timestamp, or a hash',
                     'location'    => 'query',
-                    'type'        => array('string', 'array'),
+                    'type'        => ['string', 'array'],
                     'required'    => false
-                ),
-                'charge' => array(
+                ],
+                'charge' => [
                     'description' => 'Only return application fees for a given charge',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'include' => array(
+                ],
+                'include' => [
                     'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'RefundApplicationFee' => array(
+        'RefundApplicationFee' => [
             'httpMethod'       => 'POST',
-            'uri'              => '/v1/application_fees/{id}/refund',
+            'uri'              => '/v1/application_fees/{id}/refunds',
             'summary'          => 'Refund an application fee that has previously been collected but not yet refunded',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of application fee to be refunded',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'amount' => array(
+                ],
+                'amount' => [
                     'description' => 'A positive integer in cents representing how many of this fee to refund',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
+
+        /**
+         * --------------------------------------------------------------------------------
+         * APPLICATION FEE REFUND RELATED METHODS
+         *
+         * DOC: https://stripe.com/docs/api#fee_refunds
+         * --------------------------------------------------------------------------------
+         */
+
+        'GetApplicationFeeRefund' => [
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/application_fees/{fee}/refunds/{id}',
+            'summary'          => 'Get details about an application fee refund',
+            'errorResponses'   => $errors,
+            'parameters'       => [
+                'id' => [
+                    'description' => 'Unique identifier of the application fee refund',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'fee' => [
+                    'description' => 'Unique identifier of the application fee that was refunded',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'expand' => [
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetApplicationFeeRefunds' => [
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/application_fees/{fee}/refunds',
+            'summary'          => 'Get details about all application fee refunds',
+            'errorResponses'   => $errors,
+            'parameters'       => [
+                'fee' => [
+                    'description' => 'Unique identifier of the application fee we want refunds',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'limit' => [
+                    'description' => 'Limit on how many application fee refunds are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ],
+                'starting_after' => [
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'ending_before' => [
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'expand' => [
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'include' => [
+                    'description' => 'Allow to include some additional properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'UpdateApplicationFeeRefund' => [
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/application_fees/{fee}/refunds/{id}',
+            'summary'          => 'Update an application fee refund',
+            'errorResponses'   => $errors,
+            'parameters'       => [
+                'id' => [
+                    'description' => 'Unique identifier of application fee refund',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'metadata' => [
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'expand' => [
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
 
         /**
          * --------------------------------------------------------------------------------
@@ -2420,122 +2933,122 @@ return array(
          * --------------------------------------------------------------------------------
          */
 
-        'GetAccountBalance' => array(
+        'GetAccountBalance' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/balance',
             'summary'          => 'Get the current account balance',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'expand' => array(
+            'parameters'       => [
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetBalanceTransaction' => array(
+        'GetBalanceTransaction' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/balance/history/{id}',
-            'summary'          => 'Get an existing balance transactionb y its id',
+            'summary'          => 'Get an existing balance transaction by its id',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the balance transaction to get',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetBalanceTransactions' => array(
+        'GetBalanceTransactions' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/balance/history',
             'summary'          => 'Get all the balance transactions',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'limit' => array(
+            'parameters'       => [
+                'limit' => [
                     'description' => 'Limit on how many application fees are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 100,
                     'required'    => false
-                ),
-                'starting_after' => array(
+                ],
+                'starting_after' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'ending_before' => array(
+                ],
+                'ending_before' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'available_on' => array(
+                ],
+                'available_on' => [
                     'description' => 'A filter based on the "available_on" field. Can be an exact UTC timestamp, or a hash',
                     'location'    => 'query',
-                    'type'        => array('string', 'array'),
+                    'type'        => ['string', 'array'],
                     'required'    => false
-                ),
-                'created' => array(
+                ],
+                'created' => [
                     'description' => 'A filter based on the "created" field. Can be an exact UTC timestamp, or a hash',
                     'location'    => 'query',
-                    'type'        => array('string', 'array'),
+                    'type'        => ['string', 'array'],
                     'required'    => false
-                ),
-                'currency' => array(
+                ],
+                'currency' => [
                     'description' => 'Filter for currency',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'source' => array(
+                ],
+                'source' => [
                     'description' => 'Filter balance transactions using a specific source id (for example a charge id)',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'transfer' => array(
+                ],
+                'transfer' => [
                     'description' => 'For automatic Stripe transfers only, only returns transactions that were transferred out on the specified transfer ID',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'type' => array(
+                ],
+                'type' => [
                     'description' => 'Only returns transactions of the given type',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false,
-                    'enum'        => array(
+                    'enum'        => [
                         'adjustment', 'application_fee', 'application_fee_refund', 'charge',
                         'refund', 'transfer', 'transfer_failure'
-                    )
-                ),
-                'expand' => array(
+                    ]
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'include' => array(
+                ],
+                'include' => [
                     'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
         /**
          * --------------------------------------------------------------------------------
@@ -2544,74 +3057,75 @@ return array(
          * DOC: https://stripe.com/docs/api#tokens
          * --------------------------------------------------------------------------------
          */
-        'CreateCardToken' => array(
+
+        'CreateCardToken' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/tokens',
             'summary'          => 'Create a new card token (note you must either specify card OR customer but not both)',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'card' => array(
+            'parameters'       => [
+                'card' => [
                     'description' => 'Unique card identifier (can either be an ID or a hash)',
                     'location'    => 'query',
-                    'type'        => array('string', 'array'),
+                    'type'        => ['string', 'array'],
                     'required'    => false
-                ),
-                'customer' => array(
+                ],
+                'customer' => [
                     'description' => 'A customer (owned by the application\'s account) to create a token for',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'CreateBankAccountToken' => array(
+        'CreateBankAccountToken' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/tokens',
             'summary'          => 'Create a bank account token',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'bank_account' => array(
+            'parameters'       => [
+                'bank_account' => [
                     'description' => 'A bank account to attach to the recipient',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetToken' => array(
+        'GetToken' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/tokens/{id}',
             'summary'          => 'Get details about an existing token',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the token',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
         /**
          * --------------------------------------------------------------------------------
@@ -2620,79 +3134,80 @@ return array(
          * DOC: https://stripe.com/docs/api#events
          * --------------------------------------------------------------------------------
          */
-        'GetEvent' => array(
+
+        'GetEvent' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/events/{id}',
             'summary'          => 'Get details about an event',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'id' => array(
+            'parameters'       => [
+                'id' => [
                     'description' => 'Unique identifier of the event',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
-        'GetEvents' => array(
+        'GetEvents' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/events',
             'summary'          => 'Get details about all events (up to 30 days)',
             'errorResponses'   => $errors,
-            'parameters'       => array(
-                'limit' => array(
+            'parameters'       => [
+                'limit' => [
                     'description' => 'Limit on how many events are retrieved',
                     'location'    => 'query',
                     'type'        => 'integer',
                     'min'         => 1,
                     'max'         => 100,
                     'required'    => false
-                ),
-                'starting_after' => array(
+                ],
+                'starting_after' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'ending_before' => array(
+                ],
+                'ending_before' => [
                     'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'created' => array(
+                ],
+                'created' => [
                     'description' => 'A filter based on the "created" field. Can be an exact UTC timestamp, or a hash',
                     'location'    => 'query',
-                    'type'        => array('string', 'array'),
+                    'type'        => ['string', 'array'],
                     'required'    => false
-                ),
-                'type' => array(
+                ],
+                'type' => [
                     'description' => 'Allow to filter events by type',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
-                ),
-                'expand' => array(
+                ],
+                'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                ),
-                'include' => array(
+                ],
+                'include' => [
                     'description' => 'Allow to include some additional properties',
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
-                )
-            )
-        ),
+                ]
+            ]
+        ],
 
         /**
          * --------------------------------------------------------------------------------
@@ -2701,11 +3216,12 @@ return array(
          * DOC: https://stripe.com/docs/api#account
          * --------------------------------------------------------------------------------
          */
-        'GetAccount' => array(
+
+        'GetAccount' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/account',
             'summary'          => 'Get details about the account',
             'errorResponses'   => $errors,
-        )
-    )
-);
+        ]
+    ]
+];
