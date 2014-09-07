@@ -24,7 +24,6 @@ use Guzzle\Service\Client;
 use Guzzle\Service\Description\ServiceDescription;
 use Guzzle\Service\Resource\ResourceIterator;
 use ZfrStripe\Client\Iterator\StripeCommandsCursorIterator;
-use ZfrStripe\Client\Iterator\StripeCommandsIterator;
 use ZfrStripe\Exception\UnsupportedStripeVersionException;
 use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
 
