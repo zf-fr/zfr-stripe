@@ -47,7 +47,9 @@ Starting from v2, ZfrStripe does not follow this mechanism strictly, because new
 
 However, each new minor version (2.1.0 to 2.2.0 for instance) will update the Stripe API version to the latest available. This means that Stripe responses *may* change. This means that to keep BC you should either tighten your dependency (2.1.* instead of 2.* for instance) OR always specify the exact version you want, as shown above.
 
-Currently, the following Stripe API versions are accepted by ZfrStripe: `2014-03-28`, `2014-05-19`, `2014-06-17`, `2014-07-22`,  `2014-07-26`,  `2014-08-04`, `2014-08-20`. I will try to update the library as soon as new version are released.
+Currently, the following Stripe API versions are accepted by ZfrStripe: `2014-03-28`, `2014-05-19`, `2014-06-13`,
+`2014-06-17`, `2014-07-22`,  `2014-07-26`,  `2014-08-04`, `2014-08-20`. I will try to update the library as soon as
+new version are released.
 
 > If you need support for older versions, please use branch v1 of ZfrStripe.
 
