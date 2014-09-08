@@ -2910,6 +2910,12 @@ return [
                     'type'        => 'string',
                     'required'    => true
                 ],
+                'fee' => [
+                    'description' => 'Unique identifier of the application fee refund to update',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
                 'metadata' => [
                     'description' => 'Optional metadata',
                     'location'    => 'query',
