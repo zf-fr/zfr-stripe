@@ -1,3 +1,7 @@
+# 2.0.1
+
+* Fix error with exception name
+
 # 2.0.0
 
 * [BC] PHP minimum dependency has been raised to PHP 5.4
