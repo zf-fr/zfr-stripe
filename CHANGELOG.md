@@ -1,3 +1,8 @@
+# 2.0.3
+
+* Balance transactions history for fee refund can be retrieved using the "fee_refund" type (Stripe documentation was
+wrong)
+
 # 2.0.2
 
 * Fix `updateApplicationFeeRefund` method

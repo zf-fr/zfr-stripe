@@ -3037,8 +3037,7 @@ return [
                     'type'        => 'string',
                     'required'    => false,
                     'enum'        => [
-                        'adjustment', 'application_fee', 'application_fee_refund', 'charge',
-                        'refund', 'transfer', 'transfer_failure'
+                        'adjustment', 'application_fee', 'charge', 'fee_refund', 'refund', 'transfer', 'transfer_failure'
                     ]
                 ],
                 'expand' => [
