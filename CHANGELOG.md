@@ -1,6 +1,6 @@
 # 2.0.4
 
-* Fix docblock to allow auto-completion on "getInvoiceLineItemsIterator"
+* Fix docblock to allow auto-completion on `getInvoiceLineItemsIterator`
 
 # 2.0.3
 
