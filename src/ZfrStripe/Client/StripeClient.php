@@ -181,6 +181,7 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  * @method ResourceIterator getPlansIterator()
  * @method ResourceIterator getCouponsIterator()
  * @method ResourceIterator getInvoicesIterator()
+ * @method ResourceIterator getInvoiceLineItemsIterator()
  * @method ResourceIterator getInvoiceItemsIterator()
  * @method ResourceIterator getTransfersIterator()
  * @method ResourceIterator getRecipientsIterator()

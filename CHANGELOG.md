@@ -1,3 +1,7 @@
+# 2.0.4
+
+* Fix docblock to allow auto-completion on "getInvoiceLineItemsIterator"
+
 # 2.0.3
 
 * Balance transactions history for fee refund can be retrieved using the "fee_refund" type (Stripe documentation was
