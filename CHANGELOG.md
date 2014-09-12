@@ -1,3 +1,7 @@
+# 2.1.0
+
+* [BC] Set default Stripe API to "2014-09-08" version.
+
 # 2.0.4
 
 * Fix docblock to allow auto-completion on "getInvoiceLineItemsIterator"
