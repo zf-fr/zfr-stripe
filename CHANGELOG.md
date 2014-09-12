@@ -1,3 +1,9 @@
+# 2.2.0
+
+* The `getInvoiceLineItems` was not working correctly when pagination.
+* [BC] For consistency with other resources, the `id` parameter for retrieving invoice line items has been rename
+`invoice`.
+
 # 2.1.0
 
 * [BC] Set default Stripe API to "2014-09-08" version.

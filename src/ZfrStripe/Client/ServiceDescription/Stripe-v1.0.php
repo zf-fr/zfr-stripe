@@ -1740,29 +1740,15 @@ return [
 
         'GetInvoiceLineItems' => [
             'httpMethod'       => 'GET',
-            'uri'              => '/v1/invoices/{id}/lines',
+            'uri'              => '/v1/invoices/{invoice}/lines',
             'summary'          => 'Get an existing invoice line items',
             'errorResponses'   => $errors,
             'parameters'       => [
-                'id' => [
-                    'description' => 'Unique identifier of the invoice',
+                'invoice' => [
+                    'description' => 'Unique identifier of the invoice to retrieve invoice items from',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
-                'count' => [
-                    'description' => 'Limit on how many invoice line items are retrieved',
-                    'location'    => 'query',
-                    'type'        => 'integer',
-                    'min'         => 1,
-                    'max'         => 100,
-                    'required'    => false
-                ],
-                'offset' => [
-                    'description' => 'Offset into the list of returned items',
-                    'location'    => 'query',
-                    'type'        => 'integer',
-                    'required'    => false
                 ],
                 'customer' => [
                     'description' => 'Only return invoice line items for a specific customer',
@@ -1772,6 +1758,26 @@ return [
                 ],
                 'subscription' => [
                     'description' => 'In the case of upcoming invoices, the subscription is optional. Otherwise it is ignored',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'limit' => [
+                    'description' => 'Limit on how many invoice line items are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ],
+                'starting_after' => [
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'ending_before' => [
+                    'description' => 'A cursor for use in the pagination',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
