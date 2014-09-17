@@ -3205,6 +3205,12 @@ return [
                     'type'        => 'string',
                     'required'    => false
                 ],
+                'object_id' => [
+                    'description' => 'Allow to filter by customer (CAUTION: this is not explicitly documented by Stripe)',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
                 'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',

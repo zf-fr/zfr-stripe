@@ -1,3 +1,9 @@
+# 2.2.1
+
+* Add support for `object_id` when retrieving events. This allows to filter events by customer. Please note that
+this feature **IS NOT** documented and officially supported by Stripe, but as it powers Stripe dashboard, it should
+not be removed.
+
 # 2.2.0
 
 * The `getInvoiceLineItems` was not working correctly when pagination.
