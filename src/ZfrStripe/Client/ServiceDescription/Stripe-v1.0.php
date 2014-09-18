@@ -2077,7 +2077,7 @@ return [
                     'type'        => 'string',
                     'required'    => false
                 ],
-                'date' => [
+                'created' => [
                     'description' => 'A filter based on the "date" field. Can be an exact UTC timestamp, or a hash',
                     'location'    => 'query',
                     'required'    => false

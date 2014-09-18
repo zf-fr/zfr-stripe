@@ -1,3 +1,7 @@
+# 2.2.3
+
+* Fix a bug when filtering invoice items by date.
+
 # 2.2.2
 
 * Add support for filtering invoice items if they are proration or not through the `proration` parameter. Please note
