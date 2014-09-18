@@ -1,3 +1,8 @@
+# 2.2.2
+
+* Add support for filtering invoice items if they are proration or not through the `proration` parameter. Please note
+that this feature **IS NOT** documented and officially supported by Stripe, and may be removed without caution.
+
 # 2.2.1
 
 * Add support for `object_id` when retrieving events. This allows to filter events by customer. Please note that
