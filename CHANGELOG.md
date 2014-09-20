@@ -1,3 +1,8 @@
+# 2.2.4
+
+* You can now use the shortcut `now` when setting or updating `trial_end` property.
+* Add support for the new `billing_cycle_anchor` property when creating and updating a subscription.
+
 # 2.2.3
 
 * Fix a bug when filtering invoice items by date.

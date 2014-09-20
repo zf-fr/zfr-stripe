@@ -373,7 +373,7 @@ return [
                 'trial_end' => [
                     'description' => 'UTC integer timestamp representing the end of the trial period the customer will get before being charged for the first time',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => ['integer', 'string'],
                     'required'    => false
                 ],
                 'description' => [
@@ -1049,10 +1049,16 @@ return [
                     'type'        => 'string',
                     'required'    => false
                 ],
+                'billing_cycle_anchor' => [
+                    'description' => 'UTC integer timestamp that defines the date of the recurring billing cycle',
+                    'location'    => 'query',
+                    'type'        => ['integer', 'string'],
+                    'required'    => false
+                ],
                 'trial_end' => [
                     'description' => 'UTC integer timestamp representing the end of the trial period the customer will get before being charged for the first time',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => ['integer', 'string'],
                     'required'    => false
                 ],
                 'application_fee_percent' => [
@@ -1199,10 +1205,16 @@ return [
                     'filters'     => ['ZfrStripe\Client\Filter\BooleanFilter::encodeValue'],
                     'required'    => false
                 ],
+                'billing_cycle_anchor' => [
+                    'description' => 'UTC integer timestamp that defines the date of the recurring billing cycle',
+                    'location'    => 'query',
+                    'type'        => ['integer', 'string'],
+                    'required'    => false
+                ],
                 'trial_end' => [
                     'description' => 'UTC integer timestamp representing the end of the trial period the customer will get before being charged for the first time',
                     'location'    => 'query',
-                    'type'        => 'integer',
+                    'type'        => ['integer', 'string'],
                     'required'    => false
                 ],
                 'application_fee_percent' => [
