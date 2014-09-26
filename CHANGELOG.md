@@ -1,3 +1,7 @@
+# 2.3.0
+
+* ZfrStripe now uses PSR-4 for autoloading. This has flattened the structure of the libray, it should not break any of your code :).
+
 # 2.2.4
 
 * You can now use the shortcut `now` when setting or updating `trial_end` property.
