@@ -1,3 +1,7 @@
+# 2.3.0
+
+* [BC] Set default Stripe API to "2014-10-07" version
+
 # 2.2.4
 
 * You can now use the shortcut `now` when setting or updating `trial_end` property.
