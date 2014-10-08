@@ -1,6 +1,7 @@
 # 2.3.0
 
 * [BC] Set default Stripe API to "2014-10-07" version
+* ZfrStripe now uses PSR-4 for autoloading. This has flattened the structure of the libray, it should not break any of your code :).
 
 # 2.2.4
 
