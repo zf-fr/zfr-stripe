@@ -238,6 +238,13 @@ return [
                     'type'        => 'string',
                     'required'    => false
                 ],
+                'paid' => [
+                    'description' => 'Only return paid charges (true) or not paid (false) (CAUTION: this is not explicitly documented by Stripe)',
+                    'location'    => 'query',
+                    'type'        => 'boolean',
+                    'filters'     => ['ZfrStripe\Client\Filter\BooleanFilter::encodeValue'],
+                    'required'    => false
+                ],
                 'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',

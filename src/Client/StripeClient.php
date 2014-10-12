@@ -297,7 +297,7 @@ class StripeClient extends Client
         }
 
         $this->version = (string) $version;
-        $this->setDefaultOption('headers', ['Stripe-Version' => (string) $this->version]);
+        $this->setDefaultOption('headers', ['Stripe-Version' => $this->version]);
 
         $this->setDescription(ServiceDescription::factory(sprintf(
             __DIR__ . '/ServiceDescription/Stripe-v1.0.php'
