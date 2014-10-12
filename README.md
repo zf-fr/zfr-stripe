@@ -161,15 +161,44 @@ foreach ($iterator as $invoices) {
 ZfrStripe takes care of fetching the last item in the batch, extracting the id, and continuing doing requests
 until no more data is available!
 
-#### Filter events by customer
+#### Undocumented features
 
-Stripe has a hidden, undocumented gem: you can filter events by customer, by using the `object_id` parameter. Because
-it is undocumented, it may be removed without any notice, so use at your own risks. However, as this is used by
-Stripe's dashboard, I suppose it won't be removed anytime soon, or may be replaced by something more official in
-the future:
+While playing with Stripe API, I realized that the API has a few filtering capabilities that were not documented,
+but still accessible. Therefore, I've added some of them to this library but PLEASE be very defensive when you
+use them, as Stripe may remove them (or maybe officially document them in the future). Here is a list of the
+implemented hidden features:
+
+##### Filter events
+
+You can filter events by a object id using the `object_id` parameter. It will depend of the context. For instance
+if you are specifically retrieving subscription events, the `object_id` will allow to filter by subscription:
 
 ```php
-$events = $client->getEvents(['object_id' => 'cus_abc']);
+$events = $client->getEvents(['object_id' => 'cus_abc', 'type' => 'customer.*']);
+```
+
+##### Retrieve deleted customers
+
+You can retrieve deleted customers by using the `deleted` boolean:
+
+```php
+$customers = $client->getCustomers(['deleted' => true]);
+```
+
+##### Retrieve non-paid charges
+
+You can retrieve non paid charges by using the `paid` boolean:
+
+```php
+$notPaidCharges = $client->getCharges(['paid' => false]);
+```
+
+##### Retrieve proration items
+
+You can retrieve proration invoice items only by using the `proration` boolean:
+
+```php
+$invoiceItems = $client->getInvoiceItems(['proration' => true]);
 ```
 
 ### Exceptions
