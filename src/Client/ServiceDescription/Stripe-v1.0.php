@@ -490,6 +490,13 @@ return [
                     'type'        => ['string', 'array'],
                     'required'    => false
                 ],
+                'deleted' => [
+                    'description' => 'Only return deleted customers (true) or other (false)  (CAUTION: this is not explicitly documented by Stripe)',
+                    'location'    => 'query',
+                    'type'        => 'boolean',
+                    'filters'     => ['ZfrStripe\Client\Filter\BooleanFilter::encodeValue'],
+                    'required'    => false
+                ],
                 'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',

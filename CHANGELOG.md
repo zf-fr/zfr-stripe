@@ -1,3 +1,8 @@
+# 2.3.2
+
+* Add support for filtering deleted customers or not through the `deleted` parameter. Please note
+that this feature **IS NOT** documented and officially supported by Stripe, and may be removed without caution.
+
 # 2.3.1
 
 * Add support for the new `shipping` array when creating charges.
