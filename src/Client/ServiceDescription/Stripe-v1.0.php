@@ -170,6 +170,12 @@ return [
                     'type'        => 'integer',
                     'required'    => false
                 ],
+                'shipping' => [
+                    'description' => 'Shipping information for the charge',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
                 'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',

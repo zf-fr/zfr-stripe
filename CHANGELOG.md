@@ -1,5 +1,6 @@
 # 2.3.1
 
+* Add support for the new `shipping` array when creating charges.
 * Add support for filtering charges if they are paid or not through the `paid` parameter. Please note
 that this feature **IS NOT** documented and officially supported by Stripe, and may be removed without caution.
 
