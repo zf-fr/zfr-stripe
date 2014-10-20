@@ -1,3 +1,7 @@
+# 2.3.3
+
+* `forgiven` boolean was not properly encoded when updating an invoice.
+
 # 2.3.2
 
 * Add support for filtering deleted customers or not through the `deleted` parameter. Please note

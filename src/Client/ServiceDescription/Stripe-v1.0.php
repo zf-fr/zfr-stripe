@@ -1952,6 +1952,7 @@ return [
                     'description' => 'Whether an invoice is forgiven or not',
                     'location'    => 'query',
                     'type'        => 'boolean',
+                    'filters'     => ['ZfrStripe\Client\Filter\BooleanFilter::encodeValue'],
                     'required'    => false
                 ],
                 'application_fee' => [
