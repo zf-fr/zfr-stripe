@@ -1903,6 +1903,53 @@ return [
             ]
         ],
 
+        'GetUpcomingInvoiceLineItems' => [
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/invoices/upcoming/lines',
+            'summary'          => 'Get an existing invoice line items',
+            'errorResponses'   => $errors,
+            'parameters'       => [
+                'customer' => [
+                    'description' => 'Only return invoice line items for a specific customer',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'subscription' => [
+                    'description' => 'In the case of upcoming invoices, the subscription is optional. Otherwise it is ignored',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'limit' => [
+                    'description' => 'Limit on how many invoice line items are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ],
+                'starting_after' => [
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'ending_before' => [
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'expand' => [
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
+
         'PayInvoice' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/invoices/{id}/pay',

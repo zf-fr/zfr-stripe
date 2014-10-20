@@ -319,6 +319,7 @@ INVOICE RELATED METHODS:
 * array getInvoiceLineItems(array $args = array())
 * array getInvoices(array $args = array())
 * array getUpcomingInvoice(array $args = array())
+* array getUpcomingInvoiceLineItems(array $args = array())
 * array payInvoice(array $args = array())
 * array updateInvoice(array $args = array())
 

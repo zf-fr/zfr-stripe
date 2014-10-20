@@ -1,3 +1,8 @@
+# 2.3.4
+
+* Add missing `getUpcomingInvoiceLineItems` endpoint. This can be used to retrieve all the invoice line items from
+a given upcoming invoice.
+
 # 2.3.3
 
 * `forgiven` boolean was not properly encoded when updating an invoice.

@@ -100,6 +100,7 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  * @method array getInvoiceLineItems(array $args = array()) {@command Stripe GetInvoiceLineItems}
  * @method array getInvoices(array $args = array()) {@command Stripe GetInvoices}
  * @method array getUpcomingInvoice(array $args = array()) {@command Stripe GetUpcomingInvoice}
+ * @method array getUpcomingInvoiceLineItems(array $args = array()) {@command Stripe GetUpcomingInvoiceLineItems}
  * @method array payInvoice(array $args = array()) {@command Stripe PayInvoice}
  * @method array updateInvoice(array $args = array()) {@command Stripe UpdateInvoice}
  *
@@ -182,6 +183,7 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  * @method ResourceIterator getCouponsIterator()
  * @method ResourceIterator getInvoicesIterator()
  * @method ResourceIterator getInvoiceLineItemsIterator()
+ * @method ResourceIterator getUpcomingInvoiceItemsIterator()
  * @method ResourceIterator getInvoiceItemsIterator()
  * @method ResourceIterator getTransfersIterator()
  * @method ResourceIterator getRecipientsIterator()
