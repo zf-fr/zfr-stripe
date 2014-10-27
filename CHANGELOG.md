@@ -1,3 +1,7 @@
+# 2.3.5
+
+* Fix IDE auto-completion hint for `getUpcomingInvoiceLineItems` method
+
 # 2.3.4
 
 * Add missing `getUpcomingInvoiceLineItems` endpoint. This can be used to retrieve all the invoice line items from
