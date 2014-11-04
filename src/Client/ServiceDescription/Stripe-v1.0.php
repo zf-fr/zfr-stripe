@@ -291,6 +291,13 @@ return [
                     'filters'     => ['ZfrStripe\Client\Filter\BooleanFilter::encodeValue'],
                     'required'    => false
                 ],
+                'reason' => [
+                    'description' => 'Specify a reason for the refund',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false,
+                    'enum'        => ['duplicate', 'fraudulent', 'requested_by_customer']
+                ],
                 'metadata' => [
                     'description' => 'Optional metadata',
                     'location'    => 'query',

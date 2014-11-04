@@ -1,3 +1,7 @@
+# 2.3.6
+
+* Add support for the new `reason` property when creating a refund.
+
 # 2.3.5
 
 * Fix IDE auto-completion hint for `getUpcomingInvoiceLineItems` method
