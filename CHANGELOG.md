@@ -1,3 +1,7 @@
+# 2.4.0
+
+* [BC] Set default Stripe API to "2014-11-05" version
+
 # 2.3.6
 
 * Add support for the new `reason` property when creating a refund.
