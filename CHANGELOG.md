@@ -1,3 +1,7 @@
+# 2.5.0
+
+* [BC] Set default Stripe API to "2014-11-20" version
+
 # 2.4.0
 
 * [BC] Set default Stripe API to "2014-11-05" version
