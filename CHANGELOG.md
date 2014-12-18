@@ -1,3 +1,9 @@
+# 2.7.0
+
+* [BC] Set default Stripe API to "2014-12-17" version. This version replaced the `statement_description` to
+`statement_descriptor` for charges, plans, invoices and tranfers. Therefore, a new descriptor has been released for
+versions starting at "2014-12-17".
+
 # 2.6.0
 
 * [BC] Set default Stripe API to "2014-12-08" version
