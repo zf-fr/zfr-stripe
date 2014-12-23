@@ -1,3 +1,7 @@
+# 2.8.0
+
+* [BC] Set default Stripe API to "2014-12-22" version
+
 # 2.7.0
 
 * [BC] Set default Stripe API to "2014-12-17" version. This version replaced the `statement_description` to
