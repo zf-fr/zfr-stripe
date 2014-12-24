@@ -1094,6 +1094,12 @@ return [
                     'type'        => 'string',
                     'required'    => false
                 ],
+                'tax_percent' => [
+                    'description' => 'A positive decimal (with at most two decimal places) between 1 and 100 that represents the percentage of the subscription invoice subtotal that will be calculated and added as tax to the final amount each billing period',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
                 'metadata' => [
                     'description' => 'Optional metadata',
                     'location'    => 'query',
@@ -1246,6 +1252,12 @@ return [
                 ],
                 'application_fee_percent' => [
                     'description' => 'A positive decimal (with at most two decimal places) between 1 and 100 that represents the percentage of the subscription invoice amount due each billing period that will be transferred to the application owner’s Stripe account',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'tax_percent' => [
+                    'description' => 'A positive decimal (with at most two decimal places) between 1 and 100 that represents the percentage of the subscription invoice subtotal that will be calculated and added as tax to the final amount each billing period',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false

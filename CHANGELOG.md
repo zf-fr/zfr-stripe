@@ -1,3 +1,7 @@
+# 2.8.1
+
+* Add the new `tax_percent` property to subscriptions.
+
 # 2.8.0
 
 * [BC] Set default Stripe API to "2014-12-22" version
