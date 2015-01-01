@@ -69,6 +69,7 @@ return [
             'uri'              => '/v1/charges/{id}/capture',
             'summary'          => 'Capture an existing charge',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the charge',
@@ -108,6 +109,7 @@ return [
             'uri'              => '/v1/charges',
             'summary'          => 'Create a new charge (either card or customer is needed)',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'amount' => [
                     'description' => 'Amount (in cents)',
@@ -190,6 +192,7 @@ return [
             'uri'              => '/v1/charges/{id}',
             'summary'          => 'Get an existing charge',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the charge',
@@ -211,6 +214,7 @@ return [
             'uri'              => '/v1/charges',
             'summary'          => 'Get existing charges',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'limit' => [
                     'description' => 'Limit on how many charges are retrieved',
@@ -271,6 +275,7 @@ return [
             'uri'              => '/v1/charges/{id}/refunds',
             'summary'          => 'Refund an existing charge',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the charge',
@@ -318,6 +323,7 @@ return [
             'uri'              => '/v1/charges/{id}',
             'summary'          => 'Update an existing charge',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the charge to update',
@@ -359,6 +365,7 @@ return [
             'uri'              => '/v1/customers',
             'summary'          => 'Create a new customer (either card or customer is needed)',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'account_balance' => [
                     'description' => 'An integer amount in cents that is the starting account balance for your customer',
@@ -428,6 +435,7 @@ return [
             'uri'              => '/v1/customers/{id}',
             'summary'          => 'Delete an existing customer',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the customer',
@@ -449,6 +457,7 @@ return [
             'uri'              => '/v1/customers/{id}',
             'summary'          => 'Get an existing customer',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the customer',
@@ -470,6 +479,7 @@ return [
             'uri'              => '/v1/customers',
             'summary'          => 'Get existing customers',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'limit' => [
                     'description' => 'Limit on how many customers are retrieved',
@@ -524,6 +534,7 @@ return [
             'uri'              => '/v1/customers/{id}',
             'summary'          => 'Update an existing customer',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the customer to update',
@@ -595,6 +606,7 @@ return [
             'uri'              => '/v1/customers/{customer}/cards',
             'summary'          => 'Create a new card for a customer',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'customer' => [
                     'description' => 'Unique identifier of the customer',
@@ -622,6 +634,7 @@ return [
             'uri'              => '/v1/customers/{customer}/cards/{id}',
             'summary'          => 'Delete an existing customer\'s card',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the card to delete',
@@ -649,6 +662,7 @@ return [
             'uri'              => '/v1/customers/{customer}/cards/{id}',
             'summary'          => 'Get an existing customer\'s card',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the card to get',
@@ -676,6 +690,7 @@ return [
             'uri'              => '/v1/customers/{customer}/cards',
             'summary'          => 'Get existing customers\'s cards',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'customer' => [
                     'description' => 'Unique identifier of the customer to get the cards from',
@@ -723,6 +738,7 @@ return [
             'uri'              => '/v1/customers/{customer}/cards/{id}',
             'summary'          => 'Update an existing customer',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the card to update',
@@ -803,6 +819,7 @@ return [
             'uri'              => '/v1/recipients/{recipient}/cards',
             'summary'          => 'Create a new card for a recipient',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'recipient' => [
                     'description' => 'Unique identifier of the recipient',
@@ -830,6 +847,7 @@ return [
             'uri'              => '/v1/recipients/{recipient}/cards/{id}',
             'summary'          => 'Delete an existing recipients\'s card',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the card to delete',
@@ -857,6 +875,7 @@ return [
             'uri'              => '/v1/recipients/{recipient}/cards/{id}',
             'summary'          => 'Get an existing recipient\'s card',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the card to get',
@@ -884,6 +903,7 @@ return [
             'uri'              => '/v1/recipients/{recipient}/cards',
             'summary'          => 'Get existing recipients\'s cards',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'recipient' => [
                     'description' => 'Unique identifier of the recipient to get the cards from',
@@ -931,6 +951,7 @@ return [
             'uri'              => '/v1/recipients/{recipient}/cards/{id}',
             'summary'          => 'Update an existing recipient\'s card',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the card to update',
@@ -1011,6 +1032,7 @@ return [
             'uri'              => '/v1/customers/{customer}/subscriptions/{id}',
             'summary'          => 'Delete an existing customer\'s subscription',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the subscription to cancel',
@@ -1045,6 +1067,7 @@ return [
             'uri'              => '/v1/customers/{customer}/subscriptions',
             'summary'          => 'Create a customer\'s new subscription',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'customer' => [
                     'description' => 'Unique identifier of the customer',
@@ -1120,6 +1143,7 @@ return [
             'uri'              => '/v1/customers/{customer}/subscriptions/{id}',
             'summary'          => 'Get an existing customer\'s active subscription',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the active subscription to get',
@@ -1147,6 +1171,7 @@ return [
             'uri'              => '/v1/customers/{customer}/subscriptions',
             'summary'          => 'Get existing customers\'s active subscriptions',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'customer' => [
                     'description' => 'Unique identifier of the customer to get the subscriptions from',
@@ -1194,6 +1219,7 @@ return [
             'uri'              => '/v1/customers/{customer}/subscriptions/{id}',
             'summary'          => 'Update a customer\'s subscription',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the subscription to update',
@@ -1290,6 +1316,7 @@ return [
             'uri'              => '/v1/plans',
             'summary'          => 'Create a new plan',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique string to identify the plan',
@@ -1360,6 +1387,7 @@ return [
             'uri'              => '/v1/plans/{id}',
             'summary'          => 'Delete an existing plan',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the plan',
@@ -1381,6 +1409,7 @@ return [
             'uri'              => '/v1/plans/{id}',
             'summary'          => 'Get an existing plan',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the plan',
@@ -1402,6 +1431,7 @@ return [
             'uri'              => '/v1/plans',
             'summary'          => 'Get existing plans',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'limit' => [
                     'description' => 'Limit on how many plans are retrieved',
@@ -1443,6 +1473,7 @@ return [
             'uri'              => '/v1/plans/{id}',
             'summary'          => 'Update an existing plan',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the plan to update',
@@ -1490,6 +1521,7 @@ return [
             'uri'              => '/v1/coupons',
             'summary'          => 'Create a new coupon',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique string to identify the coupon (you can specify none and it will be auto-generated)',
@@ -1554,6 +1586,7 @@ return [
             'uri'              => '/v1/coupons/{id}',
             'summary'          => 'Delete an existing coupon',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the coupon',
@@ -1575,6 +1608,7 @@ return [
             'uri'              => '/v1/coupons/{id}',
             'summary'          => 'Get an existing coupon',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the plan',
@@ -1596,6 +1630,7 @@ return [
             'uri'              => '/v1/coupons/{id}',
             'summary'          => 'Get existing plans',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'limit' => [
                     'description' => 'Limit on how many coupons are retrieved',
@@ -1637,6 +1672,7 @@ return [
             'uri'              => '/v1/coupons/{id}',
             'summary'          => 'Update an existing coupon',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the coupon to update',
@@ -1672,6 +1708,7 @@ return [
             'uri'              => '/v1/customers/{customer}/discount',
             'summary'          => 'Delete a customer wide discount',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'customer' => [
                     'description' => 'Unique identifier of the customer to delete the discount from',
@@ -1693,6 +1730,7 @@ return [
             'uri'              => '/v1/customers/{customer}/subscriptions/{subscription}/discount',
             'summary'          => 'Delete a discount applied on a subscription',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'customer' => [
                     'description' => 'Unique identifier of the customer to delete the discount from',
@@ -1728,6 +1766,7 @@ return [
             'uri'              => '/v1/invoices',
             'summary'          => 'Create a new invoice',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'customer' => [
                     'description' => 'Unique string to identify the plan',
@@ -1773,6 +1812,7 @@ return [
             'uri'              => '/v1/invoices/{id}',
             'summary'          => 'Get an existing invoice',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the invoice',
@@ -1794,6 +1834,7 @@ return [
             'uri'              => '/v1/invoices/{invoice}/lines',
             'summary'          => 'Get an existing invoice line items',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'invoice' => [
                     'description' => 'Unique identifier of the invoice to retrieve invoice items from',
@@ -1847,6 +1888,7 @@ return [
             'uri'              => '/v1/invoices',
             'summary'          => 'Get existing invoices',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'limit' => [
                     'description' => 'Limit on how many invoices are retrieved',
@@ -1900,6 +1942,7 @@ return [
             'uri'              => '/v1/invoices/upcoming',
             'summary'          => 'Get upcoming invoices',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'customer' => [
                     'description' => 'Only return upcoming invoices for a specific customer',
@@ -1927,6 +1970,7 @@ return [
             'uri'              => '/v1/invoices/upcoming/lines',
             'summary'          => 'Get an existing invoice line items',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'customer' => [
                     'description' => 'Only return invoice line items for a specific customer',
@@ -1974,6 +2018,7 @@ return [
             'uri'              => '/v1/invoices/{id}/pay',
             'summary'          => 'Pay an existing invoice',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the invoice to pay',
@@ -1995,6 +2040,7 @@ return [
             'uri'              => '/v1/invoices/{id}',
             'summary'          => 'Update an existing invoice',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the invoice to update',
@@ -2056,6 +2102,7 @@ return [
             'uri'              => '/v1/invoiceitems',
             'summary'          => 'Create a new invoice item',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'customer' => [
                     'description' => 'ID of the customer who will be billed when this invoice item is billed',
@@ -2113,6 +2160,7 @@ return [
             'uri'              => '/v1/invoiceitems/{id}',
             'summary'          => 'Delete an existing invoice item',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the invoice item',
@@ -2134,6 +2182,7 @@ return [
             'uri'              => '/v1/invoiceitems/{id}',
             'summary'          => 'Get an existing invoice item',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the invoice item',
@@ -2155,6 +2204,7 @@ return [
             'uri'              => '/v1/invoiceitems',
             'summary'          => 'Get existing invoice items',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'limit' => [
                     'description' => 'Limit on how many invoice items are retrieved',
@@ -2214,6 +2264,7 @@ return [
             'uri'              => '/v1/invoiceitems/{id}',
             'summary'          => 'Update an existing invoice item',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the invoice item to update',
@@ -2255,6 +2306,7 @@ return [
             'uri'              => '/v1/charges/{charge}/dispute/close',
             'summary'          => 'Close a dispute',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'charge' => [
                     'description' => 'ID of the charge to close the dispute',
@@ -2276,6 +2328,7 @@ return [
             'uri'              => '/v1/charges/{charge}/dispute',
             'summary'          => 'Update a dispute',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'charge' => [
                     'description' => 'ID of the charge to update the dispute',
@@ -2317,6 +2370,7 @@ return [
             'uri'              => '/v1/transfers/{id}/cancel',
             'summary'          => 'Cancel an existing transfer',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the transfer',
@@ -2338,6 +2392,7 @@ return [
             'uri'              => '/v1/transfers',
             'summary'          => 'Create a new transfer',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'amount' => [
                     'description' => 'Amount (in cents)',
@@ -2389,6 +2444,7 @@ return [
             'uri'              => '/v1/transfers/{id}',
             'summary'          => 'Get an existing transfer',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the transfer',
@@ -2410,6 +2466,7 @@ return [
             'uri'              => '/v1/transfers',
             'summary'          => 'Get existing transfers',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'limit' => [
                     'description' => 'Limit on how many transfers are retrieved',
@@ -2469,6 +2526,7 @@ return [
             'uri'              => '/v1/transfers/{id}',
             'summary'          => 'Update an existing transfer',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the transfer to update',
@@ -2510,6 +2568,7 @@ return [
             'uri'              => '/v1/recipients',
             'summary'          => 'Create a new recipient',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'name' => [
                     'description' => 'The recipient\'s full, legal name',
@@ -2568,6 +2627,7 @@ return [
             'uri'              => '/v1/recipients/{id}',
             'summary'          => 'Delete an existing recipient',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the recipient',
@@ -2589,6 +2649,7 @@ return [
             'uri'              => '/v1/recipients/{id}',
             'summary'          => 'Get an existing recipient',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the recipient',
@@ -2610,6 +2671,7 @@ return [
             'uri'              => '/v1/recipients',
             'summary'          => 'Get existing recipients',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'limit' => [
                     'description' => 'Limit on how many recipients are retrieved',
@@ -2652,6 +2714,7 @@ return [
             'uri'              => '/v1/recipients/{id}',
             'summary'          => 'Update an existing recipient',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the recipient to update',
@@ -2717,6 +2780,7 @@ return [
             'uri'              => '/v1/charges/{charge}/refunds/{id}',
             'summary'          => 'Get an existing refund',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the refund',
@@ -2744,6 +2808,7 @@ return [
             'uri'              => '/v1/charges/{charge}/refunds',
             'summary'          => 'Get existing refunds for a given charge',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'charge' => [
                     'description' => 'Charge to get the refunds from',
@@ -2791,6 +2856,7 @@ return [
             'uri'              => '/v1/charges/{charge}/refunds/{id}',
             'summary'          => 'Update an existing charge',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the refund to update',
@@ -2832,6 +2898,7 @@ return [
             'uri'              => '/v1/application_fees/{id}',
             'summary'          => 'Get details about an application fee that your account has collected',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the application fee',
@@ -2853,6 +2920,7 @@ return [
             'uri'              => '/v1/application_fees',
             'summary'          => 'Get details about all application fees that your account has collected',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'limit' => [
                     'description' => 'Limit on how many application fees are retrieved',
@@ -2906,6 +2974,7 @@ return [
             'uri'              => '/v1/application_fees/{id}/refunds',
             'summary'          => 'Refund an application fee that has previously been collected but not yet refunded',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of application fee to be refunded',
@@ -2941,6 +3010,7 @@ return [
             'uri'              => '/v1/application_fees/{fee}/refunds/{id}',
             'summary'          => 'Get details about an application fee refund',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the application fee refund',
@@ -2968,6 +3038,7 @@ return [
             'uri'              => '/v1/application_fees/{fee}/refunds',
             'summary'          => 'Get details about all application fee refunds',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'fee' => [
                     'description' => 'Unique identifier of the application fee we want refunds',
@@ -3015,6 +3086,7 @@ return [
             'uri'              => '/v1/application_fees/{fee}/refunds/{id}',
             'summary'          => 'Update an application fee refund',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of application fee refund',
@@ -3056,6 +3128,7 @@ return [
             'uri'              => '/v1/balance',
             'summary'          => 'Get the current account balance',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'expand' => [
                     'description' => 'Allow to expand some properties',
@@ -3071,6 +3144,7 @@ return [
             'uri'              => '/v1/balance/history/{id}',
             'summary'          => 'Get an existing balance transaction by its id',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the balance transaction to get',
@@ -3092,6 +3166,7 @@ return [
             'uri'              => '/v1/balance/history',
             'summary'          => 'Get all the balance transactions',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'limit' => [
                     'description' => 'Limit on how many application fees are retrieved',
@@ -3180,6 +3255,7 @@ return [
             'uri'              => '/v1/tokens',
             'summary'          => 'Create a new card token (note you must either specify card OR customer but not both)',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'card' => [
                     'description' => 'Unique card identifier (can either be an ID or a hash)',
@@ -3207,6 +3283,7 @@ return [
             'uri'              => '/v1/tokens',
             'summary'          => 'Create a bank account token',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'bank_account' => [
                     'description' => 'A bank account to attach to the recipient',
@@ -3228,6 +3305,7 @@ return [
             'uri'              => '/v1/tokens/{id}',
             'summary'          => 'Get details about an existing token',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the token',
@@ -3257,6 +3335,7 @@ return [
             'uri'              => '/v1/events/{id}',
             'summary'          => 'Get details about an event',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'id' => [
                     'description' => 'Unique identifier of the event',
@@ -3278,6 +3357,7 @@ return [
             'uri'              => '/v1/events',
             'summary'          => 'Get details about all events (up to 30 days)',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse',
             'parameters'       => [
                 'limit' => [
                     'description' => 'Limit on how many events are retrieved',
@@ -3345,6 +3425,15 @@ return [
             'uri'              => '/v1/account',
             'summary'          => 'Get details about the account',
             'errorResponses'   => $errors,
+            'responseModel'    => 'getResponse'
+        ]
+    ],
+    'models' => [
+        'getResponse' => [
+            'type' => 'object',
+            'additionalProperties' => [
+                'location' => 'json'
+            ]
         ]
     ]
 ];

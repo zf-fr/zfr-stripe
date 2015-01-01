@@ -29,7 +29,7 @@ use Guzzle\Http\QueryString;
  * @author  Michaël Gallego <mic.gallego@gmail.com>
  * @licence MIT
  */
-class StripeQueryAggregator implements QueryAggregatorInterface
+class StripeQueryAggregator
 {
     /**
      * {@inheritDoc}

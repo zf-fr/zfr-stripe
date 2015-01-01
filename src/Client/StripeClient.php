@@ -260,7 +260,7 @@ final class StripeClient
             return new StripeCommandsCursorIterator($command, $iteratorOptions);
         }
 
-        return $this->guzzleClient->getCommand($name, $arguments);
+        return $this->guzzleClient->__call($name, $arguments);
     }
 
     /**
@@ -307,9 +307,9 @@ final class StripeClient
         $this->httpClient->setDefaultOption('headers/Stripe-Version', $this->version);
 
         if ($this->version < '2014-12-17') {
-            $description = new Description(include_once __DIR__ . '/ServiceDescription/Stripe-v1.0.php');
+            $description = new Description(include __DIR__ . '/ServiceDescription/Stripe-v1.0.php');
         } else {
-            $description = new Description(include_once __DIR__ . '/ServiceDescription/Stripe-v1.1.php');
+            $description = new Description(include __DIR__ . '/ServiceDescription/Stripe-v1.1.php');
         }
 
         $this->guzzleClient = new GuzzleClient($this->httpClient, $description);
