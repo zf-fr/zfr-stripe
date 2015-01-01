@@ -346,6 +346,6 @@ final class StripeClient
      */
     public function authorizeRequest(BeforeEvent $event)
     {
-        $event->getRequest()->setHeader('Authorization', 'Basic ' . $this->apiKey);
+        $event->getRequest()->setHeader('Authorization', 'Basic ' . base64_encode($this->apiKey));
     }
 }
