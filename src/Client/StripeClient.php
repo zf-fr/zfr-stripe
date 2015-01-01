@@ -18,11 +18,10 @@
 
 namespace ZfrStripe\Client;
 
-use Guzzle\Common\Event;
-use Guzzle\Plugin\ErrorResponse\ErrorResponsePlugin;
-use Guzzle\Service\Client;
-use Guzzle\Service\Description\ServiceDescription;
-use Guzzle\Service\Resource\ResourceIterator;
+use GuzzleHttp\Client;
+use GuzzleHttp\Command\Guzzle\Description;
+use GuzzleHttp\Command\Guzzle\GuzzleClient;
+use GuzzleHttp\Event\BeforeEvent;
 use ZfrStripe\Client\Iterator\StripeCommandsCursorIterator;
 use ZfrStripe\Exception\UnsupportedStripeVersionException;
 use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
@@ -193,7 +192,7 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  * @method ResourceIterator getBalanceTransactionsIterator()
  * @method ResourceIterator getEventsIterator()
  */
-class StripeClient extends Client
+final class StripeClient
 {
     /**
      * Stripe API version
@@ -201,9 +200,19 @@ class StripeClient extends Client
     const LATEST_API_VERSION = '2014-12-22';
 
     /**
+     * @var Client
+     */
+    private $httpClient;
+
+    /**
+     * @var GuzzleClient
+     */
+    private $guzzleClient;
+
+    /**
      * @var array
      */
-    protected $availableVersions = [
+    private $availableVersions = [
         '2014-03-28', '2014-05-19', '2014-06-13', '2014-06-17', '2014-07-22', '2014-07-26', '2014-08-04', '2014-08-20',
         '2014-09-08', '2014-10-07', '2014-11-05', '2014-11-20', '2014-12-08', '2014-12-17', '2014-12-22'
     ];
@@ -211,12 +220,12 @@ class StripeClient extends Client
     /**
      * @var string
      */
-    protected $apiKey;
+    private $apiKey;
 
     /**
      * @var string
      */
-    protected $version;
+    private $version;
 
     /**
      * Constructor
@@ -226,19 +235,32 @@ class StripeClient extends Client
      */
     public function __construct($apiKey, $version = self::LATEST_API_VERSION)
     {
-        parent::__construct();
+        $this->httpClient = new Client();
 
         $this->setApiKey($apiKey);
         $this->setApiVersion($version);
 
-        $this->setUserAgent('zfr-stripe-php', true);
+        // Attach various listeners that will prepare the request
+        $emitter = $this->httpClient->getEmitter();
+        $emitter->on('before', [$this, 'prepareQueryParams']);
+        $emitter->on('before', [$this, 'authorizeRequest']);
+    }
 
-        // Add an event to set the Authorization param before sending any request
-        $dispatcher = $this->getEventDispatcher();
+    /**
+     * {@inheritdoc}
+     */
+    public function __call($name, array $arguments = [])
+    {
+        if (substr($name, -8) === 'Iterator') {
+            // Allow magic method calls for iterators (e.g. $client-><CommandName>Iterator($params))
+            $commandOptions  = isset($arguments[0]) ? $arguments[0] : [];
+            $iteratorOptions = isset($arguments[1]) ? $arguments[1] : [];
+            $command         = $this->getCommand(substr($name, 0, -8), $commandOptions);
 
-        $dispatcher->addSubscriber(new ErrorResponsePlugin());
-        $dispatcher->addListener('command.after_prepare', [$this, 'afterPrepare']);
-        $dispatcher->addListener('command.before_send', [$this, 'authorizeRequest']);
+            return new StripeCommandsCursorIterator($command, $iteratorOptions);
+        }
+
+        return $this->guzzleClient->getCommand($name, $arguments);
     }
 
     /**
@@ -263,23 +285,6 @@ class StripeClient extends Client
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function __call($method, $args = [])
-    {
-        if (substr($method, -8) === 'Iterator') {
-            // Allow magic method calls for iterators (e.g. $client-><CommandName>Iterator($params))
-            $commandOptions  = isset($args[0]) ? $args[0] : [];
-            $iteratorOptions = isset($args[1]) ? $args[1] : [];
-            $command         = $this->getCommand(substr($method, 0, -8), $commandOptions);
-
-            return new StripeCommandsCursorIterator($command, $iteratorOptions);
-        }
-
-        return parent::__call(ucfirst($method), $args);
-    }
-
-    /**
      * Set the Stripe API version
      *
      * This method forces to add a Stripe-Version header, so that you can use the wanted version no matter
@@ -299,15 +304,15 @@ class StripeClient extends Client
         }
 
         $this->version = (string) $version;
-        $this->setDefaultOption('headers', ['Stripe-Version' => $this->version]);
+        $this->httpClient->setDefaultOption('headers/Stripe-Version', $this->version);
 
         if ($this->version < '2014-12-17') {
-            $descriptor = __DIR__ . '/ServiceDescription/Stripe-v1.0.php';
+            $description = new Description(include_once __DIR__ . '/ServiceDescription/Stripe-v1.0.php');
         } else {
-            $descriptor = __DIR__ . '/ServiceDescription/Stripe-v1.1.php';
+            $description = new Description(include_once __DIR__ . '/ServiceDescription/Stripe-v1.1.php');
         }
 
-        $this->setDescription(ServiceDescription::factory($descriptor));
+        $this->guzzleClient = new GuzzleClient($this->httpClient, $description);
     }
 
     /**
@@ -324,31 +329,23 @@ class StripeClient extends Client
      * Modify the query aggregator
      *
      * @internal
-     * @param  Event $event
+     * @param  BeforeEvent $event
      * @return void
      */
-    public function afterPrepare(Event $event)
+    public function prepareQueryParams(BeforeEvent $event)
     {
-        /* @var \Guzzle\Service\Command\CommandInterface $command */
-        $command = $event['command'];
-        $request = $command->getRequest();
-
-        $request->getQuery()->setAggregator(new StripeQueryAggregator());
+        $event->getRequest()->getQuery()->setAggregator(new StripeQueryAggregator());
     }
 
     /**
      * Authorize the request
      *
      * @internal
-     * @param  Event $event
+     * @param  BeforeEvent $event
      * @return void
      */
-    public function authorizeRequest(Event $event)
+    public function authorizeRequest(BeforeEvent $event)
     {
-        /* @var \Guzzle\Service\Command\CommandInterface $command */
-        $command = $event['command'];
-
-        $request = $command->getRequest();
-        $request->setAuth($this->apiKey);
+        $event->getRequest()->setHeader('Authorization', 'Basic ' . $this->apiKey);
     }
 }

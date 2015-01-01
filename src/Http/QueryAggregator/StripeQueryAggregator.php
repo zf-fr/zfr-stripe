@@ -34,7 +34,7 @@ class StripeQueryAggregator implements QueryAggregatorInterface
     /**
      * {@inheritDoc}
      */
-    public function aggregate($key, $value, QueryString $query)
+    public function __invoke($key, $value, QueryString $query)
     {
         $ret = [];
 

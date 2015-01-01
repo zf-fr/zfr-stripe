@@ -64,7 +64,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'CaptureCharge' => [
+        'captureCharge' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/charges/{id}/capture',
             'summary'          => 'Capture an existing charge',
@@ -103,7 +103,7 @@ return [
             ]
         ],
 
-        'CreateCharge' => [
+        'createCharge' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/charges',
             'summary'          => 'Create a new charge (either card or customer is needed)',
@@ -185,7 +185,7 @@ return [
             ]
         ],
 
-        'GetCharge' => [
+        'getCharge' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/charges/{id}',
             'summary'          => 'Get an existing charge',
@@ -206,7 +206,7 @@ return [
             ]
         ],
 
-        'GetCharges' => [
+        'getCharges' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/charges',
             'summary'          => 'Get existing charges',
@@ -266,7 +266,7 @@ return [
             ]
         ],
 
-        'RefundCharge' => [
+        'refundCharge' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/charges/{id}/refunds',
             'summary'          => 'Refund an existing charge',
@@ -313,7 +313,7 @@ return [
             ]
         ],
 
-        'UpdateCharge' => [
+        'updateCharge' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/charges/{id}',
             'summary'          => 'Update an existing charge',
@@ -354,7 +354,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'CreateCustomer' => [
+        'createCustomer' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/customers',
             'summary'          => 'Create a new customer (either card or customer is needed)',
@@ -423,7 +423,7 @@ return [
             ]
         ],
 
-        'DeleteCustomer' => [
+        'deleteCustomer' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/customers/{id}',
             'summary'          => 'Delete an existing customer',
@@ -444,7 +444,7 @@ return [
             ]
         ],
 
-        'GetCustomer' => [
+        'getCustomer' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/customers/{id}',
             'summary'          => 'Get an existing customer',
@@ -465,7 +465,7 @@ return [
             ]
         ],
 
-        'GetCustomers' => [
+        'getCustomers' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/customers',
             'summary'          => 'Get existing customers',
@@ -519,7 +519,7 @@ return [
             ]
         ],
 
-        'UpdateCustomer' => [
+        'updateCustomer' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/customers/{id}',
             'summary'          => 'Update an existing customer',
@@ -590,7 +590,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'CreateCard' => [
+        'createCard' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/customers/{customer}/cards',
             'summary'          => 'Create a new card for a customer',
@@ -617,7 +617,7 @@ return [
             ]
         ],
 
-        'DeleteCard' => [
+        'deleteCard' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/customers/{customer}/cards/{id}',
             'summary'          => 'Delete an existing customer\'s card',
@@ -644,7 +644,7 @@ return [
             ]
         ],
 
-        'GetCard' => [
+        'getCard' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/customers/{customer}/cards/{id}',
             'summary'          => 'Get an existing customer\'s card',
@@ -671,7 +671,7 @@ return [
             ]
         ],
 
-        'GetCards' => [
+        'getCards' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/customers/{customer}/cards',
             'summary'          => 'Get existing customers\'s cards',
@@ -718,7 +718,7 @@ return [
             ]
         ],
 
-        'UpdateCard' => [
+        'updateCard' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/customers/{customer}/cards/{id}',
             'summary'          => 'Update an existing customer',
@@ -798,7 +798,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'CreateRecipientCard' => [
+        'createRecipientCard' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/recipients/{recipient}/cards',
             'summary'          => 'Create a new card for a recipient',
@@ -825,7 +825,7 @@ return [
             ]
         ],
 
-        'DeleteRecipientCard' => [
+        'deleteRecipientCard' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/recipients/{recipient}/cards/{id}',
             'summary'          => 'Delete an existing recipients\'s card',
@@ -852,7 +852,7 @@ return [
             ]
         ],
 
-        'GetRecipientCard' => [
+        'getRecipientCard' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/recipients/{recipient}/cards/{id}',
             'summary'          => 'Get an existing recipient\'s card',
@@ -879,7 +879,7 @@ return [
             ]
         ],
 
-        'GetRecipientCards' => [
+        'getRecipientCards' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/recipients/{recipient}/cards',
             'summary'          => 'Get existing recipients\'s cards',
@@ -926,7 +926,7 @@ return [
             ]
         ],
 
-        'UpdateRecipientCard' => [
+        'updateRecipientCard' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/recipients/{recipient}/cards/{id}',
             'summary'          => 'Update an existing recipient\'s card',
@@ -1006,7 +1006,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'CancelSubscription' => [
+        'cancelSubscription' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/customers/{customer}/subscriptions/{id}',
             'summary'          => 'Delete an existing customer\'s subscription',
@@ -1040,7 +1040,7 @@ return [
             ]
         ],
 
-        'CreateSubscription' => [
+        'createSubscription' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/customers/{customer}/subscriptions',
             'summary'          => 'Create a customer\'s new subscription',
@@ -1115,7 +1115,7 @@ return [
             ]
         ],
 
-        'GetSubscription' => [
+        'getSubscription' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/customers/{customer}/subscriptions/{id}',
             'summary'          => 'Get an existing customer\'s active subscription',
@@ -1142,7 +1142,7 @@ return [
             ]
         ],
 
-        'GetSubscriptions' => [
+        'getSubscriptions' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/customers/{customer}/subscriptions',
             'summary'          => 'Get existing customers\'s active subscriptions',
@@ -1189,7 +1189,7 @@ return [
             ]
         ],
 
-        'UpdateSubscription' => [
+        'updateSubscription' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/customers/{customer}/subscriptions/{id}',
             'summary'          => 'Update a customer\'s subscription',
@@ -1285,7 +1285,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'CreatePlan' => [
+        'createPlan' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/plans',
             'summary'          => 'Create a new plan',
@@ -1355,7 +1355,7 @@ return [
             ]
         ],
 
-        'DeletePlan' => [
+        'deletePlan' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/plans/{id}',
             'summary'          => 'Delete an existing plan',
@@ -1376,7 +1376,7 @@ return [
             ]
         ],
 
-        'GetPlan' => [
+        'getPlan' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/plans/{id}',
             'summary'          => 'Get an existing plan',
@@ -1397,7 +1397,7 @@ return [
             ]
         ],
 
-        'GetPlans' => [
+        'getPlans' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/plans',
             'summary'          => 'Get existing plans',
@@ -1438,7 +1438,7 @@ return [
             ]
         ],
 
-        'UpdatePlan' => [
+        'updatePlan' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/plans/{id}',
             'summary'          => 'Update an existing plan',
@@ -1485,7 +1485,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'CreateCoupon' => [
+        'createCoupon' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/coupons',
             'summary'          => 'Create a new coupon',
@@ -1549,7 +1549,7 @@ return [
             ]
         ],
 
-        'DeleteCoupon' => [
+        'deleteCoupon' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/coupons/{id}',
             'summary'          => 'Delete an existing coupon',
@@ -1570,7 +1570,7 @@ return [
             ]
         ],
 
-        'GetCoupon' => [
+        'getCoupon' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/coupons/{id}',
             'summary'          => 'Get an existing coupon',
@@ -1591,7 +1591,7 @@ return [
             ]
         ],
 
-        'GetCoupons' => [
+        'getCoupons' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/coupons/{id}',
             'summary'          => 'Get existing plans',
@@ -1632,7 +1632,7 @@ return [
             ]
         ],
 
-        'UpdateCoupon' => [
+        'updateCoupon' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/coupons/{id}',
             'summary'          => 'Update an existing coupon',
@@ -1667,7 +1667,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'DeleteCustomerDiscount' => [
+        'deleteCustomerDiscount' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/customers/{customer}/discount',
             'summary'          => 'Delete a customer wide discount',
@@ -1688,7 +1688,7 @@ return [
             ]
         ],
 
-        'DeleteSubscriptionDiscount' => [
+        'deleteSubscriptionDiscount' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/customers/{customer}/subscriptions/{subscription}/discount',
             'summary'          => 'Delete a discount applied on a subscription',
@@ -1723,7 +1723,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'CreateInvoice' => [
+        'createInvoice' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/invoices',
             'summary'          => 'Create a new invoice',
@@ -1768,7 +1768,7 @@ return [
             ]
         ],
 
-        'GetInvoice' => [
+        'getInvoice' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoices/{id}',
             'summary'          => 'Get an existing invoice',
@@ -1789,7 +1789,7 @@ return [
             ]
         ],
 
-        'GetInvoiceLineItems' => [
+        'getInvoiceLineItems' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoices/{invoice}/lines',
             'summary'          => 'Get an existing invoice line items',
@@ -1842,7 +1842,7 @@ return [
             ]
         ],
 
-        'GetInvoices' => [
+        'getInvoices' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoices',
             'summary'          => 'Get existing invoices',
@@ -1895,7 +1895,7 @@ return [
             ]
         ],
 
-        'GetUpcomingInvoice' => [
+        'getUpcomingInvoice' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoices/upcoming',
             'summary'          => 'Get upcoming invoices',
@@ -1922,7 +1922,7 @@ return [
             ]
         ],
 
-        'GetUpcomingInvoiceLineItems' => [
+        'getUpcomingInvoiceLineItems' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoices/upcoming/lines',
             'summary'          => 'Get an existing invoice line items',
@@ -1969,7 +1969,7 @@ return [
             ]
         ],
 
-        'PayInvoice' => [
+        'payInvoice' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/invoices/{id}/pay',
             'summary'          => 'Pay an existing invoice',
@@ -1990,7 +1990,7 @@ return [
             ]
         ],
 
-        'UpdateInvoice' => [
+        'updateInvoice' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/invoices/{id}',
             'summary'          => 'Update an existing invoice',
@@ -2051,7 +2051,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'CreateInvoiceItem' => [
+        'createInvoiceItem' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/invoiceitems',
             'summary'          => 'Create a new invoice item',
@@ -2108,7 +2108,7 @@ return [
             ]
         ],
 
-        'DeleteInvoiceItem' => [
+        'deleteInvoiceItem' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/invoiceitems/{id}',
             'summary'          => 'Delete an existing invoice item',
@@ -2129,7 +2129,7 @@ return [
             ]
         ],
 
-        'GetInvoiceItem' => [
+        'getInvoiceItem' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoiceitems/{id}',
             'summary'          => 'Get an existing invoice item',
@@ -2150,7 +2150,7 @@ return [
             ]
         ],
 
-        'GetInvoiceItems' => [
+        'getInvoiceItems' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/invoiceitems',
             'summary'          => 'Get existing invoice items',
@@ -2209,7 +2209,7 @@ return [
             ]
         ],
 
-        'UpdateInvoiceItem' => [
+        'updateInvoiceItem' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/invoiceitems/{id}',
             'summary'          => 'Update an existing invoice item',
@@ -2250,7 +2250,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'CloseDispute' => [
+        'closeDispute' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/charges/{charge}/dispute/close',
             'summary'          => 'Close a dispute',
@@ -2271,7 +2271,7 @@ return [
             ]
         ],
 
-        'UpdateDispute' => [
+        'updateDispute' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/charges/{charge}/dispute',
             'summary'          => 'Update a dispute',
@@ -2312,7 +2312,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'CancelTransfer' => [
+        'cancelTransfer' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/transfers/{id}/cancel',
             'summary'          => 'Cancel an existing transfer',
@@ -2333,7 +2333,7 @@ return [
             ]
         ],
 
-        'CreateTransfer' => [
+        'createTransfer' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/transfers',
             'summary'          => 'Create a new transfer',
@@ -2384,7 +2384,7 @@ return [
             ]
         ],
 
-        'GetTransfer' => [
+        'getTransfer' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/transfers/{id}',
             'summary'          => 'Get an existing transfer',
@@ -2405,7 +2405,7 @@ return [
             ]
         ],
 
-        'GetTransfers' => [
+        'getTransfers' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/transfers',
             'summary'          => 'Get existing transfers',
@@ -2464,7 +2464,7 @@ return [
             ]
         ],
 
-        'UpdateTransfer' => [
+        'updateTransfer' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/transfers/{id}',
             'summary'          => 'Update an existing transfer',
@@ -2505,7 +2505,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'CreateRecipient' => [
+        'createRecipient' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/recipients',
             'summary'          => 'Create a new recipient',
@@ -2563,7 +2563,7 @@ return [
             ]
         ],
 
-        'DeleteRecipient' => [
+        'deleteRecipient' => [
             'httpMethod'       => 'DELETE',
             'uri'              => '/v1/recipients/{id}',
             'summary'          => 'Delete an existing recipient',
@@ -2584,7 +2584,7 @@ return [
             ]
         ],
 
-        'GetRecipient' => [
+        'getRecipient' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/recipients/{id}',
             'summary'          => 'Get an existing recipient',
@@ -2605,7 +2605,7 @@ return [
             ]
         ],
 
-        'GetRecipients' => [
+        'getRecipients' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/recipients',
             'summary'          => 'Get existing recipients',
@@ -2647,7 +2647,7 @@ return [
             ]
         ],
 
-        'UpdateRecipient' => [
+        'updateRecipient' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/recipients/{id}',
             'summary'          => 'Update an existing recipient',
@@ -2712,7 +2712,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'GetRefund' => [
+        'getRefund' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/charges/{charge}/refunds/{id}',
             'summary'          => 'Get an existing refund',
@@ -2739,7 +2739,7 @@ return [
             ]
         ],
 
-        'GetRefunds' => [
+        'getRefunds' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/charges/{charge}/refunds',
             'summary'          => 'Get existing refunds for a given charge',
@@ -2786,7 +2786,7 @@ return [
             ]
         ],
 
-        'UpdateRefund' => [
+        'updateRefund' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/charges/{charge}/refunds/{id}',
             'summary'          => 'Update an existing charge',
@@ -2827,7 +2827,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'GetApplicationFee' => [
+        'getApplicationFee' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/application_fees/{id}',
             'summary'          => 'Get details about an application fee that your account has collected',
@@ -2848,7 +2848,7 @@ return [
             ]
         ],
 
-        'GetApplicationFees' => [
+        'getApplicationFees' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/application_fees',
             'summary'          => 'Get details about all application fees that your account has collected',
@@ -2901,7 +2901,7 @@ return [
             ]
         ],
 
-        'RefundApplicationFee' => [
+        'refundApplicationFee' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/application_fees/{id}/refunds',
             'summary'          => 'Refund an application fee that has previously been collected but not yet refunded',
@@ -2936,7 +2936,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'GetApplicationFeeRefund' => [
+        'getApplicationFeeRefund' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/application_fees/{fee}/refunds/{id}',
             'summary'          => 'Get details about an application fee refund',
@@ -2963,7 +2963,7 @@ return [
             ]
         ],
 
-        'GetApplicationFeeRefunds' => [
+        'getApplicationFeeRefunds' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/application_fees/{fee}/refunds',
             'summary'          => 'Get details about all application fee refunds',
@@ -3010,7 +3010,7 @@ return [
             ]
         ],
 
-        'UpdateApplicationFeeRefund' => [
+        'updateApplicationFeeRefund' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/application_fees/{fee}/refunds/{id}',
             'summary'          => 'Update an application fee refund',
@@ -3051,7 +3051,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'GetAccountBalance' => [
+        'getAccountBalance' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/balance',
             'summary'          => 'Get the current account balance',
@@ -3066,7 +3066,7 @@ return [
             ]
         ],
 
-        'GetBalanceTransaction' => [
+        'getBalanceTransaction' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/balance/history/{id}',
             'summary'          => 'Get an existing balance transaction by its id',
@@ -3087,7 +3087,7 @@ return [
             ]
         ],
 
-        'GetBalanceTransactions' => [
+        'getBalanceTransactions' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/balance/history',
             'summary'          => 'Get all the balance transactions',
@@ -3175,7 +3175,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'CreateCardToken' => [
+        'createCardToken' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/tokens',
             'summary'          => 'Create a new card token (note you must either specify card OR customer but not both)',
@@ -3202,7 +3202,7 @@ return [
             ]
         ],
 
-        'CreateBankAccountToken' => [
+        'createBankAccountToken' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/tokens',
             'summary'          => 'Create a bank account token',
@@ -3223,7 +3223,7 @@ return [
             ]
         ],
 
-        'GetToken' => [
+        'getToken' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/tokens/{id}',
             'summary'          => 'Get details about an existing token',
@@ -3252,7 +3252,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'GetEvent' => [
+        'getEvent' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/events/{id}',
             'summary'          => 'Get details about an event',
@@ -3273,7 +3273,7 @@ return [
             ]
         ],
 
-        'GetEvents' => [
+        'getEvents' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/events',
             'summary'          => 'Get details about all events (up to 30 days)',
@@ -3340,7 +3340,7 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'GetAccount' => [
+        'getAccount' => [
             'httpMethod'       => 'GET',
             'uri'              => '/v1/account',
             'summary'          => 'Get details about the account',
