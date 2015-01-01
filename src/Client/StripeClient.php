@@ -22,6 +22,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Command\Guzzle\Description;
 use GuzzleHttp\Command\Guzzle\GuzzleClient;
 use GuzzleHttp\Event\BeforeEvent;
+use GuzzleHttp\Query;
 use ZfrStripe\Client\Iterator\StripeCommandsCursorIterator;
 use ZfrStripe\Exception\UnsupportedStripeVersionException;
 use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
@@ -334,7 +335,7 @@ final class StripeClient
      */
     public function prepareQueryParams(BeforeEvent $event)
     {
-        $event->getRequest()->getQuery()->setAggregator(new StripeQueryAggregator());
+        $event->getRequest()->getQuery()->setAggregator(Query::phpAggregator(false));
     }
 
     /**
