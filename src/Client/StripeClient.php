@@ -25,7 +25,6 @@ use GuzzleHttp\Event\BeforeEvent;
 use GuzzleHttp\Query;
 use ZfrStripe\Client\Iterator\StripeCommandsCursorIterator;
 use ZfrStripe\Exception\UnsupportedStripeVersionException;
-use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
 
 /**
  * @author  Michaël Gallego <mic.gallego@gmail.com>
@@ -193,7 +192,7 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  * @method ResourceIterator getBalanceTransactionsIterator()
  * @method ResourceIterator getEventsIterator()
  */
-final class StripeClient
+class StripeClient
 {
     /**
      * Stripe API version
