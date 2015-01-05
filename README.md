@@ -15,7 +15,7 @@ ZfrStripe is a modern PHP library based on Guzzle for [Stripe payment system](ht
 Installation of ZfrStripe is only officially supported using Composer:
 
 ```sh
-php composer.phar require zfr/zfr-stripe:2.*
+php composer.phar require 'zfr/zfr-stripe:2.*'
 ```
 
 ## Tutorial
