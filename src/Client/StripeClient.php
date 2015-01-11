@@ -32,165 +32,165 @@ use ZfrStripe\Exception\UnsupportedStripeVersionException;
  *
  * CHARGE RELATED METHODS:
  *
- * @method array captureCharge(array $args = array()) {@command Stripe CaptureCharge}
- * @method array createCharge(array $args = array()) {@command Stripe CreateCharge}
- * @method array getCharge(array $args = array()) {@command Stripe GetCharge}
- * @method array getCharges(array $args = array()) {@command Stripe GetCharges}
- * @method array refundCharge(array $args = array()) {@command Stripe RefundCharge}
- * @method array updateCharge(array $args = array()) {@command Stripe UpdateCharge}
+ * @method array captureCharge(array $args = array()) {@command Stripe captureCharge}
+ * @method array createCharge(array $args = array()) {@command Stripe createCharge}
+ * @method array getCharge(array $args = array()) {@command Stripe getCharge}
+ * @method array getCharges(array $args = array()) {@command Stripe getCharges}
+ * @method array refundCharge(array $args = array()) {@command Stripe refundCharge}
+ * @method array updateCharge(array $args = array()) {@command Stripe updateCharge}
  *
  * CUSTOMER RELATED METHODS:
  *
- * @method array createCustomer(array $args = array()) {@command Stripe CreateCustomer}
- * @method array deleteCustomer(array $args = array()) {@command Stripe DeleteCustomer}
- * @method array getCustomer(array $args = array()) {@command Stripe GetCustomer}
- * @method array getCustomers(array $args = array()) {@command Stripe GetCustomers}
- * @method array updateCustomer(array $args = array()) {@command Stripe UpdateCustomer}
+ * @method array createCustomer(array $args = array()) {@command Stripe createCustomer}
+ * @method array deleteCustomer(array $args = array()) {@command Stripe deleteCustomer}
+ * @method array getCustomer(array $args = array()) {@command Stripe getCustomer}
+ * @method array getCustomers(array $args = array()) {@command Stripe getCustomers}
+ * @method array updateCustomer(array $args = array()) {@command Stripe updateCustomer}
  *
  * CARD RELATED METHODS:
  *
- * @method array createCard(array $args = array()) {@command Stripe CreateCard}
- * @method array deleteCard(array $args = array()) {@command Stripe DeleteCard}
- * @method array getCard(array $args = array()) {@command Stripe GetCard}
- * @method array getCards(array $args = array()) {@command Stripe GetCards}
- * @method array updateCard(array $args = array()) {@command Stripe UpdateCard}
+ * @method array createCard(array $args = array()) {@command Stripe createCard}
+ * @method array deleteCard(array $args = array()) {@command Stripe deleteCard}
+ * @method array getCard(array $args = array()) {@command Stripe getCard}
+ * @method array getCards(array $args = array()) {@command Stripe getCards}
+ * @method array updateCard(array $args = array()) {@command Stripe updateCard}
  *
  * RECIPIENT CARD RELATED METHODS:
  *
- * @method array createRecipientCard(array $args = array()) {@command Stripe CreateRecipientCard}
- * @method array deleteRecipientCard(array $args = array()) {@command Stripe DeleteRecipientCard}
- * @method array getRecipientCard(array $args = array()) {@command Stripe GetRecipientCard}
- * @method array getRecipientCards(array $args = array()) {@command Stripe GetRecipientCards}
- * @method array updateRecipientCard(array $args = array()) {@command Stripe UpdateRecipientCard}
+ * @method array createRecipientCard(array $args = array()) {@command Stripe createRecipientCard}
+ * @method array deleteRecipientCard(array $args = array()) {@command Stripe deleteRecipientCard}
+ * @method array getRecipientCard(array $args = array()) {@command Stripe getRecipientCard}
+ * @method array getRecipientCards(array $args = array()) {@command Stripe getRecipientCards}
+ * @method array updateRecipientCard(array $args = array()) {@command Stripe updateRecipientCard}
  *
  * SUBSCRIPTION RELATED METHODS:
  *
- * @method array cancelSubscription(array $args = array()) {@command Stripe CancelSubscription}
- * @method array createSubscription(array $args = array()) {@command Stripe CreateSubscription}
- * @method array getSubscription(array $args = array()) {@command Stripe GetSubscription}
- * @method array getSubscriptions(array $args = array()) {@command Stripe GetSubscriptions}
- * @method array updateSubscription(array $args = array()) {@command Stripe UpdateSubscription}
+ * @method array cancelSubscription(array $args = array()) {@command Stripe cancelSubscription}
+ * @method array createSubscription(array $args = array()) {@command Stripe createSubscription}
+ * @method array getSubscription(array $args = array()) {@command Stripe getSubscription}
+ * @method array getSubscriptions(array $args = array()) {@command Stripe getSubscriptions}
+ * @method array updateSubscription(array $args = array()) {@command Stripe updateSubscription}
  *
  * PLAN RELATED METHODS:
  *
- * @method array createPlan(array $args = array()) {@command Stripe CreatePlan}
- * @method array deletePlan(array $args = array()) {@command Stripe DeletePlan}
- * @method array getPlan(array $args = array()) {@command Stripe GetPlan}
- * @method array getPlans(array $args = array()) {@command Stripe GetPlans}
- * @method array updatePlan(array $args = array()) {@command Stripe UpdatePlan}
+ * @method array createPlan(array $args = array()) {@command Stripe createPlan}
+ * @method array deletePlan(array $args = array()) {@command Stripe deletePlan}
+ * @method array getPlan(array $args = array()) {@command Stripe getPlan}
+ * @method array getPlans(array $args = array()) {@command Stripe getPlans}
+ * @method array updatePlan(array $args = array()) {@command Stripe updatePlan}
  *
  * COUPON RELATED METHODS:
  *
- * @method array createCoupon(array $args = array()) {@command Stripe CreateCoupon}
- * @method array deleteCoupon(array $args = array()) {@command Stripe DeleteCoupon}
- * @method array getCoupon(array $args = array()) {@command Stripe GetCoupon}
- * @method array getCoupons(array $args = array()) {@command Stripe GetCoupons}
- * @method array updateCoupon(array $args = array()) {@command Stripe UpdateCoupon}
+ * @method array createCoupon(array $args = array()) {@command Stripe createCoupon}
+ * @method array deleteCoupon(array $args = array()) {@command Stripe deleteCoupon}
+ * @method array getCoupon(array $args = array()) {@command Stripe getCoupon}
+ * @method array getCoupons(array $args = array()) {@command Stripe getCoupons}
+ * @method array updateCoupon(array $args = array()) {@command Stripe updateCoupon}
  *
  * DISCOUNT RELATED METHODS:
  *
- * @method array deleteCustomerDiscount(array $args = array()) {@command Stripe DeleteCustomerDiscount}
- * @method array deleteSubscriptionDiscount(array $args = array()) {@command Stripe DeleteSubscriptionDiscount}
+ * @method array deleteCustomerDiscount(array $args = array()) {@command Stripe deleteCustomerDiscount}
+ * @method array deleteSubscriptionDiscount(array $args = array()) {@command Stripe deleteSubscriptionDiscount}
  *
  * INVOICE RELATED METHODS:
  *
- * @method array createInvoice(array $args = array()) {@command Stripe CreateInvoice}
- * @method array getInvoice(array $args = array()) {@command Stripe GetInvoice}
- * @method array getInvoiceLineItems(array $args = array()) {@command Stripe GetInvoiceLineItems}
- * @method array getInvoices(array $args = array()) {@command Stripe GetInvoices}
- * @method array getUpcomingInvoice(array $args = array()) {@command Stripe GetUpcomingInvoice}
- * @method array getUpcomingInvoiceLineItems(array $args = array()) {@command Stripe GetUpcomingInvoiceLineItems}
- * @method array payInvoice(array $args = array()) {@command Stripe PayInvoice}
- * @method array updateInvoice(array $args = array()) {@command Stripe UpdateInvoice}
+ * @method array createInvoice(array $args = array()) {@command Stripe createInvoice}
+ * @method array getInvoice(array $args = array()) {@command Stripe getInvoice}
+ * @method array getInvoiceLineItems(array $args = array()) {@command Stripe getInvoiceLineItems}
+ * @method array getInvoices(array $args = array()) {@command Stripe getInvoices}
+ * @method array getUpcomingInvoice(array $args = array()) {@command Stripe getUpcomingInvoice}
+ * @method array getUpcomingInvoiceLineItems(array $args = array()) {@command Stripe getUpcomingInvoiceLineItems}
+ * @method array payInvoice(array $args = array()) {@command Stripe payInvoice}
+ * @method array updateInvoice(array $args = array()) {@command Stripe updateInvoice}
  *
  * INVOICE ITEM RELATED METHODS:
  *
- * @method array createInvoiceItem(array $args = array()) {@command Stripe CreateInvoiceItem}
- * @method array deleteInvoiceItem(array $args = array()) {@command Stripe DeleteInvoiceItem}
- * @method array getInvoiceItem(array $args = array()) {@command Stripe GetInvoiceItem}
- * @method array getInvoiceItems(array $args = array()) {@command Stripe GetInvoiceItems}
- * @method array updateInvoiceItem(array $args = array()) {@command Stripe UpdateInvoiceItem}
+ * @method array createInvoiceItem(array $args = array()) {@command Stripe createInvoiceItem}
+ * @method array deleteInvoiceItem(array $args = array()) {@command Stripe deleteInvoiceItem}
+ * @method array getInvoiceItem(array $args = array()) {@command Stripe getInvoiceItem}
+ * @method array getInvoiceItems(array $args = array()) {@command Stripe getInvoiceItems}
+ * @method array updateInvoiceItem(array $args = array()) {@command Stripe updateInvoiceItem}
  *
  * DISPUTE RELATED METHODS:
  *
- * @method array closeDispute(array $args = array()) {@command Stripe CloseDispute}
- * @method array updateDispute(array $args = array()) {@command Stripe UpdateDispute}
+ * @method array closeDispute(array $args = array()) {@command Stripe closeDispute}
+ * @method array updateDispute(array $args = array()) {@command Stripe updateDispute}
  *
  * TRANSFER RELATED METHODS:
  *
- * @method array cancelTransfer(array $args = array()) {@command Stripe CancelTransfer}
- * @method array createTransfer(array $args = array()) {@command Stripe CreateTransfer}
- * @method array getTransfer(array $args = array()) {@command Stripe GetTransfer}
- * @method array getTransfers(array $args = array()) {@command Stripe GetTransfers}
- * @method array updateTransfer(array $args = array()) {@command Stripe UpdateTransfer}
+ * @method array cancelTransfer(array $args = array()) {@command Stripe cancelTransfer}
+ * @method array createTransfer(array $args = array()) {@command Stripe createTransfer}
+ * @method array getTransfer(array $args = array()) {@command Stripe getTransfer}
+ * @method array getTransfers(array $args = array()) {@command Stripe getTransfers}
+ * @method array updateTransfer(array $args = array()) {@command Stripe updateTransfer}
  *
  * RECIPIENT RELATED METHODS:
  *
- * @method array createRecipient(array $args = array()) {@command Stripe CreateRecipient}
- * @method array deleteRecipient(array $args = array()) {@command Stripe DeleteRecipient}
- * @method array getRecipient(array $args = array()) {@command Stripe GetRecipient}
- * @method array getRecipients(array $args = array()) {@command Stripe GetRecipients}
- * @method array updateRecipient(array $args = array()) {@command Stripe UpdateRecipient}
+ * @method array createRecipient(array $args = array()) {@command Stripe createRecipient}
+ * @method array deleteRecipient(array $args = array()) {@command Stripe deleteRecipient}
+ * @method array getRecipient(array $args = array()) {@command Stripe getRecipient}
+ * @method array getRecipients(array $args = array()) {@command Stripe getRecipients}
+ * @method array updateRecipient(array $args = array()) {@command Stripe updateRecipient}
  *
  * REFUND RELATED METHODS:
  *
- * @method array getRefund(array $args = array()) {@command Stripe GetRefund}
- * @method array getRefunds(array $args = array()) {@command Stripe GetRefunds}
- * @method array updateRefund(array $args = array()) {@command Stripe UpdateRefunds}
+ * @method array getRefund(array $args = array()) {@command Stripe getRefund}
+ * @method array getRefunds(array $args = array()) {@command Stripe getRefunds}
+ * @method array updateRefund(array $args = array()) {@command Stripe updateRefunds}
  *
  * APPLICATION FEE RELATED METHODS:
  *
- * @method array getApplicationFee(array $args = array()) {@command Stripe GetApplicationFee}
- * @method array getApplicationFees(array $args = array()) {@command Stripe GetApplicationFees}
- * @method array refundApplicationFee(array $args = array()) {@command Stripe RefundApplicationFee}
+ * @method array getApplicationFee(array $args = array()) {@command Stripe getApplicationFee}
+ * @method array getApplicationFees(array $args = array()) {@command Stripe getApplicationFees}
+ * @method array refundApplicationFee(array $args = array()) {@command Stripe refundApplicationFee}
  *
  * APPLICATION FEE REFUND RELATED METHODS:
  *
- * @method array getApplicationFeeRefund(array $args = array()) {@command Stripe GetApplicationFeeRefund}
- * @method array getApplicationFeeRefunds(array $args = array()) {@command Stripe GetApplicationFeeRefunds}
- * @method array updateApplicationFeeRefund(array $args = array()) {@command Stripe UpdateApplicationFeeRefund}
+ * @method array getApplicationFeeRefund(array $args = array()) {@command Stripe getApplicationFeeRefund}
+ * @method array getApplicationFeeRefunds(array $args = array()) {@command Stripe getApplicationFeeRefunds}
+ * @method array updateApplicationFeeRefund(array $args = array()) {@command Stripe updateApplicationFeeRefund}
  *
  * BALANCE RELATED METHODS:
  *
- * @method array getAccountBalance(array $args = array()) {@command Stripe GetAccountBalance}
- * @method array getBalanceTransaction(array $args = array()) {@command Stripe GetBalanceTransaction}
- * @method array getBalanceTransactions(array $args = array()) {@command Stripe GetBalanceTransactions}
+ * @method array getAccountBalance(array $args = array()) {@command Stripe getAccountBalance}
+ * @method array getBalanceTransaction(array $args = array()) {@command Stripe getBalanceTransaction}
+ * @method array getBalanceTransactions(array $args = array()) {@command Stripe getBalanceTransactions}
  *
  * TOKEN RELATED METHODS:
  *
- * @method array createCardToken(array $args = array()) {@command Stripe CreateCardToken}
- * @method array createBankAccountToken(array $args = array()) {@command Stripe CreateBankAccountToken}
- * @method array getToken(array $args = array()) {@command Stripe GetToken}
+ * @method array createCardToken(array $args = array()) {@command Stripe createCardToken}
+ * @method array createBankAccountToken(array $args = array()) {@command Stripe createBankAccountToken}
+ * @method array getToken(array $args = array()) {@command Stripe getToken}
  *
  * EVENT RELATED METHODS:
  *
- * @method array getEvent(array $args = array()) {@command Stripe GetEvent}
- * @method array getEvents(array $args = array()) {@command Stripe GetEvents}
+ * @method array getEvent(array $args = array()) {@command Stripe getEvent}
+ * @method array getEvents(array $args = array()) {@command Stripe getEvents}
  *
  * ACCOUNT RELATED METHODS:
  *
- * @method array getAccount(array $args = array()) {@command Stripe GetAccount}
+ * @method array getAccount(array $args = array()) {@command Stripe getAccount}
  *
  * ITERATOR METHODS:
  *
- * @method ResourceIterator getCustomersIterator()
- * @method ResourceIterator getChargesIterator()
- * @method ResourceIterator getCardsIterator()
- * @method ResourceIterator getRecipientCardsIterator()
- * @method ResourceIterator getSubscriptionsIterator()
- * @method ResourceIterator getPlansIterator()
- * @method ResourceIterator getCouponsIterator()
- * @method ResourceIterator getInvoicesIterator()
- * @method ResourceIterator getInvoiceLineItemsIterator()
- * @method ResourceIterator GetUpcomingInvoiceLineItemsIterator()
- * @method ResourceIterator getInvoiceItemsIterator()
- * @method ResourceIterator getTransfersIterator()
- * @method ResourceIterator getRecipientsIterator()
- * @method ResourceIterator getRefundsIterator()
- * @method ResourceIterator getApplicationFeesIterator()
- * @method ResourceIterator getApplicationFeeRefundsIterator()
- * @method ResourceIterator getBalanceTransactionsIterator()
- * @method ResourceIterator getEventsIterator()
+ * @method StripeCommandsCursorIterator getCustomersIterator()
+ * @method StripeCommandsCursorIterator getChargesIterator()
+ * @method StripeCommandsCursorIterator getCardsIterator()
+ * @method StripeCommandsCursorIterator getRecipientCardsIterator()
+ * @method StripeCommandsCursorIterator getSubscriptionsIterator()
+ * @method StripeCommandsCursorIterator getPlansIterator()
+ * @method StripeCommandsCursorIterator getCouponsIterator()
+ * @method StripeCommandsCursorIterator getInvoicesIterator()
+ * @method StripeCommandsCursorIterator getInvoiceLineItemsIterator()
+ * @method StripeCommandsCursorIterator GetUpcomingInvoiceLineItemsIterator()
+ * @method StripeCommandsCursorIterator getInvoiceItemsIterator()
+ * @method StripeCommandsCursorIterator getTransfersIterator()
+ * @method StripeCommandsCursorIterator getRecipientsIterator()
+ * @method StripeCommandsCursorIterator getRefundsIterator()
+ * @method StripeCommandsCursorIterator getApplicationFeesIterator()
+ * @method StripeCommandsCursorIterator getApplicationFeeRefundsIterator()
+ * @method StripeCommandsCursorIterator getBalanceTransactionsIterator()
+ * @method StripeCommandsCursorIterator getEventsIterator()
  */
 class StripeClient
 {
@@ -305,10 +305,12 @@ class StripeClient
         $this->version = (string) $version;
         $this->httpClient->setDefaultOption('headers/Stripe-Version', $this->version);
 
-        if ($this->version < '2014-12-17') {
+        if ($this->version < '2014-12-08') {
             $description = new Description(include __DIR__ . '/ServiceDescription/Stripe-v1.0.php');
-        } else {
+        } elseif ($this->version < '2014-12-17') {
             $description = new Description(include __DIR__ . '/ServiceDescription/Stripe-v1.1.php');
+        } else {
+            $description = new Description(include __DIR__ . '/ServiceDescription/Stripe-v1.2.php');
         }
 
         $this->guzzleClient = new GuzzleClient($this->httpClient, $description);

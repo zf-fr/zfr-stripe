@@ -154,7 +154,7 @@ return [
                     'type'        => 'array',
                     'required'    => false
                 ],
-                'statement_description' => [
+                'statement_descriptor' => [
                     'description' => 'An arbitrary string to be displayed alongside your customer\'s credit card statement',
                     'location'    => 'query',
                     'type'        => 'string',
@@ -1367,7 +1367,7 @@ return [
                     'type'        => 'array',
                     'required'    => false
                 ],
-                'statement_description' => [
+                'statement_descriptor' => [
                     'description' => 'An arbitrary string to be displayed alongside your customer\'s credit card statement',
                     'location'    => 'query',
                     'type'        => 'string',
@@ -1493,7 +1493,7 @@ return [
                     'type'        => 'array',
                     'required'    => false
                 ],
-                'statement_description' => [
+                'statement_descriptor' => [
                     'description' => 'An arbitrary string to be displayed alongside your customer\'s credit card statement',
                     'location'    => 'query',
                     'type'        => 'string',
@@ -1786,7 +1786,7 @@ return [
                     'type'        => 'string',
                     'required'    => false
                 ],
-                'statement_description' => [
+                'statement_descriptor' => [
                     'description' => 'Extra information about a charge for the customer\'s credit card statement',
                     'location'    => 'query',
                     'type'        => 'string',
@@ -2054,7 +2054,7 @@ return [
                     'type'        => 'string',
                     'required'    => false
                 ],
-                'statement_description' => [
+                'statement_descriptor' => [
                     'description' => 'Extra information about a charge for the customer\'s credit card statement',
                     'location'    => 'query',
                     'type'        => 'string',
@@ -2337,9 +2337,9 @@ return [
                     'required'    => true
                 ],
                 'evidence' => [
-                    'description' => 'Evidence text',
-                    'location'    => 'uri',
-                    'type'        => 'string',
+                    'description' => 'Evidence hash',
+                    'location'    => 'query',
+                    'type'        => 'array',
                     'required'    => false
                 ],
                 'metadata' => [
@@ -2418,7 +2418,7 @@ return [
                     'type'        => 'string',
                     'required'    => false
                 ],
-                'statement_description' => [
+                'statement_descriptor' => [
                     'description' => 'An arbitrary string which will be displayed on the recipient\'s bank statement',
                     'location'    => 'query',
                     'type'        => 'string',

@@ -58,13 +58,4 @@ class StripeClientTest extends PHPUnit_Framework_TestCase
         $this->client->setApiVersion('2014-05-19');
         $this->assertEquals('2014-05-19', $this->client->getDefaultOption('headers/Stripe-Version'));
     }
-
-    public function testUserAgentIsIncluded()
-    {
-        // Make sure the user agent contains "zfr-stripe-php"
-        $command = $this->client->getCommand('GetAccount');
-        $request = $command->prepare();
-        $this->client->dispatch('command.before_send', ['command' => $command]);
-        $this->assertRegExp('/^zfr-stripe-php/', (string)$request->getHeader('User-Agent', true));
-    }
 }

@@ -23,6 +23,8 @@ use Guzzle\Http\Message\Request;
 use Guzzle\Http\Message\Response;
 use Guzzle\Plugin\ErrorResponse\ErrorResponseExceptionInterface;
 use Guzzle\Service\Command\CommandInterface;
+use GuzzleHttp\Command\CommandTransaction;
+use GuzzleHttp\Command\Exception\CommandException;
 
 /**
  * @author  Michaël Gallego <mic.gallego@gmail.com>

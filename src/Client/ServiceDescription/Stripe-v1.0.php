@@ -2324,7 +2324,7 @@ return [
         ],
 
         'updateDispute' => [
-            'httpMethod'       => 'DELETE',
+            'httpMethod'       => 'POST',
             'uri'              => '/v1/charges/{charge}/dispute',
             'summary'          => 'Update a dispute',
             'errorResponses'   => $errors,
@@ -2338,7 +2338,7 @@ return [
                 ],
                 'evidence' => [
                     'description' => 'Evidence text',
-                    'location'    => 'uri',
+                    'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
                 ],
