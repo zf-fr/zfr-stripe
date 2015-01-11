@@ -1,7 +1,7 @@
 # 3.0.0
 
 * ZfrStripe now uses Guzzle v5 (instead of v3). Usage of ZfrStripe does not change, except that Guzzle 5 is
-substantially faster.
+substantially faster. This change has introduced a few breaking changes (those are documented in UPGRADING document)
 
 # 2.8.1
 

@@ -8,14 +8,14 @@ ZfrStripe is a modern PHP library based on Guzzle for [Stripe payment system](ht
 ## Dependencies
 
 * PHP 5.4+
-* [Guzzle](http://www.guzzlephp.org): >= 3.6
+* [Guzzle](http://www.guzzlephp.org): >= 5.0
 
 ## Installation
 
 Installation of ZfrStripe is only officially supported using Composer:
 
 ```sh
-php composer.phar require zfr/zfr-stripe:2.*
+php composer.phar require zfr/zfr-stripe:3.*
 ```
 
 ## Tutorial
@@ -130,18 +130,17 @@ foreach ($iterator as $user) {
 }
 ```
 
-By default, ZfrStripe retrieves 100 elements per API call (which is the maximum allowed by Stripe API). You may want
-to lower this limit by using the `setPageSize` method. You can also set a upper bound of how many results you want
-to retrieve by using the `setLimit` method.
+By default, ZfrStripe will implicitly add the limit parameter to 100 (the maximum page size allowed by Stripe API). You
+may want to lower this limit by explicitly passing the `limit` parameter. You can limit the maximum number of elements
+you want to retrive (in total) by calling the `setMaxResults` method on the iterator.
 
-Finally, you can still use API parameters when using an iterator. For instance, this will retrieve all the events
+With iterators, you can still use any API parameters. For instance, this will retrieve all the events
 that have the event `customer.subscription.updated`, doing a new API call each 50 elements (this means that only
 up to 50 elements are stored in memory), setting a limit of maximum 500 elements to retrieve:
 
 ```php
 $iterator = $client->getEventsIterator(array('type' => 'customer.subscription.updated'));
-$iterator->setPageSize(50);
-$iterator->setLimit(500);
+$iterator->MaxResults(500);
 
 foreach ($iterator as $event) {
     // Do something
@@ -159,7 +158,7 @@ foreach ($iterator as $invoices) {
 ```
 
 ZfrStripe takes care of fetching the last item in the batch, extracting the id, and continuing doing requests
-until no more data is available!
+until no more data is available (or more results than "maxResults" have been fetched)!
 
 #### Undocumented features
 
