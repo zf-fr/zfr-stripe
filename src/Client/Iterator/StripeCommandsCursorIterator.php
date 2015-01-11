@@ -18,8 +18,9 @@
 
 namespace ZfrStripe\Client\Iterator;
 
-use Guzzle\Service\Command\CommandInterface;
-use Guzzle\Service\Resource\ResourceIterator;
+use GuzzleHttp\Command\CommandInterface;
+use GuzzleHttp\Command\ServiceClientInterface;
+use Iterator;
 
 /**
  * Basic iterator that is used to iterate over all Stripe commands
@@ -29,37 +30,165 @@ use Guzzle\Service\Resource\ResourceIterator;
  * @author  Michaël Gallego <mic.gallego@gmail.com>
  * @licence MIT
  */
-class StripeCommandsCursorIterator extends ResourceIterator
+class StripeCommandsCursorIterator implements Iterator
 {
     /**
-     * @param CommandInterface $command
-     * @param array            $data
+     * @var ServiceClientInterface
      */
-    public function __construct(CommandInterface $command, array $data = [])
-    {
-        parent::__construct($command, $data);
+    private $client;
 
-        $this->pageSize = 100; // This is the maximum allowed by Stripe
+    /**
+     * @var CommandInterface
+     */
+    private $command;
+
+    /**
+     * @var int
+     */
+    private $requestCount = 0;
+
+    /**
+     * @var string|null
+     */
+    private $nextToken;
+
+    /**
+     * @var array
+     */
+    private $result = [];
+
+    /**
+     * @var int|null
+     */
+    private $maxResults = null;
+
+    /**
+     * @var int
+     */
+    private $iterationCount = 0;
+
+    /**
+     * @param ServiceClientInterface $client
+     * @param CommandInterface       $command
+     */
+    public function __construct(ServiceClientInterface $client, CommandInterface $command)
+    {
+        $this->client  = $client;
+        $this->command = $command;
+
+        // If there is no explicit limit set, we use the maximum allowed by Stripe (100)
+        if (!isset($command['limit'])) {
+            $command['limit'] = 100;
+        }
+    }
+
+    /**
+     * @param int $maxResults
+     */
+    public function setMaxResults($maxResults)
+    {
+        $this->maxResults = (int) $maxResults;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMaxResults()
+    {
+        return $this->maxResults;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return iterator_to_array($this, false);
+    }
+
+    /**
+     * @return array
+     */
+    public function getNext()
+    {
+        $this->result = [];
+        $countLoaded  = $this->requestCount * $this->command['limit'];
+
+        if ((!$this->requestCount || $this->nextToken)
+            && ($this->maxResults === null || $countLoaded < $this->maxResults)
+        ) {
+            $this->loadNextResult();
+        }
+
+        return $this->result;
     }
 
     /**
      * {@inheritDoc}
      */
-    protected function sendRequest()
+    public function current()
     {
-        $this->command['limit'] = $this->pageSize;
+        return current($this->result);
+    }
 
-        if ($this->nextToken) {
-            $this->command['starting_after'] = $this->nextToken;
+    /**
+     * {@inheritDoc}
+     */
+    public function next()
+    {
+        next($this->result);
+        $this->iterationCount++;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function key()
+    {
+        return key($this->result);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function valid()
+    {
+        if (null !== key($this->result)) {
+            return null !== $this->maxResults ? ($this->iterationCount < $this->maxResults) : true;
         }
 
-        $result   = $this->command->execute();
-        $data     = $result['data'];
-        $lastItem = end($data);
+        return !empty($this->getNext());
+    }
 
-        // This avoid to do any additional request
-        $this->nextToken = $result['has_more'] ? $lastItem['id'] : false;
+    /**
+     * {@inheritDoc}
+     */
+    public function rewind()
+    {
+        $this->requestCount   = 0;
+        $this->iterationCount = 0;
+        $this->result         = [];
+        $this->nextToken      = null;
+    }
 
-        return $data;
+    /**
+     * @return void
+     */
+    private function loadNextResult()
+    {
+        if ($this->nextToken) {
+            $this->command['starting_after'] = $this->nextToken;
+        } else {
+            unset($this->command['starting_after']);
+        }
+
+        $response = $this->client->execute($this->command);
+
+        $this->result = $response['data'];
+        $this->requestCount++;
+
+        if ($response['has_more']) {
+            $this->nextToken = end($response['data'])['id'];
+        }
     }
 }

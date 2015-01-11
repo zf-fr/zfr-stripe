@@ -254,10 +254,9 @@ class StripeClient
         if (substr($name, -8) === 'Iterator') {
             // Allow magic method calls for iterators (e.g. $client-><CommandName>Iterator($params))
             $commandOptions  = isset($arguments[0]) ? $arguments[0] : [];
-            $iteratorOptions = isset($arguments[1]) ? $arguments[1] : [];
-            $command         = $this->getCommand(substr($name, 0, -8), $commandOptions);
+            $command         = $this->guzzleClient->getCommand(substr($name, 0, -8), $commandOptions);
 
-            return new StripeCommandsCursorIterator($command, $iteratorOptions);
+            return new StripeCommandsCursorIterator($this->guzzleClient, $command);
         }
 
         return $this->guzzleClient->__call($name, $arguments);
