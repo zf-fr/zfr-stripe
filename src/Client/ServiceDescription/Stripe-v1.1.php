@@ -2337,9 +2337,9 @@ return [
                     'required'    => true
                 ],
                 'evidence' => [
-                    'description' => 'Evidence text',
-                    'location'    => 'uri',
-                    'type'        => 'string',
+                    'description' => 'Evidence hash',
+                    'location'    => 'query',
+                    'type'        => 'array',
                     'required'    => false
                 ],
                 'metadata' => [
