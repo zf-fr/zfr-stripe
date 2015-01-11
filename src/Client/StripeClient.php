@@ -301,10 +301,12 @@ class StripeClient extends Client
         $this->version = (string) $version;
         $this->setDefaultOption('headers', ['Stripe-Version' => $this->version]);
 
-        if ($this->version < '2014-12-17') {
+        if ($this->version < '2014-12-08') {
             $descriptor = __DIR__ . '/ServiceDescription/Stripe-v1.0.php';
-        } else {
+        } elseif ($this->version < '2014-12-17') {
             $descriptor = __DIR__ . '/ServiceDescription/Stripe-v1.1.php';
+        } else {
+            $descriptor = __DIR__ . '/ServiceDescription/Stripe-v1.2.php';
         }
 
         $this->setDescription(ServiceDescription::factory($descriptor));

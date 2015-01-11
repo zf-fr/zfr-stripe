@@ -1,3 +1,8 @@
+# 2.9.0
+
+* Fixed a long-lasting bug for `updateDispute` method. Also, a new descriptor has been added, as a previous BC
+was not taken into account in ZfrStripe. Therefore, current descriptor is Stripe-v1.2.
+
 # 2.8.1
 
 * Add the new `tax_percent` property to subscriptions.
