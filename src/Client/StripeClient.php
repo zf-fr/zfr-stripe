@@ -19,9 +19,9 @@
 namespace ZfrStripe\Client;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Command\Event\PreparedEvent;
 use GuzzleHttp\Command\Guzzle\Description;
 use GuzzleHttp\Command\Guzzle\GuzzleClient;
-use GuzzleHttp\Event\BeforeEvent;
 use GuzzleHttp\Query;
 use ZfrStripe\Client\Iterator\StripeCommandsCursorIterator;
 use ZfrStripe\Exception\UnsupportedStripeVersionException;
@@ -200,11 +200,6 @@ class StripeClient
     const LATEST_API_VERSION = '2015-01-11';
 
     /**
-     * @var Client
-     */
-    private $httpClient;
-
-    /**
      * @var GuzzleClient
      */
     private $guzzleClient;
@@ -235,15 +230,8 @@ class StripeClient
      */
     public function __construct($apiKey, $version = self::LATEST_API_VERSION)
     {
-        $this->httpClient = new Client();
-
         $this->setApiKey($apiKey);
         $this->setApiVersion($version);
-
-        // Attach various listeners that will prepare the request
-        $emitter = $this->httpClient->getEmitter();
-        $emitter->on('before', [$this, 'prepareQueryParams']);
-        $emitter->on('before', [$this, 'authorizeRequest']);
     }
 
     /**
@@ -303,7 +291,6 @@ class StripeClient
         }
 
         $this->version = (string) $version;
-        $this->httpClient->setDefaultOption('headers/Stripe-Version', $this->version);
 
         if ($this->version < '2014-12-08') {
             $description = new Description(include __DIR__ . '/ServiceDescription/Stripe-v1.0.php');
@@ -313,7 +300,13 @@ class StripeClient
             $description = new Description(include __DIR__ . '/ServiceDescription/Stripe-v1.2.php');
         }
 
-        $this->guzzleClient = new GuzzleClient($this->httpClient, $description);
+        $httpClient = new Client();
+        $httpClient->setDefaultOption('headers/Stripe-Version', $this->version);
+
+        // Create a new Guzzle client and attach events
+        $this->guzzleClient = new GuzzleClient($httpClient, $description);
+        $this->guzzleClient->getEmitter()->on('prepared', [$this, 'prepareQueryParams']);
+        $this->guzzleClient->getEmitter()->on('prepared', [$this, 'authorizeRequest']);
     }
 
     /**
@@ -330,10 +323,10 @@ class StripeClient
      * Modify the query aggregator
      *
      * @internal
-     * @param  BeforeEvent $event
+     * @param  PreparedEvent $event
      * @return void
      */
-    public function prepareQueryParams(BeforeEvent $event)
+    public function prepareQueryParams(PreparedEvent $event)
     {
         $event->getRequest()->getQuery()->setAggregator(Query::phpAggregator(false));
     }
@@ -342,10 +335,10 @@ class StripeClient
      * Authorize the request
      *
      * @internal
-     * @param  BeforeEvent $event
+     * @param  PreparedEvent $event
      * @return void
      */
-    public function authorizeRequest(BeforeEvent $event)
+    public function authorizeRequest(PreparedEvent $event)
     {
         $event->getRequest()->setHeader('Authorization', 'Basic ' . base64_encode($this->apiKey));
     }
