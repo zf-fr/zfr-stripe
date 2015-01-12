@@ -1,3 +1,7 @@
+# 2.10.0
+
+* [BC] Set default Stripe API to "2015-01-11" version
+
 # 2.9.0
 
 * Fixed a long-lasting bug for `updateDispute` method. Also, a new descriptor has been added, as a previous BC
