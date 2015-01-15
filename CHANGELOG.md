@@ -1,3 +1,7 @@
+# 2.10.1
+
+* Fix a bug where the parameter `plan` was required for `updateSubscription` (it is actually optional).
+
 # 2.10.0
 
 * [BC] Set default Stripe API to "2015-01-11" version

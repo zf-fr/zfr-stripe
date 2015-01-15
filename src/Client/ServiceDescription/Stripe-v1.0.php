@@ -1211,7 +1211,7 @@ return [
                     'description' => 'Unique plan identifier',
                     'location'    => 'query',
                     'type'        => 'string',
-                    'required'    => true
+                    'required'    => false
                 ],
                 'quantity' => [
                     'description' => 'Quantity you\'d like to apply to the subscription you\'re creating',
