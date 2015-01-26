@@ -1,3 +1,8 @@
+# 2.10.2
+
+* ZfrStripe adds support for the new Idempotency feature ([see here](https://stripe.com/docs/api#errors)). It is added
+to every POST request, and work by using the new `idempotency_key` param.
+
 # 2.10.1
 
 * Fix a bug where the parameter `plan` was required for `updateSubscription` (it is actually optional).

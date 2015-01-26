@@ -99,6 +99,13 @@ return [
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
             ]
         ],
@@ -180,6 +187,13 @@ return [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
                     'required'    => false
                 ]
             ]
@@ -309,6 +323,13 @@ return [
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
             ]
         ],
@@ -341,6 +362,13 @@ return [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
                     'required'    => false
                 ]
             ]
@@ -418,6 +446,13 @@ return [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
                     'required'    => false
                 ]
             ]
@@ -578,6 +613,13 @@ return [
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
             ]
         ],
@@ -612,6 +654,13 @@ return [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
                     'required'    => false
                 ]
             ]
@@ -786,6 +835,13 @@ return [
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
             ]
         ],
@@ -820,6 +876,13 @@ return [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
                     'required'    => false
                 ]
             ]
@@ -994,6 +1057,13 @@ return [
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
             ]
         ],
@@ -1110,6 +1180,13 @@ return [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
                     'required'    => false
                 ]
             ]
@@ -1273,6 +1350,13 @@ return [
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
             ]
         ],
@@ -1350,6 +1434,13 @@ return [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
                     'required'    => false
                 ]
             ]
@@ -1473,6 +1564,13 @@ return [
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
             ]
         ],
@@ -1544,6 +1642,13 @@ return [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
                     'required'    => false
                 ]
             ]
@@ -1655,6 +1760,13 @@ return [
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
             ]
         ],
@@ -1763,6 +1875,13 @@ return [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
                     'required'    => false
                 ]
             ]
@@ -1986,6 +2105,13 @@ return [
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
             ]
         ],
@@ -2038,6 +2164,13 @@ return [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
                     'required'    => false
                 ]
             ]
@@ -2103,6 +2236,13 @@ return [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
                     'required'    => false
                 ]
             ]
@@ -2238,6 +2378,13 @@ return [
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
             ]
         ],
@@ -2266,6 +2413,13 @@ return [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
                     'required'    => false
                 ]
             ]
@@ -2300,6 +2454,13 @@ return [
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
             ]
         ],
@@ -2328,6 +2489,13 @@ return [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
                     'required'    => false
                 ]
             ]
@@ -2379,6 +2547,13 @@ return [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
                     'required'    => false
                 ]
             ]
@@ -2493,6 +2668,13 @@ return [
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
             ]
         ],
@@ -2558,6 +2740,13 @@ return [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
                     'required'    => false
                 ]
             ]
@@ -2700,6 +2889,13 @@ return [
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
             ]
         ],
@@ -2815,6 +3011,13 @@ return [
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
             ]
         ],
@@ -2923,6 +3126,13 @@ return [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
                     'required'    => false
                 ]
             ]
@@ -3038,6 +3248,13 @@ return [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
                     'required'    => false
                 ]
             ]
@@ -3198,6 +3415,13 @@ return [
                     'location'    => 'query',
                     'type'        => 'array',
                     'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
+                    'required'    => false
                 ]
             ]
         ],
@@ -3218,6 +3442,13 @@ return [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
                     'type'        => 'array',
+                    'required'    => false
+                ],
+                'idempotency_key' => [
+                    'description' => 'An indempotency key that prevents accidentally performing the same POST operation twice',
+                    'location'    => 'header',
+                    'sentAs'      => 'Idempotency-Key',
+                    'type'        => 'string',
                     'required'    => false
                 ]
             ]

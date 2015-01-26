@@ -161,6 +161,30 @@ foreach ($iterator as $invoices) {
 ZfrStripe takes care of fetching the last item in the batch, extracting the id, and continuing doing requests
 until no more data is available!
 
+#### Idempotency Key
+
+Recently, Stripe has added support for idempotency key. This is added to every POST requests, and prevent an
+operation for being done twice, as long as the key is the same. You are responsible to generate your own
+idempotency key:
+
+```php
+$key = 'ABC';
+
+$stripeClient->createSubscription([
+    'id'              => 'cus_abc',
+    'plan'            => 'planA',
+    'idempotency_key' => $key
+]);
+
+$stripeClient->createSubscription([
+    'id'              => 'cus_abc',
+    'plan'            => 'planA',
+    'idempotency_key' => $key
+]);
+
+// Only one subscription is created
+```
+
 #### Undocumented features
 
 While playing with Stripe API, I realized that the API has a few filtering capabilities that were not documented,
