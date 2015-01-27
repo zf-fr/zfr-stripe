@@ -1,3 +1,7 @@
+# 2.11.0
+
+* [BC] Set default Stripe API to "2015-01-26" version
+
 # 2.10.2
 
 * ZfrStripe adds support for the new Idempotency feature ([see here](https://stripe.com/docs/api#errors)). It is added
