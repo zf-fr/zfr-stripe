@@ -1183,7 +1183,7 @@ return [
                 'tax_percent' => [
                     'description' => 'A positive decimal (with at most two decimal places) between 1 and 100 that represents the percentage of the subscription invoice subtotal that will be calculated and added as tax to the final amount each billing period',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => 'number',
                     'required'    => false
                 ],
                 'metadata' => [
@@ -1355,7 +1355,7 @@ return [
                 'tax_percent' => [
                     'description' => 'A positive decimal (with at most two decimal places) between 1 and 100 that represents the percentage of the subscription invoice subtotal that will be calculated and added as tax to the final amount each billing period',
                     'location'    => 'query',
-                    'type'        => 'string',
+                    'type'        => 'number',
                     'required'    => false
                 ],
                 'metadata' => [
