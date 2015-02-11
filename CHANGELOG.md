@@ -1,3 +1,7 @@
+# 2.12.0
+
+* [BC] Set default Stripe API to "2015-02-10" version
+
 # 2.11.1
 
 * Validation for `tax_percent` is less restrictive and now accepts both a string or float
