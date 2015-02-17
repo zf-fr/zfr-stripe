@@ -1,3 +1,7 @@
+# 2.13.0
+
+* [BC] Set default Stripe API to "2015-02-16" version
+
 # 2.12.1
 
 * Set a simpler dependency for Guzzle (hopefully solving some dependencies problems)
