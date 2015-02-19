@@ -21,6 +21,7 @@ namespace ZfrStripe\Client;
 use Guzzle\Common\Event;
 use Guzzle\Plugin\ErrorResponse\ErrorResponsePlugin;
 use Guzzle\Service\Client;
+use Guzzle\Service\Command\Factory\CompositeFactory;
 use Guzzle\Service\Description\ServiceDescription;
 use Guzzle\Service\Resource\ResourceIterator;
 use ZfrStripe\Client\Iterator\StripeCommandsCursorIterator;

@@ -1,3 +1,7 @@
+# 2.14.1
+
+* Fix missing import
+
 # 2.14.0
 
 * [BC] Set default Stripe API to "2015-02-18" version (note: this version brings several important breaking changes
