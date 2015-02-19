@@ -2,6 +2,7 @@
 
 * [BC] Set default Stripe API to "2015-02-18" version (note: this version brings several important breaking changes
 in how you use Stripe API).
+* Fix a bug when changing the API version at runtime did not properly updated the descriptor.
 
 # 2.13.0
 

@@ -312,6 +312,8 @@ class StripeClient extends Client
             $descriptor = __DIR__ . '/ServiceDescription/Stripe-v1.3.php';
         }
 
+        // Note that we need to recreate a whole new CompositeFactory whenever the version is changed
+        $this->setCommandFactory(new CompositeFactory());
         $this->setDescription(ServiceDescription::factory($descriptor));
     }
 
