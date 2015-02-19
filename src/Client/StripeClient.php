@@ -198,7 +198,7 @@ class StripeClient extends Client
     /**
      * Stripe API version
      */
-    const LATEST_API_VERSION = '2015-02-10';
+    const LATEST_API_VERSION = '2015-02-18';
 
     /**
      * @var array
@@ -206,7 +206,7 @@ class StripeClient extends Client
     protected $availableVersions = [
         '2014-03-28', '2014-05-19', '2014-06-13', '2014-06-17', '2014-07-22', '2014-07-26', '2014-08-04', '2014-08-20',
         '2014-09-08', '2014-10-07', '2014-11-05', '2014-11-20', '2014-12-08', '2014-12-17', '2014-12-22', '2015-01-11',
-        '2015-01-26', '2015-02-10', '2015-02-16'
+        '2015-01-26', '2015-02-10', '2015-02-16', '2015-02-18'
     ];
 
     /**
@@ -306,8 +306,10 @@ class StripeClient extends Client
             $descriptor = __DIR__ . '/ServiceDescription/Stripe-v1.0.php';
         } elseif ($this->version < '2014-12-17') {
             $descriptor = __DIR__ . '/ServiceDescription/Stripe-v1.1.php';
-        } else {
+        } elseif ($this->version < '2015-02-18') {
             $descriptor = __DIR__ . '/ServiceDescription/Stripe-v1.2.php';
+        } else {
+            $descriptor = __DIR__ . '/ServiceDescription/Stripe-v1.3.php';
         }
 
         $this->setDescription(ServiceDescription::factory($descriptor));
