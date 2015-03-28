@@ -2220,6 +2220,13 @@ return [
                     'type'        => 'string',
                     'required'    => false
                 ],
+                'discountable' => [
+                    'description' => 'Controls whether discounts apply to this invoice item',
+                    'location'    => 'query',
+                    'type'        => 'boolean',
+                    'filters'     => ['ZfrStripe\Client\Filter\BooleanFilter::encodeValue'],
+                    'required'    => false
+                ],
                 'metadata' => [
                     'description' => 'Optional metadata',
                     'location'    => 'query',
@@ -2359,6 +2366,13 @@ return [
                     'description' => 'Optional description',
                     'location'    => 'query',
                     'type'        => 'string',
+                    'required'    => false
+                ],
+                'discountable' => [
+                    'description' => 'Controls whether discounts apply to this invoice item',
+                    'location'    => 'query',
+                    'type'        => 'boolean',
+                    'filters'     => ['ZfrStripe\Client\Filter\BooleanFilter::encodeValue'],
                     'required'    => false
                 ],
                 'metadata' => [
