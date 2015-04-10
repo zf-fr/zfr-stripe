@@ -1,3 +1,7 @@
+# 2.16.0
+
+* [BC] Set default Stripe API to "2015-04-07" version.
+
 # 2.15.0
 
 * [BC] Set default Stripe API to "2015-03-24" version. This adds the property `discountable` for `createInvoiceItem`
