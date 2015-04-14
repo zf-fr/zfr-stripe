@@ -171,6 +171,12 @@ return [
                     'type'        => 'string',
                     'required'    => false
                 ],
+                'destination' => [
+                    'description' => 'An account to make the charge on behalf of',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
                 'application_fee' => [
                     'description' => 'A fee in cents that will be applied to the charge and transferred to the application owner\'s Stripe account',
                     'location'    => 'query',
