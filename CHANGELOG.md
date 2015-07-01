@@ -1,3 +1,7 @@
+# 2.17.0
+
+* [BC] Set default Stripe API to "2015-06-15"
+
 # 2.16.1
 
 * Add the `destination` parameter when creating a charge (in all descriptors).
