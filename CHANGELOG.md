@@ -1,3 +1,7 @@
+# 2.18.0
+
+* [BC] Set default Stripe API to "2015-07-07"
+
 # 2.17.0
 
 * [BC] Set default Stripe API to "2015-06-15"
