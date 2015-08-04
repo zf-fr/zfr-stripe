@@ -1,3 +1,23 @@
+# 3.0.0
+
+* [BC] For all descriptors, `closeDispute` and `updateDispute` now uses the new endpoints that do not require a charge ID but instead a dispute
+ID. In previous versions:
+
+```php
+$stripeClient->closeDispute(['charge' => 'ch_abc']);
+```
+
+In new version:
+
+```php
+$stripeClient->closeDispute(['id' => 'dp_abc']);
+```
+
+Also, new endpoints have been added that allow to retrieve a specific dispute by its id, as well as retrieving all disputes.
+
+* [BC] Descriptor cleanup: older descriptors have been removed. ZfrStripe now supports Stripe API version from 2015-02-18. If you are using an older
+version of the API, you should stay on 2.x branch.
+
 # 2.20.0
 
 * [BC] Set default Stripe API to "2015-07-28"

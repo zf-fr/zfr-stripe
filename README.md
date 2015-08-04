@@ -15,7 +15,7 @@ ZfrStripe is a modern PHP library based on Guzzle for [Stripe payment system](ht
 Installation of ZfrStripe is only officially supported using Composer:
 
 ```sh
-php composer.phar require 'zfr/zfr-stripe:2.*'
+php composer.phar require 'zfr/zfr-stripe:3.*'
 ```
 
 ## Tutorial
@@ -39,21 +39,24 @@ $client = new StripeClient('my-api-key', '2015-07-28');
 
 ### Versioning
 
-Stripe versions its API using a dated version ("2013-12-03", "2014-01-31"...). Their [versioning policy](https://stripe.com/docs/upgrades)
-is to release a new dated version each time something changes in their API (for instance, if a response returns
-new attributes, if new endpoint is added)...
+Stripe API has an odd (yet very useful) [versioning policy](https://stripe.com/docs/upgrades) that makes it hard to version it correctly. The trick
+is that Stripe may change how some properties are passed on return on new versions (hence being a BC for older version), but still introduce new endpoints
+that will be available to older versions too.
 
-Starting from v2, ZfrStripe does not follow this mechanism strictly, because new endpoints are actually also available for older versions of Stripe. We therefore only release a new descriptor each time an endpoint is **removed** or if its URL changes.
+Therefore, each time a new dated version of Stripe API is released, ZfrStripe will adopt this policy:
 
-However, each new minor version (2.1.0 to 2.2.0 for instance) will update the Stripe API version to the latest available. This means that Stripe responses *may* change. This means that to keep BC you should either tighten your dependency (2.1.* instead of 2.* for instance) OR always specify the exact version you want, as shown above.
+* If new endpoints are introduced, without changing old ones, the new endpoints are added for all supported versions. A minor version is tagged, and set
+the default Stripe version as the latest one.
+* If no new endpoints are introduced, but some parameter change, a new descriptor is created, hence supporting multiple versions. A minor version is tagged, 
+and set the default Stripe version as the latest one.
+* If no new endpoints are introduced, and no parameter are changed, a minor version is tagged, and set the default Stripe version as the latest one.
+* If existing endpoints are updating by changing their URL, a major release of ZfrStripe is released as compatibility cannot be assured.
 
-Currently, the following Stripe API versions are accepted by ZfrStripe: `2014-03-28`, `2014-05-19`, `2014-06-13`,
-`2014-06-17`, `2014-07-22`,  `2014-07-26`,  `2014-08-04`, `2014-08-20`, `2014-09-08`, `2014-10-07`, `2014-11-05`,
-`2014-11-20`, `2014-12-08`, `2014-12-17`, `2014-12-22`, `2015-01-11`, `2015-01-26`, `2015-02-10`, `2015-02-16`,
-`2015-02-18`, `2015-03-24`, `2015-04-07`, `2015-06-15`, `2015-07-07`, `2015-07-13`, `2015-07-28`. I will try
-to update the library as soon as new version are released.
+Currently, the following Stripe API versions are accepted by ZfrStripe: `2015-02-18`, `2015-03-24`, `2015-04-07`, `2015-06-15`, `2015-07-07`, 
+`2015-07-13`, `2015-07-28`. I will try to update the library as soon as new version are released.
 
-> If you need support for older versions, please use branch v1 of ZfrStripe.
+> If you need support for versions as old as 2014-03-28, please use branch v2 of ZfrStripe.
+> If you need support for even older versions, please use branch v1 of ZfrStripe.
 
 ### How to use it?
 
@@ -359,6 +362,8 @@ INVOICE ITEM RELATED METHODS:
 
 DISPUTE RELATED METHODS:
 
+* array getDispute(array $args = array()
+* array getDisputes(array $args = array())
 * array closeDispute(array $args = array())
 * array updateDispute(array $args = array())
 

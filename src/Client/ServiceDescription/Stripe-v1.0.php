@@ -113,7 +113,7 @@ return [
         'CreateCharge' => [
             'httpMethod'       => 'POST',
             'uri'              => '/v1/charges',
-            'summary'          => 'Create a new charge (either card or customer is needed)',
+            'summary'          => 'Create a new charge (either source or customer is needed)',
             'errorResponses'   => $errors,
             'parameters'       => [
                 'amount' => [
@@ -134,8 +134,8 @@ return [
                     'type'        => 'string',
                     'required'    => false
                 ],
-                'card' => [
-                    'description' => 'Unique card identifier (can either be an ID or a hash)',
+                'source' => [
+                    'description' => 'Unique source (can either be an ID or a hash)',
                     'location'    => 'query',
                     'type'        => ['string', 'array'],
                     'required'    => false
@@ -159,8 +159,8 @@ return [
                     'type'        => 'array',
                     'required'    => false
                 ],
-                'statement_description' => [
-                    'description' => 'An arbitrary string to be displayed alongside your company name on your customer\'s credit card statement',
+                'statement_descriptor' => [
+                    'description' => 'An arbitrary string to be displayed alongside your customer\'s credit card statement',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
@@ -400,8 +400,8 @@ return [
                     'type'        => 'integer',
                     'required'    => false
                 ],
-                'card' => [
-                    'description' => 'Unique card identifier (can either be an ID or a hash)',
+                'source' => [
+                    'description' => 'Unique source identifier (can either be an ID or a hash)',
                     'location'    => 'query',
                     'type'        => ['string', 'array'],
                     'required'    => false
@@ -578,8 +578,8 @@ return [
                     'type'        => 'integer',
                     'required'    => false
                 ],
-                'card' => [
-                    'description' => 'Unique card identifier (can either be an ID or a hash)',
+                'source' => [
+                    'description' => 'Unique source identifier (can either be an ID or a hash)',
                     'location'    => 'query',
                     'type'        => ['string', 'array'],
                     'required'    => false
@@ -1424,8 +1424,8 @@ return [
                     'type'        => 'array',
                     'required'    => false
                 ],
-                'statement_description' => [
-                    'description' => 'An arbitrary string to be displayed alongside your company name on your customer\'s credit card statement',
+                'statement_descriptor' => [
+                    'description' => 'An arbitrary string to be displayed alongside your customer\'s credit card statement',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
@@ -1553,8 +1553,8 @@ return [
                     'type'        => 'array',
                     'required'    => false
                 ],
-                'statement_description' => [
-                    'description' => 'An arbitrary string to be displayed alongside your company name on your customer\'s credit card statement',
+                'statement_descriptor' => [
+                    'description' => 'An arbitrary string to be displayed alongside your customer\'s credit card statement',
                     'location'    => 'query',
                     'type'        => 'string',
                     'required'    => false
@@ -1859,7 +1859,7 @@ return [
                     'type'        => 'string',
                     'required'    => false
                 ],
-                'statement_description' => [
+                'statement_descriptor' => [
                     'description' => 'Extra information about a charge for the customer\'s credit card statement',
                     'location'    => 'query',
                     'type'        => 'string',
@@ -2134,7 +2134,7 @@ return [
                     'type'        => 'string',
                     'required'    => false
                 ],
-                'statement_description' => [
+                'statement_descriptor' => [
                     'description' => 'Extra information about a charge for the customer\'s credit card statement',
                     'location'    => 'query',
                     'type'        => 'string',
@@ -2411,17 +2411,102 @@ return [
          * --------------------------------------------------------------------------------
          */
 
-        'CloseDispute' => [
-            'httpMethod'       => 'POST',
-            'uri'              => '/v1/charges/{charge}/dispute/close',
-            'summary'          => 'Close a dispute',
+        'GetDispute' => [
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/disputes/{id}',
+            'summary'          => 'Get an existing dispute',
             'errorResponses'   => $errors,
             'parameters'       => [
-                'charge' => [
-                    'description' => 'ID of the charge to close the dispute',
+                'id' => [
+                    'description' => 'Unique identifier of the dispute',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
+                ],
+                'expand' => [
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'GetDisputes' => [
+            'httpMethod'       => 'GET',
+            'uri'              => '/v1/disputes',
+            'summary'          => 'Get existing disputes',
+            'errorResponses'   => $errors,
+            'parameters'       => [
+                'limit' => [
+                    'description' => 'Limit on how many disputes are retrieved',
+                    'location'    => 'query',
+                    'type'        => 'integer',
+                    'min'         => 1,
+                    'max'         => 100,
+                    'required'    => false
+                ],
+                'starting_after' => [
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'ending_before' => [
+                    'description' => 'A cursor for use in the pagination',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'created' => [
+                    'description' => 'A filter based on the "created" field. Can be an exact UTC timestamp, or a hash',
+                    'location'    => 'query',
+                    'required'    => false
+                ],
+                'customer' => [
+                    'description' => 'Only return invoices for a specific customer',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
+                'expand' => [
+                    'description' => 'Allow to expand some properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'include' => [
+                    'description' => 'Allow to include some additional properties',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ]
+            ]
+        ],
+
+        'UpdateDispute' => [
+            'httpMethod'       => 'POST',
+            'uri'              => '/v1/disputes/{id}',
+            'summary'          => 'Update a dispute',
+            'errorResponses'   => $errors,
+            'parameters'       => [
+                'id' => [
+                    'description' => 'ID of the dispute to update',
+                    'location'    => 'uri',
+                    'type'        => 'string',
+                    'required'    => true
+                ],
+                'evidence' => [
+                    'description' => 'Evidence hash',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
+                'metadata' => [
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
                 ],
                 'expand' => [
                     'description' => 'Allow to expand some properties',
@@ -2439,29 +2524,17 @@ return [
             ]
         ],
 
-        'UpdateDispute' => [
+        'CloseDispute' => [
             'httpMethod'       => 'POST',
-            'uri'              => '/v1/charges/{charge}/dispute',
-            'summary'          => 'Update a dispute',
+            'uri'              => '/v1/disputes/{id}/close',
+            'summary'          => 'Close a dispute',
             'errorResponses'   => $errors,
             'parameters'       => [
                 'charge' => [
-                    'description' => 'ID of the charge to update the dispute',
+                    'description' => 'ID of the charge to close the dispute',
                     'location'    => 'uri',
                     'type'        => 'string',
                     'required'    => true
-                ],
-                'evidence' => [
-                    'description' => 'Evidence text',
-                    'location'    => 'query',
-                    'type'        => 'string',
-                    'required'    => false
-                ],
-                'metadata' => [
-                    'description' => 'Optional metadata',
-                    'location'    => 'query',
-                    'type'        => 'array',
-                    'required'    => false
                 ],
                 'expand' => [
                     'description' => 'Allow to expand some properties',
@@ -2545,7 +2618,7 @@ return [
                     'type'        => 'string',
                     'required'    => false
                 ],
-                'statement_description' => [
+                'statement_descriptor' => [
                     'description' => 'An arbitrary string which will be displayed on the recipient\'s bank statement',
                     'location'    => 'query',
                     'type'        => 'string',

@@ -115,6 +115,8 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  *
  * DISPUTE RELATED METHODS:
  *
+ * @method array getDispute(array $args = array()) {@command Stripe GetDispute}
+ * @method array getDisputes(array $args = array()) {@command Stripe GetDisputes}
  * @method array closeDispute(array $args = array()) {@command Stripe CloseDispute}
  * @method array updateDispute(array $args = array()) {@command Stripe UpdateDispute}
  *
@@ -186,6 +188,7 @@ use ZfrStripe\Http\QueryAggregator\StripeQueryAggregator;
  * @method ResourceIterator getInvoiceLineItemsIterator()
  * @method ResourceIterator GetUpcomingInvoiceLineItemsIterator()
  * @method ResourceIterator getInvoiceItemsIterator()
+ * @method ResourceIterator getDisputesIterator()
  * @method ResourceIterator getTransfersIterator()
  * @method ResourceIterator getRecipientsIterator()
  * @method ResourceIterator getRefundsIterator()
@@ -205,10 +208,7 @@ class StripeClient extends Client
      * @var array
      */
     protected $availableVersions = [
-        '2014-03-28', '2014-05-19', '2014-06-13', '2014-06-17', '2014-07-22', '2014-07-26', '2014-08-04', '2014-08-20',
-        '2014-09-08', '2014-10-07', '2014-11-05', '2014-11-20', '2014-12-08', '2014-12-17', '2014-12-22', '2015-01-11',
-        '2015-01-26', '2015-02-10', '2015-02-16', '2015-02-18', '2015-03-24', '2015-04-07', '2015-06-15', '2015-07-07',
-        '2015-07-13', '2015-07-28'
+        '2015-02-18', '2015-03-24', '2015-04-07', '2015-06-15', '2015-07-07', '2015-07-13', '2015-07-28'
     ];
 
     /**
@@ -304,15 +304,7 @@ class StripeClient extends Client
         $this->version = (string) $version;
         $this->setDefaultOption('headers', ['Stripe-Version' => $this->version]);
 
-        if ($this->version < '2014-12-08') {
-            $descriptor = __DIR__ . '/ServiceDescription/Stripe-v1.0.php';
-        } elseif ($this->version < '2014-12-17') {
-            $descriptor = __DIR__ . '/ServiceDescription/Stripe-v1.1.php';
-        } elseif ($this->version < '2015-02-18') {
-            $descriptor = __DIR__ . '/ServiceDescription/Stripe-v1.2.php';
-        } else {
-            $descriptor = __DIR__ . '/ServiceDescription/Stripe-v1.3.php';
-        }
+        $descriptor = __DIR__ . '/ServiceDescription/Stripe-v1.0.php';
 
         // Note that we need to recreate a whole new CompositeFactory whenever the version is changed
         $this->setCommandFactory(new CompositeFactory());
