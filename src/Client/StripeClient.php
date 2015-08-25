@@ -202,13 +202,14 @@ class StripeClient extends Client
     /**
      * Stripe API version
      */
-    const LATEST_API_VERSION = '2015-07-28';
+    const LATEST_API_VERSION = '2015-08-19';
 
     /**
      * @var array
      */
     protected $availableVersions = [
-        '2015-02-18', '2015-03-24', '2015-04-07', '2015-06-15', '2015-07-07', '2015-07-13', '2015-07-28'
+        '2015-02-18', '2015-03-24', '2015-04-07', '2015-06-15', '2015-07-07', '2015-07-13', '2015-07-28',
+        '2015-08-07', '2015-08-19'
     ];
 
     /**
@@ -304,7 +305,11 @@ class StripeClient extends Client
         $this->version = (string) $version;
         $this->setDefaultOption('headers', ['Stripe-Version' => $this->version]);
 
-        $descriptor = __DIR__ . '/ServiceDescription/Stripe-v1.0.php';
+        if ($this->version < '2015-08-19') {
+            $descriptor = __DIR__ . '/ServiceDescription/Stripe-v1.0.php';
+        } else {
+            $descriptor = __DIR__ . '/ServiceDescription/Stripe-v1.1.php';
+        }
 
         // Note that we need to recreate a whole new CompositeFactory whenever the version is changed
         $this->setCommandFactory(new CompositeFactory());

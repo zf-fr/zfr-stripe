@@ -1,3 +1,8 @@
+# 3.1.0
+
+* [BC] Set default Stripe API to "2015-08-19". When using this new version, refunds are now get without specifying
+a charge ID.
+
 # 3.0.0
 
 * [BC] For all descriptors, `closeDispute` and `updateDispute` now uses the new endpoints that do not require a charge ID but instead a dispute
