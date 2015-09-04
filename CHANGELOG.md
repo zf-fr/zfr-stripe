@@ -1,3 +1,7 @@
+# 3.2.0
+
+[BC] Set default Stripe API to "2015-09-03"
+
 # 3.1.0
 
 * [BC] Set default Stripe API to "2015-08-19". When using this new version, refunds are now get without specifying
