@@ -34,6 +34,10 @@ $errors = [
         'code'  => 404
     ],
     [
+        'class' => 'ZfrStripe\Exception\ApiRateLimitException',
+        'code'  => 429
+    ],
+    [
         'class' => 'ZfrStripe\Exception\ServerErrorException',
         'code'  => 500
     ],

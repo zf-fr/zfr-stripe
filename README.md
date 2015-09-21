@@ -30,11 +30,11 @@ $client = new StripeClient('my-api-key');
 > You can change the API key for the client using the `setApiKey` method. This is useful if you are using Stripe
 Connect and make both your own API calls and API calls on behalf of your users.
 
-The currently latest supported version of the API is **2015-09-03**. You can (and should) also explicitly specify the version
+The currently latest supported version of the API is **2015-09-08**. You can (and should) also explicitly specify the version
 of the client using the second parameter:
 
 ```php
-$client = new StripeClient('my-api-key', '2015-09-03');
+$client = new StripeClient('my-api-key', '2015-09-08');
 ```
 
 ### Versioning
@@ -53,7 +53,7 @@ and set the default Stripe version as the latest one.
 * If existing endpoints are updating by changing their URL, a major release of ZfrStripe is released as compatibility cannot be assured.
 
 Currently, the following Stripe API versions are accepted by ZfrStripe: `2015-02-18`, `2015-03-24`, `2015-04-07`, `2015-06-15`, `2015-07-07`, 
-`2015-07-13`, `2015-07-28`, `2015-08-07`, `2015-08-19`, `2015-09-03`. I will try to update the library as soon as new version are released.
+`2015-07-13`, `2015-07-28`, `2015-08-07`, `2015-08-19`, `2015-09-03`, `2015-09-08`. I will try to update the library as soon as new version are released.
 
 > If you need support for versions as old as 2014-03-28, please use branch v2 of ZfrStripe.
 > If you need support for even older versions, please use branch v1 of ZfrStripe.

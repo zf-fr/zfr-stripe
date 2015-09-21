@@ -202,14 +202,14 @@ class StripeClient extends Client
     /**
      * Stripe API version
      */
-    const LATEST_API_VERSION = '2015-09-03';
+    const LATEST_API_VERSION = '2015-09-08';
 
     /**
      * @var array
      */
     protected $availableVersions = [
         '2015-02-18', '2015-03-24', '2015-04-07', '2015-06-15', '2015-07-07', '2015-07-13', '2015-07-28',
-        '2015-08-07', '2015-08-19', '2015-09-03'
+        '2015-08-07', '2015-08-19', '2015-09-03', '2015-09-08'
     ];
 
     /**
