@@ -1,3 +1,8 @@
+# 3.5.0
+
+* [BC] Set default Stripe API to "2015-10-16"
+* Add the "default_source" parameter when updating a Stripe customer (all descriptors).
+
 # 3.4.0
 
 * [BC] Set default Stripe API to "2015-10-01"
