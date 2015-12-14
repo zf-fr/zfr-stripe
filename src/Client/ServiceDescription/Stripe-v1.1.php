@@ -588,6 +588,12 @@ return [
                     'type'        => ['string', 'array'],
                     'required'    => false
                 ],
+                'default_source' => [
+                    'description' => 'Unique identifier for the default source',
+                    'location'    => 'query',
+                    'type'        => 'string',
+                    'required'    => false
+                ],
                 'coupon' => [
                     'description' => 'Optional coupon identifier that applies a discount on all recurring charges',
                     'location'    => 'query',
