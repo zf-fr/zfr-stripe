@@ -840,6 +840,11 @@ return [
                     'type'     => 'string',
                     'required' => false
                 ],
+                'metadata' => [
+                    'location' => 'query',
+                    'type'     => 'array',
+                    'required' => false
+                ],
                 'expand' => [
                     'description' => 'Allow to expand some properties',
                     'location'    => 'query',
