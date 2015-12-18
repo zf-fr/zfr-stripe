@@ -1,3 +1,7 @@
+# 3.5.1
+
+* Allow to set metadata for cards when updating
+
 # 3.5.0
 
 * [BC] Set default Stripe API to "2015-10-16"
