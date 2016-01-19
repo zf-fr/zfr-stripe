@@ -1,3 +1,7 @@
+# 3.5.2
+
+* Allow to add metadata when creating cards
+
 # 3.5.1
 
 * Allow to set metadata for cards when updating
