@@ -3524,7 +3524,13 @@ return [
                     'sentAs'      => 'Idempotency-Key',
                     'type'        => 'string',
                     'required'    => false
-                ]
+                ],
+                'metadata' => [
+                    'description' => 'Optional metadata',
+                    'location'    => 'query',
+                    'type'        => 'array',
+                    'required'    => false
+                ],
             ]
         ],
 
